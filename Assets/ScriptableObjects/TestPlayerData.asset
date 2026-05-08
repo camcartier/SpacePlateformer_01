@@ -15,7 +15,7 @@ MonoBehaviour:
   groundedSpeed: 10
   aerialSpeed: 15
   fallingSpeed: 8
-  jumpForce: {x: 0, y: 40}
+  jumpForce: {x: 0, y: 20}
   gravityDownStrength: 5
   gravityDownDrag: 0
   gravityUpStrength: 1
@@ -25,5 +25,5 @@ MonoBehaviour:
   maxJumpTime: 1
   boosterWait: 0.4
   boosterDuration: 0.5
-  coyoteTime: 1
+  coyoteTime: 5
   boostStrength: 20

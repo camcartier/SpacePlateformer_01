@@ -13,7 +13,6 @@ public class PlayerFallingState : PlayerBaseState
     private float timerCounter;
 
     private float coyoteTimerCounter;
-    private bool canCoyoteJump;
 
     public PlayerFallingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -42,7 +41,7 @@ public class PlayerFallingState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         coyoteTimerCounter -= Time.deltaTime;
-        if(coyoteTimerCounter <= 0) { canCoyoteJump = false; }
+        if(coyoteTimerCounter <= 0) { stateMachine.canCoyoteJump= false; }
 
 
         //Debug.Log(fallForce.y);

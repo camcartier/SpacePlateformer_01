@@ -27,7 +27,7 @@ public class ColliderReceiver : MonoBehaviour
     {
         if (collisionColliders.Count > 0)
         {
-        //isGrounded = true;
+        isGrounded = true;
         }
 
         if(collisionColliders.Count <= 0)
@@ -60,13 +60,25 @@ public class ColliderReceiver : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             Vector3 normal = collision.GetContact(0).normal;
-            if(normal == Vector3.up)
+            if (normal == Vector3.up)
             {
                 collisionColliders.Add(collision);
 
-                //isGrounded = true;
+               
             }
         }
+
+        //if (collision.gameObject.CompareTag("Ground"))
+        //{
+        //    Vector3 normal = collision.GetContact(0).normal;
+        //    if (normal == Vector3.up)
+        //    {
+        //        collisionColliders.Add(collision);
+
+        //        //isGrounded = true;
+        //    }
+        //}
+
 
         if (collision.gameObject.CompareTag("Asteroid"))
         {

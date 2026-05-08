@@ -22,6 +22,8 @@ public class PlayerMainState : PlayerBaseState
         stateMachine.InputReader.FlyEvent += OnFly;
 
         stateMachine.previousStateWasJump = false;
+
+        Debug.Log("main");
     }
 
     public override void Exit()
@@ -67,7 +69,7 @@ public class PlayerMainState : PlayerBaseState
 
 
 
-        if (stateMachine.rb2D.velocity.y < 0)
+        if (stateMachine.rb2D.velocity.y < 0 && !stateMachine.ColliderReceiver.isGrounded)
         {
             stateMachine.SwitchState(new PlayerFallingState(stateMachine));
         }

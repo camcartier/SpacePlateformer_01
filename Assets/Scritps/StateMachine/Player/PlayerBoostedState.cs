@@ -13,7 +13,7 @@ public class PlayerBoostedState : PlayerBaseState
     public PointA pointA;
     public PointB pointB;
     //[SerializeField] private AnimationCurve curve;
-    private float duration = 1f;
+    //private float duration = 1f;
 
     private Vector2 playerInfluence;
 
