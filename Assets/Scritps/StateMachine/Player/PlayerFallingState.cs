@@ -59,7 +59,7 @@ public class PlayerFallingState : PlayerBaseState
 
         if (stateMachine.isBoosted) {stateMachine.SwitchState(new PlayerAttractedState(stateMachine));}
 
-        if (stateMachine.InputReader.Fly.ReadValue<float>() > 0 && stateMachine.PlayerRessources.fuelCurrentAmount > 0)  
+        if (stateMachine.InputReader.Fly.ReadValue<float>() > 0 && stateMachine.canFly )  
         {stateMachine.SwitchState(new PlayerFlyingState(stateMachine));}
 
 

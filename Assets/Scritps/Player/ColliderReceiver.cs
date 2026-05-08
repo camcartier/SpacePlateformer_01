@@ -16,6 +16,8 @@ public class ColliderReceiver : MonoBehaviour
     public Vector2 groundCheckSize = new Vector2(0.5f ,0.5f);
     public LayerMask groundLayer;
 
+    public Collision2D aieCollider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +66,7 @@ public class ColliderReceiver : MonoBehaviour
             {
                 collisionColliders.Add(collision);
 
-               
+                aieCollider = collision;
             }
         }
 
@@ -83,6 +85,8 @@ public class ColliderReceiver : MonoBehaviour
         if (collision.gameObject.CompareTag("Asteroid"))
         {
             Debug.Log("aie");
+
+            stateMachine.SwitchState(new PlayerHurtState(stateMachine));
         }
 
     }

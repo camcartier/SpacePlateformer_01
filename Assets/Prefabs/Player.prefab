@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 4085100923924445480}
   - component: {fileID: 7214434640286493478}
   - component: {fileID: 6819327105693324438}
+  - component: {fileID: 6581656630269188753}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -146,6 +147,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  Jump:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 60512424-fdf7-4470-8b7e-83017a0d1d10
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &7214434640286493478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,8 +172,12 @@ MonoBehaviour:
   <rb2D>k__BackingField: {fileID: 8879955002045760974}
   <ColliderReceiver>k__BackingField: {fileID: 6819327105693324438}
   <canJump>k__BackingField: 0
+  <isJumping>k__BackingField: 0
+  <canCoyoteJump>k__BackingField: 0
+  previousStateWasJump: 0
   <isGrounded>k__BackingField: 0
   <jumpIsOver>k__BackingField: 0
+  <canFly>k__BackingField: 0
   <isBoosted>k__BackingField: 0
   <currentBooster>k__BackingField: {fileID: 0}
   <boostCurve>k__BackingField:
@@ -219,6 +233,22 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &6581656630269188753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2671044713623501785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a70f6bcdae59544b9a6a6d8654c8de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRessources: {fileID: 11400000, guid: ddfbbeb952056c94284ad97defdc24fc, type: 2}
+  stateMachine: {fileID: 7214434640286493478}
+  refuelTimer: 3
+  isDepleted: 0
 --- !u!1 &2672446409080497552
 GameObject:
   m_ObjectHideFlags: 0

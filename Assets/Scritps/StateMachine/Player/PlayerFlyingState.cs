@@ -15,17 +15,27 @@ public class PlayerFlyingState : PlayerBaseState
         //Debug.Log("fly");
         stateMachine.flyingParticles.Play();
 
+        stateMachine.rb2D.drag = 10;
+
         stateMachine.previousStateWasJump = true;
     }
 
     public override void Exit()
     {
         stateMachine.flyingParticles.Stop();
+
+        stateMachine.rb2D.drag = 1;
     }
 
     public override void Tick(float deltaTime)
     {
         stateMachine.PlayerRessources.fuelCurrentAmount -= Time.deltaTime;
+
+        if (!stateMachine.canFly && !stateMachine.isGrounded)
+        {
+            stateMachine.SwitchState(new PlayerFallingState(stateMachine));
+        }
+
 
         //lacher le bouton
         if (stateMachine.InputReader.Fly.ReadValue<float>() <= 0)

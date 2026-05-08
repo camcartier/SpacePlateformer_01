@@ -30,6 +30,8 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public bool jumpIsOver { get; set; }
 
 
+    [field: SerializeField] public bool canFly { get; set; }
+
     [field: SerializeField] public bool isBoosted { get; set; }
     [field: SerializeField] public GameObject currentBooster { get; set; }
     [field: SerializeField] public AnimationCurve boostCurve { get; set; }
