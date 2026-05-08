@@ -73,7 +73,7 @@ public class PlayerFallingState : PlayerBaseState
             }
             else
             { stateMachine.SwitchState(new PlayerMainState(stateMachine)); }
-        else if (stateMachine.canCoyoteJump)
+        else if (stateMachine.canCoyoteJump && !stateMachine.previousStateWasJump == true)
         {
             if (stateMachine.InputReader.Jump.ReadValue<float>() > 0 || stateMachine.isJumping)
             {

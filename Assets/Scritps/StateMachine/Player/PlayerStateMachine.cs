@@ -24,6 +24,8 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public bool isJumping { get; set; }
     [field: SerializeField] public bool canCoyoteJump { get; set; }
 
+    public bool previousStateWasJump;
+
     [field: SerializeField] public bool isGrounded { get; set; }
     [field: SerializeField] public bool jumpIsOver { get; set; }
 

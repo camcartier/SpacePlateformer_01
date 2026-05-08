@@ -14,6 +14,8 @@ public class PlayerFlyingState : PlayerBaseState
     {
         //Debug.Log("fly");
         stateMachine.flyingParticles.Play();
+
+        stateMachine.previousStateWasJump = true;
     }
 
     public override void Exit()

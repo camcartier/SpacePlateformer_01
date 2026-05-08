@@ -15,6 +15,8 @@ public class PlayerJumpingState : PlayerBaseState
         stateMachine.rb2D.AddForce(stateMachine.PlayerData.jumpForce, ForceMode2D.Impulse);
 
         stateMachine.canCoyoteJump = false;
+
+        stateMachine.previousStateWasJump = true;
     }
 
     public override void Exit()

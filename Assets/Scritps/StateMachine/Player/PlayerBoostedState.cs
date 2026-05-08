@@ -38,6 +38,8 @@ public class PlayerBoostedState : PlayerBaseState
         //stateMachine.rb2D.AddForce(new Vector2(0, 200), ForceMode2D.Impulse);
 
         hasBeenBoosted = true;
+
+        stateMachine.previousStateWasJump = true;
     }
 
     public override void Exit()

@@ -20,6 +20,8 @@ public class PlayerMainState : PlayerBaseState
     {
         stateMachine.InputReader.JumpEvent += OnJump;
         stateMachine.InputReader.FlyEvent += OnFly;
+
+        stateMachine.previousStateWasJump = false;
     }
 
     public override void Exit()
