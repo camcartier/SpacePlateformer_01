@@ -939,7 +939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5921569, g: 0.8235295, b: 0.34509805, a: 1}
+  m_Color: {r: 0.52888054, g: 0.8396226, b: 0.30495724, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1305,6 +1305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 866881994}
   - component: {fileID: 866881995}
+  - component: {fileID: 866881996}
   m_Layer: 5
   m_Name: FuelSlider
   m_TagString: Untagged
@@ -1385,6 +1386,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &866881996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866881993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a12ae1215af3efc45bcaf3bb037c4341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelSlider: {fileID: 866881995}
+  playerRessources: {fileID: 11400000, guid: ddfbbeb952056c94284ad97defdc24fc, type: 2}
 --- !u!1 &869016355
 GameObject:
   m_ObjectHideFlags: 3
