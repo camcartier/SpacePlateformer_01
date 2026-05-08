@@ -39,6 +39,7 @@ public class ColliderReceiver : MonoBehaviour
         if (Physics2D.OverlapBox(GroundCheckPos.position, groundCheckSize, 0, groundLayer))
         {
             isGrounded = true ;
+            stateMachine.canCoyoteJump = true;
         }
         else { isGrounded = false; }
         //isGrounded = false;

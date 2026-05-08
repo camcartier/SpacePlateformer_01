@@ -13,6 +13,7 @@ public class PlayerFallingState : PlayerBaseState
     private float timerCounter;
 
     private float coyoteTimerCounter;
+    private bool canCoyoteJump;
 
     public PlayerFallingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -20,6 +21,8 @@ public class PlayerFallingState : PlayerBaseState
 
     public override void Enter()
     {
+        //canCoyoteJump = true;
+        coyoteTimerCounter = stateMachine.PlayerData.coyoteTime;
 
         stateMachine.InputReader.JumpEvent += OnJump;
 
@@ -33,13 +36,17 @@ public class PlayerFallingState : PlayerBaseState
 
         stateMachine.rb2D.gravityScale = 1f;
 
-        coyoteTimerCounter = 0f;
+        stateMachine.canCoyoteJump = false;
     }
 
     public override void Tick(float deltaTime)
     {
+        coyoteTimerCounter -= Time.deltaTime;
+        if(coyoteTimerCounter <= 0) { canCoyoteJump = false; }
+
+
         //Debug.Log(fallForce.y);
-        if(fallForce.y > -50)
+        if (fallForce.y > -50)
         {
             fallForce.y += fallAcceleration * Time.fixedDeltaTime;
         }
@@ -64,24 +71,23 @@ public class PlayerFallingState : PlayerBaseState
                 stateMachine.isJumping = false;
                 stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
             }
-            else 
-            {stateMachine.SwitchState(new PlayerMainState(stateMachine));}
-        
-        
-        //else if(coyoteTimerCounter < stateMachine.PlayerData.coyoteTime)
-        //{
-        //    if (stateMachine.InputReader.Jump.ReadValue<float>() > 0 || stateMachine.isJumping)
-        //    {
-        //        stateMachine.isJumping = false;
-        //        stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
-        //    }
-        //}
-
-
-        if(stateMachine.rb2D.transform.eulerAngles.z >  0)
+            else
+            { stateMachine.SwitchState(new PlayerMainState(stateMachine)); }
+        else if (stateMachine.canCoyoteJump)
         {
-            stateMachine.rb2D.transform.rotation = new Quaternion(0,0,0,0);
+            if (stateMachine.InputReader.Jump.ReadValue<float>() > 0 || stateMachine.isJumping)
+            {
+                stateMachine.isJumping = false;
+                stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
+            }
+
         }
+
+
+        if (stateMachine.rb2D.transform.eulerAngles.z > 0)
+            {
+                stateMachine.rb2D.transform.rotation = new Quaternion(0, 0, 0, 0);
+            }
 
 
 
@@ -95,11 +101,6 @@ public class PlayerFallingState : PlayerBaseState
             }
         }
 
-
-        if(coyoteTimerCounter< stateMachine.PlayerData.coyoteTime)
-        {
-            coyoteTimerCounter += Time.deltaTime;
-        }
 
     }
 

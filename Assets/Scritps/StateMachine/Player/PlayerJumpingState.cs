@@ -13,6 +13,8 @@ public class PlayerJumpingState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.rb2D.AddForce(stateMachine.PlayerData.jumpForce, ForceMode2D.Impulse);
+
+        stateMachine.canCoyoteJump = false;
     }
 
     public override void Exit()
