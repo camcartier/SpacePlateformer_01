@@ -5,16 +5,17 @@ using UnityEngine;
 [CreateAssetMenu]
 public class PlayerRessources : ScriptableObject
 {
-    
+    [Header("Fuel")]
     public float fuelCurrentAmount;
     public float fuelMaxAmount;
-    
-    public float refuelTimerDuration;
 
+    [Header("Refuel")]
+    public float refuelTimerDuration;
     public float currentRefuelSpeed;
     public float refuelSpeed;
     public float refuelAcceleration;
 
-    public float playerCurrentLife;
-    public float playerMaxLife;
+    [Header("Health")]
+    public float healthCurrentAmount;
+    public float healthMaxAmount;
 }

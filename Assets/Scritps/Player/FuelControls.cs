@@ -48,16 +48,12 @@ public class FuelControls : MonoBehaviour
             stateMachine.canFly = false;
 
         }
-        
+        else { stateMachine.canFly = true; }
 
-        if (playerRessources.fuelCurrentAmount >0)
-        {
-          stateMachine.canFly = true;
-            
-        }
+
 
         //si le player ne peut voler et n'est pas en train de voler, alors le timer descend
-        if (!stateMachine.canFly && !stateMachine.isFlying && usedTimerCounter >= usedTimer)
+        if (!stateMachine.isFlying && usedTimerCounter >= usedTimer)
         {
             refuelTimer -= Time.deltaTime;
         }

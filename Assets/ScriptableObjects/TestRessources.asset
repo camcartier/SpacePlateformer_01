@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuelCurrentAmount: 7
   fuelMaxAmount: 7
-  refuelTimerDuration: 2
-  currentRefuelSpeed: 2.9715178
+  refuelTimerDuration: 3
+  currentRefuelSpeed: 1.2090956
   refuelSpeed: 0.2
   refuelAcceleration: 1.5
-  playerCurrentLife: 20
-  playerMaxLife: 20
+  healthCurrentAmount: 20
+  healthMaxAmount: 20

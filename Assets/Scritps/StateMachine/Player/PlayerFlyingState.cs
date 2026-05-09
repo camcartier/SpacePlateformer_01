@@ -6,6 +6,8 @@ public class PlayerFlyingState : PlayerBaseState
 {
     Vector2 movement = new Vector2();
 
+    private float currentDecceleration;
+
     public PlayerFlyingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -20,6 +22,8 @@ public class PlayerFlyingState : PlayerBaseState
         stateMachine.previousStateWasJump = true;
         
         stateMachine.isFlying = true;
+
+        currentDecceleration = 1f;
     }
 
     public override void Exit()
@@ -34,6 +38,8 @@ public class PlayerFlyingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+
+
         stateMachine.PlayerRessources.fuelCurrentAmount -= Time.deltaTime;
 
         if (!stateMachine.canFly && !stateMachine.isGrounded)
@@ -43,13 +49,21 @@ public class PlayerFlyingState : PlayerBaseState
 
 
         //lacher le bouton
-        if (stateMachine.InputReader.Fly.ReadValue<float>() <= 0)
+        if (stateMachine.InputReader.Fly.ReadValue<float>() <= 0 && !stateMachine.isGrounded)
+        {
+            stateMachine.SwitchState(new PlayerFallingState(stateMachine));
+        }
+        else if (stateMachine.InputReader.Fly.ReadValue<float>() <= 0 && stateMachine.isGrounded)
         {
             stateMachine.SwitchState(new PlayerMainState(stateMachine));
         }
 
         //quantite de fuel
-        if(stateMachine.PlayerRessources.fuelCurrentAmount <= 0)
+        if(stateMachine.PlayerRessources.fuelCurrentAmount <= 0 && !stateMachine.isGrounded)
+        {
+            stateMachine.SwitchState(new PlayerFallingState(stateMachine));
+        }
+        else if (stateMachine.PlayerRessources.fuelCurrentAmount <= 0 && stateMachine.isGrounded)
         {
             stateMachine.SwitchState(new PlayerMainState(stateMachine));
         }
@@ -66,9 +80,26 @@ public class PlayerFlyingState : PlayerBaseState
         }
 
 
-        stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.aerialSpeed, movement.y * stateMachine.PlayerData.aerialSpeed);
-    
-    
+        //currentDecceleration -= stateMachine.PlayerData.flyDecceleration * Time.deltaTime;
+
+        stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.XaerialSpeed, movement.y * stateMachine.PlayerData.YaerialSpeed);
+
+
+        //Vector2 velocity = stateMachine.rb2D.velocity;
+        //float decelleration = stateMachine.PlayerData.flyDecceleration * Time.deltaTime;
+
+        //if(velocity.x > 0) 
+        //{ velocity.x -= decelleration; 
+        //    if (velocity.x < 0) 
+        //    { velocity.x = 0f; } 
+        //}
+        //else if (velocity.x < 0) 
+        //{ velocity.x += decelleration; 
+        //    if (velocity.x > 0 ) 
+        //    { velocity.x = 0f; }
+        //}
+
+
     }
 
 

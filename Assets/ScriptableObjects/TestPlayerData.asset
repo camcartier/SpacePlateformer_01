@@ -14,16 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundedSpeed: 10
   aerialSpeed: 15
+  XaerialSpeed: 22
+  YaerialSpeed: 18
   fallingSpeed: 8
-  jumpForce: {x: 0, y: 20}
   gravityDownStrength: 5
   gravityDownDrag: 0
   gravityUpStrength: 1
   gravityUpDrag: 5
   maxGravityScale: 0
+  jumpForce: {x: 0, y: 20}
   jumpVelocity: 5
   maxJumpTime: 1
+  coyoteTime: 5
   boosterWait: 0.4
   boosterDuration: 0.5
-  coyoteTime: 5
   boostStrength: 20
+  flyDecceleration: 0.5
+  flyMaxAcceleration: 0.2
