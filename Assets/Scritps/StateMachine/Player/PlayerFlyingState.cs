@@ -18,6 +18,8 @@ public class PlayerFlyingState : PlayerBaseState
         stateMachine.rb2D.drag = 10;
 
         stateMachine.previousStateWasJump = true;
+        
+        stateMachine.isFlying = true;
     }
 
     public override void Exit()
@@ -25,6 +27,9 @@ public class PlayerFlyingState : PlayerBaseState
         stateMachine.flyingParticles.Stop();
 
         stateMachine.rb2D.drag = 1;
+        
+        stateMachine.isFlying = false;
+
     }
 
     public override void Tick(float deltaTime)
