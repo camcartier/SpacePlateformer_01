@@ -39,12 +39,14 @@ public class PlayerFlyingState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
 
-
         stateMachine.PlayerRessources.fuelCurrentAmount -= Time.deltaTime;
+
+
 
         if (!stateMachine.canFly && !stateMachine.isGrounded)
         {
             stateMachine.SwitchState(new PlayerFallingState(stateMachine));
+            return;
         }
 
 
@@ -52,20 +54,24 @@ public class PlayerFlyingState : PlayerBaseState
         if (stateMachine.InputReader.Fly.ReadValue<float>() <= 0 && !stateMachine.isGrounded)
         {
             stateMachine.SwitchState(new PlayerFallingState(stateMachine));
+            return;
         }
         else if (stateMachine.InputReader.Fly.ReadValue<float>() <= 0 && stateMachine.isGrounded)
         {
             stateMachine.SwitchState(new PlayerMainState(stateMachine));
+            return;
         }
 
         //quantite de fuel
         if(stateMachine.PlayerRessources.fuelCurrentAmount <= 0 && !stateMachine.isGrounded)
         {
             stateMachine.SwitchState(new PlayerFallingState(stateMachine));
+            return;
         }
         else if (stateMachine.PlayerRessources.fuelCurrentAmount <= 0 && stateMachine.isGrounded)
         {
             stateMachine.SwitchState(new PlayerMainState(stateMachine));
+            return;
         }
 
 

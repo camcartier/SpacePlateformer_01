@@ -73,7 +73,7 @@ public class PlayerBoostedState : PlayerBaseState
                                                            curvedT);
 
 
-        if (t>=1) { stateMachine.SwitchState(new PlayerFallingState(stateMachine)); }
+        if (t>=1) { stateMachine.SwitchState(new PlayerFallingState(stateMachine)); return; }
 
 
 

@@ -10,6 +10,7 @@ public class ColliderReceiver : MonoBehaviour
     public bool isGrounded;
 
     public List<Collision2D> collisionColliders = new List<Collision2D>() ;
+    public Collision2D groundCollision;
 
     [Header("Groundcheck")]
     public Transform GroundCheckPos;
@@ -27,23 +28,32 @@ public class ColliderReceiver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (collisionColliders.Count > 0)
+        Collider2D hit = Physics2D.OverlapBox(GroundCheckPos.position,groundCheckSize,0,groundLayer);
+
+        if (hit != null)
         {
-        isGrounded = true;
+            //Debug.Log(hit.name);
         }
 
-        if(collisionColliders.Count <= 0)
-        {
-            //isGrounded = false;
-        }
+
+        //if (collisionColliders.Count > 0)
+        //{
+        //isGrounded = true;
+        //}
+
+        //if(collisionColliders.Count <= 0)
+        //{
+        //   isGrounded = false;
+        //}
         //else { isGrounded = false; }
 
         if (Physics2D.OverlapBox(GroundCheckPos.position, groundCheckSize, 0, groundLayer))
         {
-            isGrounded = true ;
+            //Debug.Log(hit.name);
+            stateMachine.isGrounded = true ;
             stateMachine.canCoyoteJump = true;
         }
-        else { isGrounded = false; }
+        else { stateMachine.isGrounded = false; }
         //isGrounded = false;
     }
 
@@ -61,6 +71,8 @@ public class ColliderReceiver : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            groundCollision = collision;
+
             Vector3 normal = collision.GetContact(0).normal;
             if (normal == Vector3.up)
             {

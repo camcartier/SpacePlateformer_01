@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSlidingState : MonoBehaviour
+public class PlayerSlidingState : PlayerBaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayerSlidingState(PlayerStateMachine stateMachine) : base(stateMachine)
+    {
+    }
+
+    public override void Enter()
+    {
+        Debug.Log("sliding");
+    }
+
+    public override void Exit()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Tick(float deltaTime)
     {
-        
+
     }
+
+
 }

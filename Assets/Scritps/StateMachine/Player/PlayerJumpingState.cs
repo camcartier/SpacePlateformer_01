@@ -17,6 +17,8 @@ public class PlayerJumpingState : PlayerBaseState
         stateMachine.canCoyoteJump = false;
 
         stateMachine.previousStateWasJump = true;
+
+        //Debug.Log("jump");
     }
 
     public override void Exit()
@@ -31,12 +33,14 @@ public class PlayerJumpingState : PlayerBaseState
         if (stateMachine.isBoosted)
         {
             stateMachine.SwitchState(new PlayerAttractedState(stateMachine));
+            return;
         }
 
 
         if (stateMachine.InputReader.Fly.ReadValue<float>() > 0 && stateMachine.canFly)
         {
             stateMachine.SwitchState(new PlayerFlyingState(stateMachine));
+            return;
         }
 
 
@@ -45,6 +49,7 @@ public class PlayerJumpingState : PlayerBaseState
             //stateMachine.rb2D.gravityScale = stateMachine.PlayerData.gravityDownStrength;
             //stateMachine.rb2D.drag = stateMachine.PlayerData.gravityDownDrag;
             stateMachine.SwitchState(new PlayerFallingState(stateMachine));
+            return;
         }
 
 

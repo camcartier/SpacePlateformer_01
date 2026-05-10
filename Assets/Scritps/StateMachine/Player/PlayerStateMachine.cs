@@ -97,6 +97,8 @@ public class PlayerStateMachine : StateMachine
         //    Animator = gameObject.GetComponentInChildren<Animator>();
         //}
 
+
+
         SwitchState(new PlayerMainState(this));
 
         boostedParticles.Stop();

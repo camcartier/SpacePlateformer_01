@@ -7,7 +7,7 @@ public class PlayerFallingState : PlayerBaseState
     Vector2 movement = new Vector2();
     Vector2 fallForce= new Vector2();
 
-    float fallAcceleration = -2f;
+    float fallAcceleration = -10f;
 
     private float timer = 1.5f;
     private float timerCounter;
@@ -20,13 +20,14 @@ public class PlayerFallingState : PlayerBaseState
 
     public override void Enter()
     {
+        fallForce = new Vector2(0, -2);
+
         //canCoyoteJump = true;
         coyoteTimerCounter = stateMachine.PlayerData.coyoteTime;
 
         stateMachine.InputReader.JumpEvent += OnJump;
 
         stateMachine.rb2D.gravityScale = 1f;
-        Debug.Log("falling");
     }
 
     public override void Exit()
@@ -40,16 +41,18 @@ public class PlayerFallingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        Debug.Log("falling");
+
         coyoteTimerCounter -= Time.deltaTime;
         if(coyoteTimerCounter <= 0) { stateMachine.canCoyoteJump= false; }
 
 
         //Debug.Log(fallForce.y);
-        if (fallForce.y > -50)
+        if (fallForce.y > -200)
         {
-            fallForce.y += fallAcceleration * Time.fixedDeltaTime;
+            fallForce.y += fallAcceleration * Time.deltaTime;
         }
-        else { fallForce.y = -50; }
+        else { fallForce.y = -200; }
         
 
         movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0).normalized;
@@ -57,27 +60,44 @@ public class PlayerFallingState : PlayerBaseState
         stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.fallingSpeed, fallForce.y);
 
 
-        if (stateMachine.isBoosted) {stateMachine.SwitchState(new PlayerAttractedState(stateMachine));}
+        if (stateMachine.isBoosted) {stateMachine.SwitchState(new PlayerAttractedState(stateMachine)); return; }
+
 
         if (stateMachine.InputReader.Fly.ReadValue<float>() > 0 && stateMachine.canFly )  
-        {stateMachine.SwitchState(new PlayerFlyingState(stateMachine));}
+        {stateMachine.SwitchState(new PlayerFlyingState(stateMachine)); return; }
 
 
 
-        if (stateMachine.ColliderReceiver.isGrounded == true)
-            if (stateMachine.InputReader.Jump.ReadValue<float>() > 0 || stateMachine.isJumping)
-            {
-                stateMachine.isJumping = false;
-                stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
-            }
-            else
-            { stateMachine.SwitchState(new PlayerMainState(stateMachine)); }
-        else if (stateMachine.canCoyoteJump && !stateMachine.previousStateWasJump == true)
+
+        
+        //if (stateMachine.ColliderReceiver.isGrounded == true)
+        //{
+
+        //     stateMachine.SwitchState(new PlayerMainState(stateMachine)); return;
+        //}
+
+
+        
+        if (stateMachine.isGrounded == true)
         {
             if (stateMachine.InputReader.Jump.ReadValue<float>() > 0 || stateMachine.isJumping)
             {
                 stateMachine.isJumping = false;
                 stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
+
+            }
+            else
+            { stateMachine.SwitchState(new PlayerMainState(stateMachine)); return; }
+        }
+
+
+        if (stateMachine.canCoyoteJump && !stateMachine.previousStateWasJump == true)
+        {
+            if (stateMachine.InputReader.Jump.ReadValue<float>() > 0 || stateMachine.isJumping)
+            {
+                stateMachine.isJumping = false;
+                stateMachine.SwitchState(new PlayerJumpingState(stateMachine)); return;
+                
             }
 
         }

@@ -23,7 +23,9 @@ public class PlayerMainState : PlayerBaseState
 
         stateMachine.previousStateWasJump = false;
 
-        //Debug.Log("main");
+        //stateMachine.rb2D.velocity = new Vector2 (0,0);
+
+        Debug.Log("main");
     }
 
     public override void Exit()
@@ -34,6 +36,7 @@ public class PlayerMainState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        Debug.Log(stateMachine.isGrounded);
 
         //Debug.Log(stateMachine.ColliderReceiver.isGrounded);
 
@@ -69,23 +72,37 @@ public class PlayerMainState : PlayerBaseState
 
 
 
-        if (stateMachine.rb2D.velocity.y < 0 && !stateMachine.ColliderReceiver.isGrounded)
+        if (stateMachine.rb2D.velocity.y < 0 && !stateMachine.isGrounded)
         {
             stateMachine.SwitchState(new PlayerFallingState(stateMachine));
+            return;
         }
 
 
         if (stateMachine.InputReader.Fly.ReadValue<float>() > 0 && stateMachine.canFly)
         {
             stateMachine.SwitchState(new PlayerFlyingState(stateMachine));
+            return;
+            
         }
 
         if (stateMachine.isBoosted)
         {
             stateMachine.SwitchState(new PlayerAttractedState(stateMachine));
+            return;
         }
 
-
+        /* null reference
+        if(stateMachine.isGrounded)
+        {
+            float slopeAngle = Vector2.Angle(stateMachine.ColliderReceiver.groundCollision.GetContact(0).normal, Vector2.up);
+            Debug.Log(slopeAngle);
+            if (slopeAngle > 45)
+            {
+                stateMachine.SwitchState(new PlayerSlidingState(stateMachine));
+                return;
+            }
+        }*/
     }
 
     private void OnJump()
@@ -93,7 +110,7 @@ public class PlayerMainState : PlayerBaseState
         //Debug.Log(stateMachine.ColliderReceiver.isGrounded);
         //Debug.Log("jump");
 
-        if(stateMachine.ColliderReceiver.isGrounded == true)
+        if(stateMachine.isGrounded == true)
         {
             
             //isJumping = true;
@@ -110,6 +127,7 @@ public class PlayerMainState : PlayerBaseState
         if (stateMachine.PlayerRessources.fuelCurrentAmount > 0)
         {
             stateMachine.SwitchState(new PlayerFlyingState(stateMachine));
+         
         }
 
     }
@@ -117,17 +135,4 @@ public class PlayerMainState : PlayerBaseState
 
 
 
-    //private void FaceMovementDirecton()
-    //{
-    //    if (movement.x == 0) { return; }
-
-    //    if (movement.x < 0)
-    //    {
-    //        this.stateMachine.gameObject.transform.rotation = new Quaternion(0, 180, 0, 0);
-    //    }
-    //    else
-    //    {
-    //        this.stateMachine.gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
-    //    }
-    //}
 }

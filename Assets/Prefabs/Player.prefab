@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8700073142876597595}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011971617161180842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.496, z: 0}
+  m_LocalPosition: {x: 0, y: -1.602, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4315105248617358607}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 7214434640286493478}
   - component: {fileID: 6819327105693324438}
   - component: {fileID: 6581656630269188753}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -178,6 +178,7 @@ MonoBehaviour:
   <isGrounded>k__BackingField: 0
   <jumpIsOver>k__BackingField: 0
   <canFly>k__BackingField: 0
+  <isFlying>k__BackingField: 0
   <isBoosted>k__BackingField: 0
   <currentBooster>k__BackingField: {fileID: 0}
   <boostCurve>k__BackingField:
@@ -229,7 +230,7 @@ MonoBehaviour:
   stateMachine: {fileID: 7214434640286493478}
   isGrounded: 0
   GroundCheckPos: {fileID: 8700073142876597595}
-  groundCheckSize: {x: 2.38, y: 0.1}
+  groundCheckSize: {x: 2.38, y: 0.19}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -248,7 +249,10 @@ MonoBehaviour:
   playerRessources: {fileID: 11400000, guid: ddfbbeb952056c94284ad97defdc24fc, type: 2}
   stateMachine: {fileID: 7214434640286493478}
   refuelTimer: 3
-  isDepleted: 0
+  refuelTimerMax: 0
+  wasUsed: 0
+  usedTimer: 0
+  usedTimerCounter: 0
 --- !u!1 &2672446409080497552
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1441586831885353202}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BoosterPSPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3573140843975276988}
   - component: {fileID: 5336607227664695422}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 935605074045655176}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JetPackPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +413,7 @@ GameObject:
   - component: {fileID: 2800377380930859385}
   - component: {fileID: 312973409155390193}
   - component: {fileID: 1535823161451673849}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PH_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,9 +541,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoostedPS
       objectReference: {fileID: 0}
+    - target: {fileID: 2762011741668827428, guid: 2b024c36299a85048b2b1887039da905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4570284244912452188, guid: 2b024c36299a85048b2b1887039da905, type: 3}
       propertyPath: m_Name
       value: Boosted
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570284244912452188, guid: 2b024c36299a85048b2b1887039da905, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5463280221436772124, guid: 2b024c36299a85048b2b1887039da905, type: 3}
       propertyPath: m_RootOrder
@@ -609,6 +621,10 @@ PrefabInstance:
       value: JetpackPS
       objectReference: {fileID: 0}
     - target: {fileID: 785298920012067620, guid: 450a794a3122ff24ab5a0006279a1943, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 785298920012067620, guid: 450a794a3122ff24ab5a0006279a1943, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -659,6 +675,10 @@ PrefabInstance:
     - target: {fileID: 8512430017864606907, guid: 450a794a3122ff24ab5a0006279a1943, type: 3}
       propertyPath: m_Name
       value: Jetpack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512430017864606907, guid: 450a794a3122ff24ab5a0006279a1943, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8512430017864606907, guid: 450a794a3122ff24ab5a0006279a1943, type: 3}
       propertyPath: m_IsActive

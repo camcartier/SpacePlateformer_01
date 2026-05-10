@@ -41,6 +41,7 @@ public class PlayerAttractedState : PlayerBaseState
         else
         {
             stateMachine.SwitchState(new PlayerBoostedState(stateMachine));
+            return;
         }
              
 
