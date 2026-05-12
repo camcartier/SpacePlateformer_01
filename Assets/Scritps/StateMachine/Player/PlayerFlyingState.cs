@@ -23,7 +23,7 @@ public class PlayerFlyingState : PlayerBaseState
         
         stateMachine.isFlying = true;
 
-        currentDecceleration = 1f;
+        currentDecceleration = stateMachine.PlayerData.flyMaxAcceleration;
     }
 
     public override void Exit()
@@ -85,10 +85,13 @@ public class PlayerFlyingState : PlayerBaseState
             stateMachine.Visuals.transform.rotation = new Quaternion(0, 180, 0, 0);
         }
 
+        if(currentDecceleration > .5f)
+        {
+            currentDecceleration -= stateMachine.PlayerData.flyDecceleration * Time.deltaTime;
+        }
 
-        //currentDecceleration -= stateMachine.PlayerData.flyDecceleration * Time.deltaTime;
 
-        stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.XaerialSpeed, movement.y * stateMachine.PlayerData.YaerialSpeed);
+        stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.XaerialSpeed, movement.y * stateMachine.PlayerData.YaerialSpeed + currentDecceleration);
 
 
         //Vector2 velocity = stateMachine.rb2D.velocity;

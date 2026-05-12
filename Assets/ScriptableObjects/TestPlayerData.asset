@@ -29,5 +29,5 @@ MonoBehaviour:
   boosterWait: 0.4
   boosterDuration: 0.5
   boostStrength: 20
-  flyDecceleration: 0.5
-  flyMaxAcceleration: 0.2
+  flyDecceleration: 2
+  flyMaxAcceleration: 5
