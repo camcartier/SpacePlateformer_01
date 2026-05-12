@@ -30,4 +30,4 @@ MonoBehaviour:
   boosterDuration: 0.5
   boostStrength: 20
   flyDecceleration: 2
-  flyMaxAcceleration: 5
+  flyMaxAcceleration: 8
