@@ -30,8 +30,8 @@ public class ColliderReceiver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(stateMachine.isGrounded);
-        Debug.Log(isSliding);
+        Debug.Log("is grounded is" + stateMachine.isGrounded);
+        Debug.Log("is sliding is" + isSliding);
 
         Collider2D hit = Physics2D.OverlapBox(GroundCheckPos.position,groundCheckSize,0,groundLayer);
 

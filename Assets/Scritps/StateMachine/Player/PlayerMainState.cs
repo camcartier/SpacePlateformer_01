@@ -25,7 +25,7 @@ public class PlayerMainState : PlayerBaseState
 
         //stateMachine.rb2D.velocity = new Vector2 (0,0);
 
-        Debug.Log("main");
+        //Debug.Log("main");
     }
 
     public override void Exit()
@@ -36,7 +36,7 @@ public class PlayerMainState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        Debug.Log(stateMachine.isGrounded);
+        //Debug.Log(stateMachine.isGrounded);
 
         //Debug.Log(stateMachine.ColliderReceiver.isGrounded);
 
