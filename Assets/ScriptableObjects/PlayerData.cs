@@ -19,6 +19,19 @@ public class PlayerData : ScriptableObject
     public float gravityUpDrag;
     public float maxGravityScale;
 
+    [Header("Fall")]
+    public Vector2 fallVector;
+    public float fallForce;
+
+    [Header("Sliding")]
+    public float currentSlideValue;
+    public float slideValueStartPoint;
+    public float slideValueEndPoint;
+
+    [Header("Dashing")]
+    public float dashDuration;
+    public float dashForce;
+
     [Header("Jump Stats")]
     public Vector2 jumpForce;
     public float jumpVelocity;

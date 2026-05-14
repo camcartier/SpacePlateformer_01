@@ -62,6 +62,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""23d0b5c7-d762-4d9a-9533-bd936b525f29"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +183,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Fly"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b4efc66-49db-4015-b022-c7d63834c3b5"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -186,6 +206,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_PC_MoveGrounded = m_PC.FindAction("MoveGrounded", throwIfNotFound: true);
         m_PC_MoveAerial = m_PC.FindAction("MoveAerial", throwIfNotFound: true);
         m_PC_Fly = m_PC.FindAction("Fly", throwIfNotFound: true);
+        m_PC_Dash = m_PC.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +270,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PC_MoveGrounded;
     private readonly InputAction m_PC_MoveAerial;
     private readonly InputAction m_PC_Fly;
+    private readonly InputAction m_PC_Dash;
     public struct PCActions
     {
         private @Controls m_Wrapper;
@@ -257,6 +279,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @MoveGrounded => m_Wrapper.m_PC_MoveGrounded;
         public InputAction @MoveAerial => m_Wrapper.m_PC_MoveAerial;
         public InputAction @Fly => m_Wrapper.m_PC_Fly;
+        public InputAction @Dash => m_Wrapper.m_PC_Dash;
         public InputActionMap Get() { return m_Wrapper.m_PC; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -278,6 +301,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Fly.started -= m_Wrapper.m_PCActionsCallbackInterface.OnFly;
                 @Fly.performed -= m_Wrapper.m_PCActionsCallbackInterface.OnFly;
                 @Fly.canceled -= m_Wrapper.m_PCActionsCallbackInterface.OnFly;
+                @Dash.started -= m_Wrapper.m_PCActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_PCActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_PCActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_PCActionsCallbackInterface = instance;
             if (instance != null)
@@ -294,6 +320,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Fly.started += instance.OnFly;
                 @Fly.performed += instance.OnFly;
                 @Fly.canceled += instance.OnFly;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -304,5 +333,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnMoveGrounded(InputAction.CallbackContext context);
         void OnMoveAerial(InputAction.CallbackContext context);
         void OnFly(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

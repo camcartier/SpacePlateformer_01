@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ColliderReceiver : MonoBehaviour
@@ -8,6 +9,7 @@ public class ColliderReceiver : MonoBehaviour
 
     private float TimerCounter;
     public bool isGrounded;
+    public bool isSliding;
 
     public List<Collision2D> collisionColliders = new List<Collision2D>() ;
     public Collision2D groundCollision;
@@ -28,6 +30,9 @@ public class ColliderReceiver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(stateMachine.isGrounded);
+        Debug.Log(isSliding);
+
         Collider2D hit = Physics2D.OverlapBox(GroundCheckPos.position,groundCheckSize,0,groundLayer);
 
         if (hit != null)
@@ -122,6 +127,21 @@ public class ColliderReceiver : MonoBehaviour
             stateMachine.isBoosted = true;
             stateMachine.currentBooster = collision.gameObject;
         } 
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Vector2 normal = collision.GetContact(0).normal;
+            float slopAngle = Vector2.Angle(normal, Vector2.up);
+
+            if (slopAngle > 20)
+            {
+                isSliding = true;
+            }
+            else { isSliding = false; }
+        }
     }
 
 

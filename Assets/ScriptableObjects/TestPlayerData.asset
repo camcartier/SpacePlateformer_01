@@ -22,6 +22,11 @@ MonoBehaviour:
   gravityUpStrength: 1
   gravityUpDrag: 5
   maxGravityScale: 0
+  fallVector: {x: 0, y: -24.266893}
+  fallForce: -18
+  currentSlideValue: 1.7386192
+  slideValueStartPoint: 1
+  slideValueEndPoint: 10
   jumpForce: {x: 0, y: 20}
   jumpVelocity: 5
   maxJumpTime: 1

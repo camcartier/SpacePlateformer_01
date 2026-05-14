@@ -8,7 +8,7 @@ public class InputReader : MonoBehaviour, Controls.IPCActions
 {
     private Controls controls;
 
-    public event Action JumpEvent, FlyEvent;
+    public event Action JumpEvent, FlyEvent, DashEvent;
     
     public bool jumpIsOver;
     public bool flyIsOver;
@@ -74,6 +74,14 @@ public class InputReader : MonoBehaviour, Controls.IPCActions
         if (!context.performed) { return; }
 
         FlyEvent?.Invoke();
+
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (!context.performed) { return; }
+
+        DashEvent?.Invoke();
 
     }
 }

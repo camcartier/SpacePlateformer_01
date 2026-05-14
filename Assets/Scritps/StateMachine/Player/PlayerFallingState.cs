@@ -20,19 +20,26 @@ public class PlayerFallingState : PlayerBaseState
 
     public override void Enter()
     {
-        fallForce = new Vector2(0, -2);
+        stateMachine.PlayerData.fallVector = new Vector2(0, -2);
 
         //canCoyoteJump = true;
         coyoteTimerCounter = stateMachine.PlayerData.coyoteTime;
 
         stateMachine.InputReader.JumpEvent += OnJump;
+        stateMachine.InputReader.DashEvent += OnDash;
+        //if (stateMachine.rb2D.gravityScale > 1f)
+        //{
 
-        stateMachine.rb2D.gravityScale = 1f;
+        //}
+        //stateMachine.rb2D.gravityScale = 1f;
+
+
     }
 
     public override void Exit()
     {
         stateMachine.InputReader.JumpEvent -= OnJump;
+        stateMachine.InputReader.DashEvent -= OnDash;
 
         stateMachine.rb2D.gravityScale = 1f;
 
@@ -41,26 +48,35 @@ public class PlayerFallingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        Debug.Log("falling");
+        //Debug.Log("falling");
 
         coyoteTimerCounter -= Time.deltaTime;
         if(coyoteTimerCounter <= 0) { stateMachine.canCoyoteJump= false; }
 
 
+
         //Debug.Log(fallForce.y);
-        if (fallForce.y > -200)
+        if (stateMachine.PlayerData.fallVector.y > -200)
         {
-            fallForce.y += fallAcceleration * Time.deltaTime;
+            stateMachine.PlayerData.fallVector.y += stateMachine.PlayerData.fallForce * Time.deltaTime;
         }
-        else { fallForce.y = -200; }
+        else { stateMachine.PlayerData.fallVector.y = -200; }
         
 
         movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0).normalized;
 
-        stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.fallingSpeed, fallForce.y);
+        if (movement.x != 0)
+        {
+            stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.fallingSpeed, stateMachine.PlayerData.fallVector.y);
+        }
+        else
+        {
+            stateMachine.rb2D.velocity = new Vector2(stateMachine.rb2D.velocity.x, stateMachine.PlayerData.fallVector.y);
+        }
 
 
-        if (stateMachine.isBoosted) {stateMachine.SwitchState(new PlayerAttractedState(stateMachine)); return; }
+
+        if (stateMachine.isBoosted) { stateMachine.SwitchState(new PlayerAttractedState(stateMachine)); return; }
 
 
         if (stateMachine.InputReader.Fly.ReadValue<float>() > 0 && stateMachine.canFly )  
@@ -129,4 +145,13 @@ public class PlayerFallingState : PlayerBaseState
 
 
     }
+    private void OnDash()
+    {
+        if (stateMachine.PlayerRessources.fuelCurrentAmount > 0)
+        {
+            stateMachine.SwitchState(new PlayerDashingState(stateMachine));
+
+        }
+    }
+
 }
