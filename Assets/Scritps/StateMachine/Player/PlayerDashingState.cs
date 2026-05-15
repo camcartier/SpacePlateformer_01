@@ -46,10 +46,20 @@ public class PlayerDashingState : PlayerBaseState
 
         timerCounter += Time.deltaTime;
 
-        if (timerCounter > stateMachine.PlayerData.dashDuration)
+        if (timerCounter > stateMachine.PlayerData.dashDuration )
         {
-            stateMachine.SwitchState(new PlayerMainState(stateMachine));
+            if (stateMachine.isGrounded && stateMachine.InputReader.Jump.ReadValue<float>() > 0)
+            {
+                stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
+            }
+            else
+            {
+                stateMachine.SwitchState(new PlayerMainState(stateMachine));
+            }
+
+               
         }
+
 
         stateMachine.rb2D.transform.position = Vector2.MoveTowards(stateMachine.rb2D.transform.position,
                                                                    dashDir,
