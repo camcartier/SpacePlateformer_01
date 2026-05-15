@@ -20,8 +20,12 @@ public class PlayerMainState : PlayerBaseState
     {
         stateMachine.InputReader.JumpEvent += OnJump;
         stateMachine.InputReader.FlyEvent += OnFly;
+        stateMachine.InputReader.FlyEvent += OnDash;
 
         stateMachine.previousStateWasJump = false;
+        stateMachine.isSliding = false;
+
+
 
         //stateMachine.rb2D.velocity = new Vector2 (0,0);
 
@@ -32,6 +36,7 @@ public class PlayerMainState : PlayerBaseState
     {
         stateMachine.InputReader.JumpEvent -= OnJump;
         stateMachine.InputReader.FlyEvent -= OnFly;
+        stateMachine.InputReader.FlyEvent -= OnDash;
     }
 
     public override void Tick(float deltaTime)
@@ -92,6 +97,11 @@ public class PlayerMainState : PlayerBaseState
             return;
         }
 
+        if (stateMachine.isSliding)
+        {
+            stateMachine.SwitchState(new PlayerSlidingState(stateMachine)); return;
+        }
+
         /* null reference
         if(stateMachine.isGrounded)
         {
@@ -133,6 +143,13 @@ public class PlayerMainState : PlayerBaseState
     }
 
 
+    private void OnDash()
+    {
+        if (stateMachine.PlayerRessources.fuelCurrentAmount > 0)
+        {
+            stateMachine.SwitchState(new PlayerDashingState(stateMachine));
 
+        }
+    }
 
 }

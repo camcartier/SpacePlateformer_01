@@ -74,7 +74,11 @@ public class PlayerFallingState : PlayerBaseState
             stateMachine.rb2D.velocity = new Vector2(stateMachine.rb2D.velocity.x, stateMachine.PlayerData.fallVector.y);
         }
 
-
+        //rotation
+        if (movement.x < 0)
+        { stateMachine.Visuals.transform.rotation = new Quaternion(0, 0, 0, 0); }
+        if (movement.x > 0)
+        { stateMachine.Visuals.transform.rotation = new Quaternion(0, 180, 0, 0); }
 
         if (stateMachine.isBoosted) { stateMachine.SwitchState(new PlayerAttractedState(stateMachine)); return; }
 

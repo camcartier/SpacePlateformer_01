@@ -17,6 +17,8 @@ public class PlayerFlyingState : PlayerBaseState
         //Debug.Log("fly");
         stateMachine.flyingParticles.Play();
 
+        stateMachine.InputReader.DashEvent += OnDash;
+
         stateMachine.rb2D.drag = 10;
 
         stateMachine.previousStateWasJump = true;
@@ -30,8 +32,11 @@ public class PlayerFlyingState : PlayerBaseState
     {
         stateMachine.flyingParticles.Stop();
 
+        stateMachine.InputReader.DashEvent -= OnDash;
+
         stateMachine.rb2D.drag = 1;
-        
+
+        stateMachine.isSliding = false;
         stateMachine.isFlying = false;
 
     }
@@ -112,6 +117,13 @@ public class PlayerFlyingState : PlayerBaseState
     }
 
 
+    private void OnDash()
+    {
+        if (stateMachine.PlayerRessources.fuelCurrentAmount > 0)
+        {
+            stateMachine.SwitchState(new PlayerDashingState(stateMachine));
 
+        }
+    }
 
 }

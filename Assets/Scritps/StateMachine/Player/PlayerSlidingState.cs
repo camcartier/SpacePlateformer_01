@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class PlayerSlidingState : PlayerBaseState
 {
     Vector2 movement = new Vector2();
+
+    private float acceleration = 0.2f;
 
     public PlayerSlidingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -20,6 +23,10 @@ public class PlayerSlidingState : PlayerBaseState
         stateMachine.previousStateWasJump = false;
 
         stateMachine.PlayerData.currentSlideValue = stateMachine.PlayerData.slideValueStartPoint;
+        
+        acceleration = 0.2f;
+        stateMachine.rb2D.gravityScale = 1f;
+
     }
 
     public override void Exit()
@@ -28,37 +35,39 @@ public class PlayerSlidingState : PlayerBaseState
         stateMachine.InputReader.FlyEvent -= OnFly;
         stateMachine.InputReader.DashEvent -= OnDash;
 
-
+        stateMachine.rb2D.gravityScale = 1f;
     }
 
     public override void Tick(float deltaTime)
     {
-
+        acceleration += Time.deltaTime;
 
         if (stateMachine.PlayerData.currentSlideValue < stateMachine.PlayerData.slideValueEndPoint)
         {
-            stateMachine.PlayerData.currentSlideValue += Time.deltaTime;
+            stateMachine.PlayerData.currentSlideValue += acceleration;
         }
-        else {
-            stateMachine.PlayerData.currentSlideValue = stateMachine.PlayerData.slideValueEndPoint;
-        }
+        //else {
+        //    stateMachine.PlayerData.currentSlideValue = stateMachine.PlayerData.slideValueEndPoint;
+        //}
 
         
         //movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0).normalized;
         
-        //rotation
+
+        
         movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0);
-        //if (movement.x < 0)
-        //{ stateMachine.Visuals.transform.rotation = new Quaternion(0, 0, 0, 0); }
-        //if (movement.x > 0)
-        //{ stateMachine.Visuals.transform.rotation = new Quaternion(0, 180, 0, 0); }
+        //rotation
+        if (movement.x < 0)
+        { stateMachine.Visuals.transform.rotation = new Quaternion(0, 0, 0, 0); }
+        if (movement.x > 0)
+        { stateMachine.Visuals.transform.rotation = new Quaternion(0, 180, 0, 0); }
 
 
 
         stateMachine.rb2D.gravityScale = stateMachine.PlayerData.currentSlideValue;
 
 
-        if (!stateMachine.ColliderReceiver.isSliding && stateMachine.isGrounded)
+        if (!stateMachine.isSliding && stateMachine.isGrounded)
         {
             stateMachine.SwitchState(new PlayerMainState(stateMachine));
             return;

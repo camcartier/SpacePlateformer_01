@@ -123,7 +123,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 865f666282698d14390f141f23d2de5b, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &4085100923924445480
 MonoBehaviour:
@@ -179,6 +179,7 @@ MonoBehaviour:
   <dashDirection>k__BackingField: {fileID: 5708573681859024838}
   <isGrounded>k__BackingField: 0
   <jumpIsOver>k__BackingField: 0
+  <isSliding>k__BackingField: 0
   <canFly>k__BackingField: 0
   <isFlying>k__BackingField: 0
   <isBoosted>k__BackingField: 0

@@ -133,12 +133,24 @@ public class ColliderReceiver : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            Vector2 normal = collision.GetContact(0).normal;
-            float slopAngle = Vector2.Angle(normal, Vector2.up);
+            Vector2 bestNormal = Vector2.zero;
+
+            for(int i = 0; i < collision.contactCount; i++)
+            {
+                Vector2 normal = collision.GetContact(i).normal;
+
+                if(normal.y> bestNormal.y)
+                {
+                    bestNormal = normal;
+                }
+            }
+
+            //Vector2 normal = collision.GetContact(0).normal;
+            float slopAngle = Vector2.Angle(bestNormal, Vector2.up);
 
             if (slopAngle > 20)
             {
-                isSliding = true;
+                stateMachine.isSliding = true;
             }
             else { isSliding = false; }
         }

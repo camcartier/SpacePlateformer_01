@@ -16,6 +16,8 @@ public class PlayerDashingState : PlayerBaseState
 
     public override void Enter()
     {
+        Debug.Log("is dashing");
+
         timerCounter = 0;
 
         stateMachine.rb2D.velocity = Vector2.zero;
@@ -23,6 +25,8 @@ public class PlayerDashingState : PlayerBaseState
         dashDir = stateMachine.dashDirection.transform.position;
 
         stateMachine.PlayerRessources.fuelCurrentAmount -= 2f;
+
+        stateMachine.isSliding = false;
     }
 
     public override void Exit()

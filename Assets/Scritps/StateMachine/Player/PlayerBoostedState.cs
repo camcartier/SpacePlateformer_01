@@ -23,7 +23,7 @@ public class PlayerBoostedState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("enter boost");
+        //Debug.Log("enter boost");
         TimerCounter = 0f;
 
         stateMachine.boostedParticles.Play();
@@ -40,6 +40,7 @@ public class PlayerBoostedState : PlayerBaseState
         hasBeenBoosted = true;
 
         stateMachine.previousStateWasJump = true;
+        stateMachine.isSliding = false;
     }
 
     public override void Exit()
