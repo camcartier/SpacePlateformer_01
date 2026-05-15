@@ -17,6 +17,7 @@ public class PlayerDashingState : PlayerBaseState
     public override void Enter()
     {
         Debug.Log("is dashing");
+        //stateMachine.InputReader.DashEvent += OnDash;
 
         timerCounter = 0;
 
@@ -31,7 +32,7 @@ public class PlayerDashingState : PlayerBaseState
 
     public override void Exit()
     {
-        
+        //stateMachine.InputReader.DashEvent -= OnDash;
     }
 
     public override void Tick(float deltaTime)
@@ -60,5 +61,13 @@ public class PlayerDashingState : PlayerBaseState
         //                                           .1f * Time.deltaTime);
     }
 
+    private void OnDash()
+    {
+        if (stateMachine.PlayerRessources.fuelCurrentAmount > 0)
+        {
+            stateMachine.SwitchState(new PlayerDashingState(stateMachine));
+
+        }
+    }
 
 }

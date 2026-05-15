@@ -20,7 +20,7 @@ public class PlayerMainState : PlayerBaseState
     {
         stateMachine.InputReader.JumpEvent += OnJump;
         stateMachine.InputReader.FlyEvent += OnFly;
-        stateMachine.InputReader.FlyEvent += OnDash;
+        stateMachine.InputReader.DashEvent += OnDash;
 
         stateMachine.previousStateWasJump = false;
         stateMachine.isSliding = false;
@@ -36,12 +36,12 @@ public class PlayerMainState : PlayerBaseState
     {
         stateMachine.InputReader.JumpEvent -= OnJump;
         stateMachine.InputReader.FlyEvent -= OnFly;
-        stateMachine.InputReader.FlyEvent -= OnDash;
+        stateMachine.InputReader.DashEvent -= OnDash;
     }
 
     public override void Tick(float deltaTime)
     {
-        //Debug.Log(stateMachine.isGrounded);
+        Debug.Log("main");
 
         //Debug.Log(stateMachine.ColliderReceiver.isGrounded);
 

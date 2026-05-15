@@ -14,7 +14,7 @@ public class PlayerJumpingState : PlayerBaseState
     {
         stateMachine.rb2D.AddForce(stateMachine.PlayerData.jumpForce, ForceMode2D.Impulse);
 
-        stateMachine.InputReader.FlyEvent += OnDash;
+        stateMachine.InputReader.DashEvent += OnDash;
 
         stateMachine.canCoyoteJump = false;
         stateMachine.isSliding = false;
@@ -26,7 +26,7 @@ public class PlayerJumpingState : PlayerBaseState
 
     public override void Exit()
     {
-        stateMachine.InputReader.FlyEvent -= OnDash;
+        stateMachine.InputReader.DashEvent -= OnDash;
     }
 
     public override void Tick(float deltaTime)
