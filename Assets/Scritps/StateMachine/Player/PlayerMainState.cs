@@ -122,11 +122,11 @@ public class PlayerMainState : PlayerBaseState
 
         if(stateMachine.isGrounded == true)
         {
-            
-            //isJumping = true;
+
+            stateMachine.isJumping = true;
 
             stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
-            //stateMachine.rb2D.AddForce(stateMachine.PlayerData.jumpForce, ForceMode2D.Impulse);
+            
         }
        
 

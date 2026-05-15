@@ -28,6 +28,7 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public GameObject dashDirection { get; set; }
 
+
     [field: SerializeField] public bool isGrounded { get; set; }
     [field: SerializeField] public bool jumpIsOver { get; set; }
 

@@ -12,6 +12,9 @@ public class PlayerJumpingState : PlayerBaseState
 
     public override void Enter()
     {
+        stateMachine.isGrounded = false;
+        stateMachine.isJumping = true;
+
         stateMachine.rb2D.AddForce(stateMachine.PlayerData.jumpForce, ForceMode2D.Impulse);
 
         stateMachine.InputReader.DashEvent += OnDash;
@@ -21,16 +24,19 @@ public class PlayerJumpingState : PlayerBaseState
 
         stateMachine.previousStateWasJump = true;
 
-        //Debug.Log("jump");
+        
     }
 
     public override void Exit()
     {
         stateMachine.InputReader.DashEvent -= OnDash;
+        stateMachine.isJumping = false;
     }
 
     public override void Tick(float deltaTime)
     {
+        //Debug.Log(stateMachine.isGrounded);
+
         movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0).normalized;
 
         if (stateMachine.isBoosted)

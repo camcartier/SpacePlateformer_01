@@ -102,7 +102,7 @@ public class PlayerFallingState : PlayerBaseState
         {
             if (stateMachine.InputReader.Jump.ReadValue<float>() > 0 || stateMachine.isJumping)
             {
-                stateMachine.isJumping = false;
+                //stateMachine.isJumping = false;
                 stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
 
             }

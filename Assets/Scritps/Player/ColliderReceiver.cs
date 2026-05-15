@@ -52,7 +52,7 @@ public class ColliderReceiver : MonoBehaviour
         //}
         //else { isGrounded = false; }
 
-        if (Physics2D.OverlapBox(GroundCheckPos.position, groundCheckSize, 0, groundLayer))
+        if (Physics2D.OverlapBox(GroundCheckPos.position, groundCheckSize, 0, groundLayer) && !stateMachine.isJumping)
         {
             //Debug.Log(hit.name);
             stateMachine.isGrounded = true ;
