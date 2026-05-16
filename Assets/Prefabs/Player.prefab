@@ -234,7 +234,7 @@ MonoBehaviour:
   isGrounded: 0
   isSliding: 0
   GroundCheckPos: {fileID: 8700073142876597595}
-  groundCheckSize: {x: 2.38, y: 0.02}
+  groundCheckSize: {x: 2.38, y: 0.002}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -35,6 +36,8 @@ public class ColliderReceiver : MonoBehaviour
 
         Collider2D hit = Physics2D.OverlapBox(GroundCheckPos.position,groundCheckSize,0,groundLayer);
 
+        RaycastHit2D raycasthit = Physics2D.Raycast(GroundCheckPos.position, Vector2.down, 1f, groundLayer);
+
         if (hit != null)
         {
             //Debug.Log(hit.name);
@@ -48,6 +51,17 @@ public class ColliderReceiver : MonoBehaviour
             stateMachine.canCoyoteJump = true;
         }
         else { stateMachine.isGrounded = false; }
+
+        if (raycasthit)
+        {
+            float slopeAngle = Vector2.Angle(raycasthit.normal, Vector2.up);
+
+            if (slopeAngle > 20) 
+            { stateMachine.isSliding = true; }
+            else 
+            { stateMachine.isSliding = false; }
+
+        }
 
     }
 
@@ -69,16 +83,6 @@ public class ColliderReceiver : MonoBehaviour
             }
         }
 
-        //if (collision.gameObject.CompareTag("Ground"))
-        //{
-        //    Vector3 normal = collision.GetContact(0).normal;
-        //    if (normal == Vector3.up)
-        //    {
-        //        collisionColliders.Add(collision);
-
-        //        //isGrounded = true;
-        //    }
-        //}
 
 
         if (collision.gameObject.CompareTag("Asteroid"))
@@ -113,29 +117,29 @@ public class ColliderReceiver : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            Vector2 bestNormal = Vector2.zero;
+        //if (collision.gameObject.CompareTag("Ground"))
+        //{
+        //    Vector2 bestNormal = Vector2.zero;
 
-            for(int i = 0; i < collision.contactCount; i++)
-            {
-                Vector2 normal = collision.GetContact(i).normal;
+        //    for(int i = 0; i < collision.contactCount; i++)
+        //    {
+        //        Vector2 normal = collision.GetContact(i).normal;
 
-                if(normal.y> bestNormal.y)
-                {
-                    bestNormal = normal;
-                }
-            }
+        //        if(normal.y> bestNormal.y)
+        //        {
+        //            bestNormal = normal;
+        //        }
+        //    }
 
-            //Vector2 normal = collision.GetContact(0).normal;
-            float slopAngle = Vector2.Angle(bestNormal, Vector2.up);
+        //    //Vector2 normal = collision.GetContact(0).normal;
+        //    float slopAngle = Vector2.Angle(bestNormal, Vector2.up);
 
-            if (slopAngle > 20)
-            {
-                stateMachine.isSliding = true;
-            }
-            else { stateMachine.isSliding = false; }
-        }
+        //    if (slopAngle > 20)
+        //    {
+        //        stateMachine.isSliding = true;
+        //    }
+        //    else { stateMachine.isSliding = false; }
+        //}
     }
 
 
