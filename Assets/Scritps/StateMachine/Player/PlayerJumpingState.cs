@@ -38,6 +38,11 @@ public class PlayerJumpingState : PlayerBaseState
         //Debug.Log(stateMachine.isGrounded);
 
         movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0).normalized;
+        if (movement.x < 0)
+        { stateMachine.Visuals.transform.rotation = new Quaternion(0, 0, 0, 0); }
+        if (movement.x > 0)
+        { stateMachine.Visuals.transform.rotation = new Quaternion(0, 180, 0, 0); }
+
 
         if (stateMachine.isBoosted)
         {
@@ -55,8 +60,6 @@ public class PlayerJumpingState : PlayerBaseState
 
         if (stateMachine.rb2D.velocity.y < 0)
         {
-            //stateMachine.rb2D.gravityScale = stateMachine.PlayerData.gravityDownStrength;
-            //stateMachine.rb2D.drag = stateMachine.PlayerData.gravityDownDrag;
             stateMachine.SwitchState(new PlayerFallingState(stateMachine));
             return;
         }

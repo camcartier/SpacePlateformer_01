@@ -22,6 +22,7 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public bool canJump { get; set; }
     [field: SerializeField] public bool isJumping { get; set; }
+    [field: SerializeField] public bool wantsToJump { get; set; }
     [field: SerializeField] public bool canCoyoteJump { get; set; }
 
     public bool previousStateWasJump;
@@ -72,22 +73,6 @@ public class PlayerStateMachine : StateMachine
     //[field: SerializeField] public bool isUsing { get; set; }
 
 
-    //Dash
-    //[field: SerializeField] public bool canDash { get; set; }
-    //[field: SerializeField] public bool isDashing { get; set; }
-    //[field: SerializeField] public float dashDuration { get; private set; }
-    //[field: SerializeField] public Vector2 lastMovementDirection { get; set; }
-
-
-
-
-    //General
-    //public GameManager GameManager { get; set; }
-    //public Transform MainCameraTransform { get; private set; }
-    //[field: SerializeField] public CameraCoroutines CameraCoroutines { get; private set; }
-    //[field: SerializeField] public CameraData CameraData { get; set; }
-
-    //public CinemachineVirtualCamera CinemachineVirtualCamera { get; set; }
 
 
     void Start()
@@ -109,6 +94,7 @@ public class PlayerStateMachine : StateMachine
         boostedParticles.Stop();
         flyingParticles.Stop();
     }
+
 
 
 

@@ -44,6 +44,9 @@ public class PlayerFallingState : PlayerBaseState
         stateMachine.rb2D.gravityScale = 1f;
 
         stateMachine.canCoyoteJump = false;
+        
+        timerCounter = 0f;
+
     }
 
     public override void Tick(float deltaTime)
@@ -65,6 +68,7 @@ public class PlayerFallingState : PlayerBaseState
 
         movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0).normalized;
 
+
         if (movement.x != 0)
         {
             stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.fallingSpeed, stateMachine.PlayerData.fallVector.y);
@@ -80,6 +84,8 @@ public class PlayerFallingState : PlayerBaseState
         if (movement.x > 0)
         { stateMachine.Visuals.transform.rotation = new Quaternion(0, 180, 0, 0); }
 
+        
+        
         if (stateMachine.isBoosted) { stateMachine.SwitchState(new PlayerAttractedState(stateMachine)); return; }
 
 
@@ -98,16 +104,22 @@ public class PlayerFallingState : PlayerBaseState
 
 
         
+        //if (stateMachine.isGrounded == true)
+        //{
+        //    if (stateMachine.InputReader.Jump.ReadValue<float>() > 0 || stateMachine.isJumping)
+        //    {
+        //        //stateMachine.isJumping = false;
+        //        stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
+
+        //    }
+        //    else
+        //    { stateMachine.SwitchState(new PlayerMainState(stateMachine)); return; }
+        //}
+
         if (stateMachine.isGrounded == true)
         {
-            if (stateMachine.InputReader.Jump.ReadValue<float>() > 0 || stateMachine.isJumping)
-            {
-                //stateMachine.isJumping = false;
-                stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
 
-            }
-            else
-            { stateMachine.SwitchState(new PlayerMainState(stateMachine)); return; }
+            stateMachine.SwitchState(new PlayerMainState(stateMachine)); return;
         }
 
 

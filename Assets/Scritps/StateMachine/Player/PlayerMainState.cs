@@ -41,13 +41,15 @@ public class PlayerMainState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        Debug.Log("main");
+        //Debug.Log("main");
 
         //Debug.Log(stateMachine.ColliderReceiver.isGrounded);
 
-        //rotation
         movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0);
-        if(movement.x < 0) 
+
+        //rotation
+
+        if (movement.x < 0) 
         {stateMachine.Visuals.transform.rotation= new Quaternion(0,0,0,0); }
         if (movement.x > 0)
         {stateMachine.Visuals.transform.rotation = new Quaternion(0, 180, 0, 0);}
@@ -61,20 +63,15 @@ public class PlayerMainState : PlayerBaseState
         }
 
 
+        //if (stateMachine.InputReader.Jump.ReadValue<float>() > 0)
+        //{
+        //    stateMachine.wantsToJump = true;
+        //}
 
-        /*
-        if (isJumping)
-        {
-            if(jumpTimer < stateMachine.PlayerData.maxJumpTime)
-            {
-                jumpTimer += Time.deltaTime;
-                stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed, stateMachine.PlayerData.jumpVelocity);
-            }
-            else { stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed, 0);
-                jumpTimer = 0f ; isJumping = false;
-            }
-        }*/
-
+        //if(stateMachine.wantsToJump && stateMachine.isGrounded)
+        //{
+        //    stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
+        //}
 
 
         if (stateMachine.rb2D.velocity.y < 0 && !stateMachine.isGrounded)
@@ -102,17 +99,9 @@ public class PlayerMainState : PlayerBaseState
             stateMachine.SwitchState(new PlayerSlidingState(stateMachine)); return;
         }
 
-        /* null reference
-        if(stateMachine.isGrounded)
-        {
-            float slopeAngle = Vector2.Angle(stateMachine.ColliderReceiver.groundCollision.GetContact(0).normal, Vector2.up);
-            Debug.Log(slopeAngle);
-            if (slopeAngle > 45)
-            {
-                stateMachine.SwitchState(new PlayerSlidingState(stateMachine));
-                return;
-            }
-        }*/
+
+
+
     }
 
     private void OnJump()
@@ -122,7 +111,7 @@ public class PlayerMainState : PlayerBaseState
 
         if(stateMachine.isGrounded == true)
         {
-            Debug.Log("jump grounded");
+            //Debug.Log("jump grounded");
             stateMachine.isJumping = true;
 
             stateMachine.SwitchState(new PlayerJumpingState(stateMachine));

@@ -58,9 +58,9 @@ public class InputReader : MonoBehaviour, Controls.IPCActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("jump input");
+        //Debug.Log("jump input");
         if (!context.performed) { return; }
-        Debug.Log("jump input after");
+        //Debug.Log("jump input after");
         JumpEvent?.Invoke();
 
         if (context.canceled)
@@ -85,4 +85,6 @@ public class InputReader : MonoBehaviour, Controls.IPCActions
         DashEvent?.Invoke();
 
     }
+
+
 }
