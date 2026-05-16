@@ -81,6 +81,8 @@ public class PlayerFlyingState : PlayerBaseState
 
 
         movement = stateMachine.InputReader.AerialMovementValue;
+
+        //rotation
         if (movement.x < 0)
         {
             stateMachine.Visuals.transform.rotation = new Quaternion(0, 0, 0, 0);

@@ -16,7 +16,7 @@ public class PlayerDashingState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("is dashing");
+        //Debug.Log("is dashing");
         //stateMachine.InputReader.DashEvent += OnDash;
 
         timerCounter = 0;

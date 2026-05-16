@@ -118,11 +118,11 @@ public class PlayerMainState : PlayerBaseState
     private void OnJump()
     {
         //Debug.Log(stateMachine.ColliderReceiver.isGrounded);
-        //Debug.Log("jump");
+        Debug.Log("jump");
 
         if(stateMachine.isGrounded == true)
         {
-
+            Debug.Log("jump grounded");
             stateMachine.isJumping = true;
 
             stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
