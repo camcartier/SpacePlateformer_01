@@ -41,17 +41,6 @@ public class ColliderReceiver : MonoBehaviour
         }
 
 
-        //if (collisionColliders.Count > 0)
-        //{
-        //isGrounded = true;
-        //}
-
-        //if(collisionColliders.Count <= 0)
-        //{
-        //   isGrounded = false;
-        //}
-        //else { isGrounded = false; }
-
         if (Physics2D.OverlapBox(GroundCheckPos.position, groundCheckSize, 0, groundLayer) && !stateMachine.isJumping)
         {
             //Debug.Log(hit.name);
@@ -59,17 +48,10 @@ public class ColliderReceiver : MonoBehaviour
             stateMachine.canCoyoteJump = true;
         }
         else { stateMachine.isGrounded = false; }
-        //isGrounded = false;
+
     }
 
-    //public bool isGrounded()
-    //{
-    //    if (Physics2D.OverlapBox(GroundCheckPos.position, groundCheckSize, 0, groundLayer))
-    //    {
-    //        return true;
-    //    }
-    //    return false;
-    //}
+
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -152,7 +134,7 @@ public class ColliderReceiver : MonoBehaviour
             {
                 stateMachine.isSliding = true;
             }
-            else { isSliding = false; }
+            else { stateMachine.isSliding = false; }
         }
     }
 
