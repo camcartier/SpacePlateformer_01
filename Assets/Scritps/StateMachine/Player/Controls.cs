@@ -24,7 +24,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""PC"",
+            ""name"": ""MainGamePC"",
             ""id"": ""2beb90df-cb8e-4ba0-83e7-df217f6ebbfc"",
             ""actions"": [
                 {
@@ -200,13 +200,13 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // PC
-        m_PC = asset.FindActionMap("PC", throwIfNotFound: true);
-        m_PC_Jump = m_PC.FindAction("Jump", throwIfNotFound: true);
-        m_PC_MoveGrounded = m_PC.FindAction("MoveGrounded", throwIfNotFound: true);
-        m_PC_MoveAerial = m_PC.FindAction("MoveAerial", throwIfNotFound: true);
-        m_PC_Fly = m_PC.FindAction("Fly", throwIfNotFound: true);
-        m_PC_Dash = m_PC.FindAction("Dash", throwIfNotFound: true);
+        // MainGamePC
+        m_MainGamePC = asset.FindActionMap("MainGamePC", throwIfNotFound: true);
+        m_MainGamePC_Jump = m_MainGamePC.FindAction("Jump", throwIfNotFound: true);
+        m_MainGamePC_MoveGrounded = m_MainGamePC.FindAction("MoveGrounded", throwIfNotFound: true);
+        m_MainGamePC_MoveAerial = m_MainGamePC.FindAction("MoveAerial", throwIfNotFound: true);
+        m_MainGamePC_Fly = m_MainGamePC.FindAction("Fly", throwIfNotFound: true);
+        m_MainGamePC_Dash = m_MainGamePC.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -263,49 +263,49 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // PC
-    private readonly InputActionMap m_PC;
-    private IPCActions m_PCActionsCallbackInterface;
-    private readonly InputAction m_PC_Jump;
-    private readonly InputAction m_PC_MoveGrounded;
-    private readonly InputAction m_PC_MoveAerial;
-    private readonly InputAction m_PC_Fly;
-    private readonly InputAction m_PC_Dash;
-    public struct PCActions
+    // MainGamePC
+    private readonly InputActionMap m_MainGamePC;
+    private IMainGamePCActions m_MainGamePCActionsCallbackInterface;
+    private readonly InputAction m_MainGamePC_Jump;
+    private readonly InputAction m_MainGamePC_MoveGrounded;
+    private readonly InputAction m_MainGamePC_MoveAerial;
+    private readonly InputAction m_MainGamePC_Fly;
+    private readonly InputAction m_MainGamePC_Dash;
+    public struct MainGamePCActions
     {
         private @Controls m_Wrapper;
-        public PCActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Jump => m_Wrapper.m_PC_Jump;
-        public InputAction @MoveGrounded => m_Wrapper.m_PC_MoveGrounded;
-        public InputAction @MoveAerial => m_Wrapper.m_PC_MoveAerial;
-        public InputAction @Fly => m_Wrapper.m_PC_Fly;
-        public InputAction @Dash => m_Wrapper.m_PC_Dash;
-        public InputActionMap Get() { return m_Wrapper.m_PC; }
+        public MainGamePCActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Jump => m_Wrapper.m_MainGamePC_Jump;
+        public InputAction @MoveGrounded => m_Wrapper.m_MainGamePC_MoveGrounded;
+        public InputAction @MoveAerial => m_Wrapper.m_MainGamePC_MoveAerial;
+        public InputAction @Fly => m_Wrapper.m_MainGamePC_Fly;
+        public InputAction @Dash => m_Wrapper.m_MainGamePC_Dash;
+        public InputActionMap Get() { return m_Wrapper.m_MainGamePC; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PCActions set) { return set.Get(); }
-        public void SetCallbacks(IPCActions instance)
+        public static implicit operator InputActionMap(MainGamePCActions set) { return set.Get(); }
+        public void SetCallbacks(IMainGamePCActions instance)
         {
-            if (m_Wrapper.m_PCActionsCallbackInterface != null)
+            if (m_Wrapper.m_MainGamePCActionsCallbackInterface != null)
             {
-                @Jump.started -= m_Wrapper.m_PCActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PCActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PCActionsCallbackInterface.OnJump;
-                @MoveGrounded.started -= m_Wrapper.m_PCActionsCallbackInterface.OnMoveGrounded;
-                @MoveGrounded.performed -= m_Wrapper.m_PCActionsCallbackInterface.OnMoveGrounded;
-                @MoveGrounded.canceled -= m_Wrapper.m_PCActionsCallbackInterface.OnMoveGrounded;
-                @MoveAerial.started -= m_Wrapper.m_PCActionsCallbackInterface.OnMoveAerial;
-                @MoveAerial.performed -= m_Wrapper.m_PCActionsCallbackInterface.OnMoveAerial;
-                @MoveAerial.canceled -= m_Wrapper.m_PCActionsCallbackInterface.OnMoveAerial;
-                @Fly.started -= m_Wrapper.m_PCActionsCallbackInterface.OnFly;
-                @Fly.performed -= m_Wrapper.m_PCActionsCallbackInterface.OnFly;
-                @Fly.canceled -= m_Wrapper.m_PCActionsCallbackInterface.OnFly;
-                @Dash.started -= m_Wrapper.m_PCActionsCallbackInterface.OnDash;
-                @Dash.performed -= m_Wrapper.m_PCActionsCallbackInterface.OnDash;
-                @Dash.canceled -= m_Wrapper.m_PCActionsCallbackInterface.OnDash;
+                @Jump.started -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnJump;
+                @MoveGrounded.started -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnMoveGrounded;
+                @MoveGrounded.performed -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnMoveGrounded;
+                @MoveGrounded.canceled -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnMoveGrounded;
+                @MoveAerial.started -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnMoveAerial;
+                @MoveAerial.performed -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnMoveAerial;
+                @MoveAerial.canceled -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnMoveAerial;
+                @Fly.started -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnFly;
+                @Fly.performed -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnFly;
+                @Fly.canceled -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnFly;
+                @Dash.started -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnDash;
             }
-            m_Wrapper.m_PCActionsCallbackInterface = instance;
+            m_Wrapper.m_MainGamePCActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Jump.started += instance.OnJump;
@@ -326,8 +326,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
             }
         }
     }
-    public PCActions @PC => new PCActions(this);
-    public interface IPCActions
+    public MainGamePCActions @MainGamePC => new MainGamePCActions(this);
+    public interface IMainGamePCActions
     {
         void OnJump(InputAction.CallbackContext context);
         void OnMoveGrounded(InputAction.CallbackContext context);

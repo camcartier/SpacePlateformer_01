@@ -2,7 +2,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "PC",
+            "name": "MainGamePC",
             "id": "2beb90df-cb8e-4ba0-83e7-df217f6ebbfc",
             "actions": [
                 {

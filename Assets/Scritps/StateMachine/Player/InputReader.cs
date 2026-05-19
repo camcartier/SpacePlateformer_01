@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputReader : MonoBehaviour, Controls.IPCActions
+public class InputReader : MonoBehaviour, Controls.IMainGamePCActions
 {
     private Controls controls;
 
@@ -20,12 +20,12 @@ public class InputReader : MonoBehaviour, Controls.IPCActions
 
     void Start()
     {
-        controls = new Controls(); controls.PC.SetCallbacks(this);
+        controls = new Controls(); controls.MainGamePC.SetCallbacks(this);
 
-        controls.PC.Enable();
+        controls.MainGamePC.Enable();
 
-        Fly = controls.PC.Fly;
-        Jump = controls.PC.Jump;
+        Fly = controls.MainGamePC.Fly;
+        Jump = controls.MainGamePC.Jump;
     }
 
     private void OnEnable()
@@ -42,7 +42,7 @@ public class InputReader : MonoBehaviour, Controls.IPCActions
 
     void OnDestroy()
     {
-        controls.PC.Disable();
+        controls.MainGamePC.Disable();
     }
 
 
