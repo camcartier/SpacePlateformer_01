@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <InputReader>k__BackingField: {fileID: 4085100923924445480}
+  <Animator>k__BackingField: {fileID: 2046904128009781985}
   <rb2D>k__BackingField: {fileID: 8879955002045760974}
   <ColliderReceiver>k__BackingField: {fileID: 6819327105693324438}
   <canJump>k__BackingField: 0
@@ -364,6 +365,7 @@ GameObject:
   - component: {fileID: 937342966804912562}
   - component: {fileID: 2800377380930859385}
   - component: {fileID: 2344464290414558096}
+  - component: {fileID: 2046904128009781985}
   m_Layer: 7
   m_Name: PlayerSprite
   m_TagString: Player
@@ -427,7 +429,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 56092744, guid: 3fbb32e86fb928c43b82636db6cfec7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4de42ae87421f364c942ff3d167a4765, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -454,6 +456,26 @@ CapsuleCollider2D:
   m_Offset: {x: -0.07, y: -0.32}
   m_Size: {x: 4.51, y: 8.33}
   m_Direction: 0
+--- !u!95 &2046904128009781985
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7764361580040515718}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72e84adc43564f042bf97d01a91e657f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &3984470986594456788
 PrefabInstance:
   m_ObjectHideFlags: 0

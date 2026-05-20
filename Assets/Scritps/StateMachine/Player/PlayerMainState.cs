@@ -12,6 +12,11 @@ public class PlayerMainState : PlayerBaseState
     private bool isJumping;
     //private float maxJumpTime;
     private float jumpTimer;
+
+    private const float CrossFadeDuration = 0.1f;
+    private readonly int IdleHash = Animator.StringToHash("Idle");
+    private readonly int WalkHash = Animator.StringToHash("TPWalk");
+
     public PlayerMainState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -25,7 +30,7 @@ public class PlayerMainState : PlayerBaseState
         stateMachine.previousStateWasJump = false;
         stateMachine.isSliding = false;
 
-
+        stateMachine.Animator.Play(IdleHash);
 
         //stateMachine.rb2D.velocity = new Vector2 (0,0);
 
@@ -47,6 +52,9 @@ public class PlayerMainState : PlayerBaseState
 
         movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0);
 
+
+        
+
         //rotation
 
         if (movement.x < 0) 
@@ -60,6 +68,15 @@ public class PlayerMainState : PlayerBaseState
             //le y?
 
             stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed, stateMachine.rb2D.velocity.y);
+        }
+
+        if (stateMachine.rb2D.velocity.x != 0)
+        {
+            stateMachine.Animator.Play(WalkHash);
+        }
+        else
+        {
+            stateMachine.Animator.Play(IdleHash);
         }
 
 

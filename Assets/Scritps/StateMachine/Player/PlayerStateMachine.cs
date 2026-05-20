@@ -10,7 +10,7 @@ public class PlayerStateMachine : StateMachine
  
 
     //Movement
-    //[field: SerializeField] public Animator Animator { get; set; }
+    [field: SerializeField] public Animator Animator { get; set; }
     [field: SerializeField] public Rigidbody2D rb2D { get; private set; }
 
     //[field: SerializeField] public SpriteRenderer MainSpriteRenderer { get; private set; }
