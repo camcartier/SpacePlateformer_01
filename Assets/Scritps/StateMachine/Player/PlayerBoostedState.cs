@@ -99,7 +99,9 @@ public class PlayerBoostedState : PlayerBaseState
         }*/
 
         velocity.x += stateMachine.InputReader.AerialMovementValue.x * deviationStrenght * Time.deltaTime; 
-            
+        
+        //ouais mais alors ça nique les diagonales?
+        //velocity.x = Mathf.Clamp(velocity.x, -stateMachine.PlayerData.maxBoostDeviationXStrenght, stateMachine.PlayerData.maxBoostDeviationXStrenght);
 
         stateMachine.rb2D.velocity = velocity;
 
