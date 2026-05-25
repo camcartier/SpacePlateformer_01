@@ -43,6 +43,8 @@ public class PlayerData : ScriptableObject
     public float boosterDuration;
     public float boostStrength;
 
+    public float boostAddForceStrenght;
+
     [Header("Decceleration")]
     public float flyDecceleration;
     public float flyMaxAcceleration;

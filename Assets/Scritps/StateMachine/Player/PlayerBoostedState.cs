@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class PlayerBoostedState : PlayerBaseState
 {
@@ -41,6 +42,10 @@ public class PlayerBoostedState : PlayerBaseState
 
         stateMachine.previousStateWasJump = true;
         stateMachine.isSliding = false;
+
+        Vector2  direction = ((Vector2)pointB.gameObject.transform.position - (Vector2)pointA.gameObject.transform.position).normalized;
+
+        stateMachine.rb2D.AddForce(direction * stateMachine.PlayerData.boostAddForceStrenght, ForceMode2D.Impulse);
     }
 
     public override void Exit()
@@ -65,6 +70,7 @@ public class PlayerBoostedState : PlayerBaseState
 
         t = Mathf.Clamp01(t);
 
+        /*
         float curvedT = stateMachine.boostCurve.Evaluate(t);
 
 
@@ -75,9 +81,27 @@ public class PlayerBoostedState : PlayerBaseState
         Vector2 inputResult = stateMachine.InputReader.AerialMovementValue;
 
 
-        stateMachine.rb2D.transform.position = Vector2.Lerp(pointA.gameObject.transform.position,
-                                                            pointB.gameObject.transform.position,
-                                                           curvedT);
+        stateMachine.rb2D.transform.position = lerpResult + inputResult;
+        */
+
+        
+        Vector2 velocity = stateMachine.rb2D.velocity;
+
+
+        //float targetHorizontalSpeed = stateMachine.InputReader.AerialMovementValue.x * 10f;
+        //une valeur arbitraire. la force de la deviation
+        float deviationStrenght = 100;
+
+        /*
+        if((Mathf.Abs(stateMachine.InputReader.AerialMovementValue.x) > 0.1f))
+        {
+            velocity.x = Mathf.Lerp(velocity.x, targetHorizontalSpeed, deviationStrenght * Time.deltaTime);
+        }*/
+
+        velocity.x += stateMachine.InputReader.AerialMovementValue.x * deviationStrenght * Time.deltaTime; 
+            
+
+        stateMachine.rb2D.velocity = velocity;
 
 
         if (t>=1) { stateMachine.SwitchState(new PlayerFallingState(stateMachine)); return; }
