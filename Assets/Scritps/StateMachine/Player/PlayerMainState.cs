@@ -14,8 +14,8 @@ public class PlayerMainState : PlayerBaseState
     private float jumpTimer;
 
     private const float CrossFadeDuration = 0.1f;
-    private readonly int IdleHash = Animator.StringToHash("Idle");
-    private readonly int WalkHash = Animator.StringToHash("TPWalk");
+    private readonly int IdleHash = Animator.StringToHash("Idle2");
+    private readonly int WalkHash = Animator.StringToHash("Walk6");
 
     public PlayerMainState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -42,6 +42,10 @@ public class PlayerMainState : PlayerBaseState
         stateMachine.InputReader.JumpEvent -= OnJump;
         stateMachine.InputReader.FlyEvent -= OnFly;
         stateMachine.InputReader.DashEvent -= OnDash;
+        
+        
+        stateMachine.Animator.Play(IdleHash);
+
     }
 
     public override void Tick(float deltaTime)
@@ -62,13 +66,15 @@ public class PlayerMainState : PlayerBaseState
         if (movement.x > 0)
         {stateMachine.Visuals.transform.rotation = new Quaternion(0, 180, 0, 0);}
 
-
+        /*
         if(stateMachine.rb2D.velocity.x < 10)
         {
             //le y?
 
             stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed, stateMachine.rb2D.velocity.y);
-        }
+        }*/
+
+        stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed, stateMachine.rb2D.velocity.y);
 
         if (stateMachine.rb2D.velocity.x != 0)
         {

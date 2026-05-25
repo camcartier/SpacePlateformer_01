@@ -68,6 +68,12 @@ public class PlayerBoostedState : PlayerBaseState
         float curvedT = stateMachine.boostCurve.Evaluate(t);
 
 
+        Vector2 lerpResult = Vector2.Lerp(pointA.gameObject.transform.position,
+                                                            pointB.gameObject.transform.position,
+                                                           curvedT);
+
+        Vector2 inputResult = stateMachine.InputReader.AerialMovementValue;
+
 
         stateMachine.rb2D.transform.position = Vector2.Lerp(pointA.gameObject.transform.position,
                                                             pointB.gameObject.transform.position,
