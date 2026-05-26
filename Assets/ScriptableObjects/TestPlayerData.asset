@@ -22,14 +22,14 @@ MonoBehaviour:
   gravityUpStrength: 1
   gravityUpDrag: 5
   maxGravityScale: 0
-  fallVector: {x: 0, y: -10.962303}
-  fallForce: -28
+  fallVector: {x: 0, y: -41.16597}
+  fallForce: -50
   currentSlideValue: 10.20565
   slideValueStartPoint: 1
   slideValueEndPoint: 10
   dashDuration: 0.3
   dashForce: 20
-  jumpForce: {x: 0, y: 20}
+  jumpForce: {x: 0, y: 30}
   jumpVelocity: 5
   maxJumpTime: 1
   coyoteTime: 5

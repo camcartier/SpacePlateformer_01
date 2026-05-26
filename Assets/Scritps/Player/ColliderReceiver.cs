@@ -56,7 +56,7 @@ public class ColliderReceiver : MonoBehaviour
         {
             float slopeAngle = Vector2.Angle(raycasthit.normal, Vector2.up);
 
-            if (slopeAngle > 20) 
+            if (slopeAngle > 80) 
             { stateMachine.isSliding = true; }
             else 
             { stateMachine.isSliding = false; }
@@ -85,9 +85,11 @@ public class ColliderReceiver : MonoBehaviour
 
 
 
-        if (collision.gameObject.CompareTag("Asteroid"))
+        if (collision.gameObject.CompareTag("Asteroid") && !stateMachine.isBoosted)
         {
             Debug.Log("aie");
+
+            stateMachine.aieCollider = collision;
 
             stateMachine.SwitchState(new PlayerHurtState(stateMachine));
         }

@@ -6,6 +6,9 @@ public class PlayerJumpingState : PlayerBaseState
 {
     private Vector2 movement;
 
+    private const float CrossFadeDuration = 0.1f;
+    private readonly int JumpingHash = Animator.StringToHash("Jump");
+
     public PlayerJumpingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -24,7 +27,7 @@ public class PlayerJumpingState : PlayerBaseState
 
         stateMachine.previousStateWasJump = true;
 
-        
+        stateMachine.Animator.Play(JumpingHash);
     }
 
     public override void Exit()

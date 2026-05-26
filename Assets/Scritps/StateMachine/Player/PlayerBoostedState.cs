@@ -39,6 +39,7 @@ public class PlayerBoostedState : PlayerBaseState
         //stateMachine.rb2D.AddForce(new Vector2(0, 200), ForceMode2D.Impulse);
 
         hasBeenBoosted = true;
+        stateMachine.isBoosted = true;  
 
         stateMachine.previousStateWasJump = true;
         stateMachine.isSliding = false;
@@ -53,6 +54,7 @@ public class PlayerBoostedState : PlayerBaseState
         stateMachine.boostedParticles.Stop();
 
         hasBeenBoosted = false;
+        stateMachine.isBoosted = false;
     }
 
 

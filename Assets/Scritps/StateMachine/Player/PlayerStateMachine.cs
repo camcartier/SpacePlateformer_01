@@ -20,6 +20,8 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public ColliderReceiver ColliderReceiver { get; private set; }
 
+    [field: SerializeField] public Collision2D aieCollider { get; set; }
+
     [field: SerializeField] public bool canJump { get; set; }
     [field: SerializeField] public bool isJumping { get; set; }
     [field: SerializeField] public bool wantsToJump { get; set; }
