@@ -36,6 +36,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public bool jumpIsOver { get; set; }
 
 
+    [field: SerializeField] public bool isOnASLope { get; set; }
     [field: SerializeField] public bool isSliding { get; set; }
 
     [field: SerializeField] public bool canFly { get; set; }

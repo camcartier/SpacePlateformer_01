@@ -181,6 +181,7 @@ MonoBehaviour:
   <dashDirection>k__BackingField: {fileID: 5708573681859024838}
   <isGrounded>k__BackingField: 0
   <jumpIsOver>k__BackingField: 0
+  <isOnASLope>k__BackingField: 0
   <isSliding>k__BackingField: 0
   <canFly>k__BackingField: 0
   <isFlying>k__BackingField: 0
@@ -239,7 +240,8 @@ MonoBehaviour:
   groundCheckSize: {x: 2.2, y: 0.002}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
+  slopeSlowingFactor: 0
 --- !u!114 &6581656630269188753
 MonoBehaviour:
   m_ObjectHideFlags: 0

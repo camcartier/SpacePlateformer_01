@@ -22,6 +22,8 @@ public class ColliderReceiver : MonoBehaviour
 
     public Collision2D aieCollider;
 
+    public float slopeSlowingFactor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public class ColliderReceiver : MonoBehaviour
 
         Collider2D hit = Physics2D.OverlapBox(GroundCheckPos.position,groundCheckSize,0,groundLayer);
 
-        RaycastHit2D raycasthit = Physics2D.Raycast(GroundCheckPos.position, Vector2.down, 1f, groundLayer);
+        RaycastHit2D raycasthit = Physics2D.Raycast(GroundCheckPos.position, Vector2.down, 2f, groundLayer);
 
         if (hit != null)
         {
@@ -55,10 +57,34 @@ public class ColliderReceiver : MonoBehaviour
         if (raycasthit)
         {
             float slopeAngle = Vector2.Angle(raycasthit.normal, Vector2.up);
+            float slopeNormal = raycasthit.normal.x;
+            
 
-            if (slopeAngle > 80) 
+            if (slopeAngle > 5)
+            {
+                stateMachine.isOnASLope = true ;
+            }
+            else { stateMachine.isOnASLope = false; }
+
+
+            if (slopeAngle > 20)
+            {
+                slopeSlowingFactor = -4f;
+            }
+            if (slopeAngle > 40)
+            {
+                slopeSlowingFactor = -8f;
+            }
+            if (slopeAngle > 60)
+            {
+                slopeSlowingFactor = -16f;
+            }
+
+
+
+            if (slopeAngle > 80)
             { stateMachine.isSliding = true; }
-            else 
+            else
             { stateMachine.isSliding = false; }
 
         }

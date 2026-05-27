@@ -66,15 +66,35 @@ public class PlayerMainState : PlayerBaseState
         if (movement.x > 0)
         {stateMachine.Visuals.transform.rotation = new Quaternion(0, 180, 0, 0);}
 
-        /*
-        if(stateMachine.rb2D.velocity.x < 10)
+        Debug.Log(stateMachine.isOnASLope);
+
+
+        if (!stateMachine.isOnASLope)
         {
-            //le y?
-
             stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed, stateMachine.rb2D.velocity.y);
-        }*/
+        }
+        else
+        {
+            if (movement.x == 0)
+            {
+                stateMachine.rb2D.velocity = Vector2.zero;
+            }
 
-        stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed, stateMachine.rb2D.velocity.y);
+            if (movement.x < 0)
+            {
+                stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed - stateMachine.ColliderReceiver.slopeSlowingFactor,
+                                                     stateMachine.rb2D.velocity.y);
+            }
+            
+            if (movement.x > 0) 
+            {
+                stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed + stateMachine.ColliderReceiver.slopeSlowingFactor,
+                                                     stateMachine.rb2D.velocity.y);
+            }
+
+            
+
+        }
 
         if (stateMachine.rb2D.velocity.x != 0)
         {
