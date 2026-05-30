@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011971617161180842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21, y: -5.351, z: 0}
+  m_LocalPosition: {x: 0.002, y: -5.351, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -182,6 +182,7 @@ MonoBehaviour:
   <isGrounded>k__BackingField: 0
   <jumpIsOver>k__BackingField: 0
   <isOnASLope>k__BackingField: 0
+  <slopeDirection>k__BackingField: {x: 0, y: 0}
   <isSliding>k__BackingField: 0
   <canFly>k__BackingField: 0
   <isFlying>k__BackingField: 0
@@ -237,7 +238,7 @@ MonoBehaviour:
   isGrounded: 0
   isSliding: 0
   GroundCheckPos: {fileID: 8700073142876597595}
-  groundCheckSize: {x: 2.2, y: 0.002}
+  groundCheckSize: {x: 3.43, y: 0.002}
   groundLayer:
     serializedVersion: 2
     m_Bits: 72

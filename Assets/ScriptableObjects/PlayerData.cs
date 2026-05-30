@@ -27,6 +27,7 @@ public class PlayerData : ScriptableObject
     public float currentSlideValue;
     public float slideValueStartPoint;
     public float slideValueEndPoint;
+    public float slideForce;
 
     [Header("Dashing")]
     public float dashDuration;

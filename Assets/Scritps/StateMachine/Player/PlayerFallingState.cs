@@ -14,6 +14,9 @@ public class PlayerFallingState : PlayerBaseState
 
     private float coyoteTimerCounter;
 
+    private const float CrossFadeDuration = 0.1f;
+    private readonly int FallingHash = Animator.StringToHash("Fall");
+
     public PlayerFallingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -33,7 +36,7 @@ public class PlayerFallingState : PlayerBaseState
         //}
         //stateMachine.rb2D.gravityScale = 1f;
 
-
+        stateMachine.Animator.Play(FallingHash);
     }
 
     public override void Exit()

@@ -14,8 +14,8 @@ public class PlayerMainState : PlayerBaseState
     private float jumpTimer;
 
     private const float CrossFadeDuration = 0.1f;
-    private readonly int IdleHash = Animator.StringToHash("Idle2");
-    private readonly int WalkHash = Animator.StringToHash("Walk6");
+    private readonly int IdleHash = Animator.StringToHash("Idle3");
+    private readonly int WalkHash = Animator.StringToHash("Walk7");
 
     public PlayerMainState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -54,6 +54,9 @@ public class PlayerMainState : PlayerBaseState
 
         //Debug.Log(stateMachine.ColliderReceiver.isGrounded);
 
+        RaycastHit2D raycasthit = Physics2D.Raycast(stateMachine.transform.position, Vector2.down, 4f);
+
+
         movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0);
 
 
@@ -66,31 +69,50 @@ public class PlayerMainState : PlayerBaseState
         if (movement.x > 0)
         {stateMachine.Visuals.transform.rotation = new Quaternion(0, 180, 0, 0);}
 
-        Debug.Log(stateMachine.isOnASLope);
+        //Debug.Log("is on a slope is " +stateMachine.isOnASLope);
+        //Debug.Log("sliding is " +stateMachine.isSliding);
 
+        Debug.Log("slope direction" +stateMachine.slopeDirection);
 
         if (!stateMachine.isOnASLope)
         {
+            
             stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed, stateMachine.rb2D.velocity.y);
         }
         else
         {
+
+
             if (movement.x == 0)
             {
                 stateMachine.rb2D.velocity = Vector2.zero;
             }
+            else
+            {
+                //stateMachine.rb2D.velocity = new Vector2(stateMachine.slopeDirection.x * movement.x * stateMachine.PlayerData.groundedSpeed,
+                //                                   stateMachine.slopeDirection.y * stateMachine.rb2D.velocity.y);
 
+                stateMachine.rb2D.velocity = stateMachine.slopeDirection.normalized * movement.x * stateMachine.PlayerData.groundedSpeed;
+            }
+
+            if (stateMachine.isGrounded && stateMachine.rb2D.velocity.y <= 0 && stateMachine.isSliding)
+            {
+                stateMachine.rb2D.AddForce(-raycasthit.normal * stateMachine.PlayerData.slideForce); 
+            }
+
+            /*
             if (movement.x < 0)
             {
-                stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed - stateMachine.ColliderReceiver.slopeSlowingFactor,
+                stateMachine.rb2D.velocity = new Vector2(stateMachine.slopeDirection.x* movement.x * stateMachine.PlayerData.groundedSpeed - stateMachine.ColliderReceiver.slopeSlowingFactor,
                                                      stateMachine.rb2D.velocity.y);
             }
             
             if (movement.x > 0) 
             {
-                stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed + stateMachine.ColliderReceiver.slopeSlowingFactor,
+                stateMachine.rb2D.velocity = new Vector2(stateMachine.slopeDirection.x*movement.x * stateMachine.PlayerData.groundedSpeed + stateMachine.ColliderReceiver.slopeSlowingFactor,
                                                      stateMachine.rb2D.velocity.y);
             }
+            */
 
             
 

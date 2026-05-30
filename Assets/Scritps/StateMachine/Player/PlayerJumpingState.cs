@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerJumpingState : PlayerBaseState
 {
+    private float hasLeftGroundTimer = 0.05f;
+    private float hasLeftGroundCounter;
+
     private Vector2 movement;
 
     private const float CrossFadeDuration = 0.1f;
-    private readonly int JumpingHash = Animator.StringToHash("Jump");
+    private readonly int JumpingHash = Animator.StringToHash("Jump2");
 
     public PlayerJumpingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -34,11 +37,15 @@ public class PlayerJumpingState : PlayerBaseState
     {
         stateMachine.InputReader.DashEvent -= OnDash;
         stateMachine.isJumping = false;
+
+        hasLeftGroundCounter = 0f;
     }
 
     public override void Tick(float deltaTime)
     {
         //Debug.Log(stateMachine.isGrounded);
+        hasLeftGroundCounter += Time.deltaTime;
+
 
         movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0).normalized;
         if (movement.x < 0)
@@ -67,7 +74,12 @@ public class PlayerJumpingState : PlayerBaseState
             return;
         }
 
-
+        
+        if (stateMachine.isGrounded && hasLeftGroundCounter > hasLeftGroundTimer)
+        {
+            stateMachine.SwitchState(new PlayerMainState(stateMachine)); return;
+        }
+        
         stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed, stateMachine.rb2D.velocity.y);
 
 

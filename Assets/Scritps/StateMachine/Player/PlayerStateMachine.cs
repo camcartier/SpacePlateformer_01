@@ -37,6 +37,7 @@ public class PlayerStateMachine : StateMachine
 
 
     [field: SerializeField] public bool isOnASLope { get; set; }
+    [field: SerializeField] public Vector2 slopeDirection { get; set; }
     [field: SerializeField] public bool isSliding { get; set; }
 
     [field: SerializeField] public bool canFly { get; set; }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e42f3c8cc60c94449d228c8a27f4cfa, type: 3}
   m_Name: TestPlayerData
   m_EditorClassIdentifier: 
-  groundedSpeed: 15
-  aerialSpeed: 15
+  groundedSpeed: 20
+  aerialSpeed: 18
   XaerialSpeed: 22
   YaerialSpeed: 18
   fallingSpeed: 15
@@ -22,13 +22,14 @@ MonoBehaviour:
   gravityUpStrength: 1
   gravityUpDrag: 5
   maxGravityScale: 0
-  fallVector: {x: 0, y: -41.16597}
+  fallVector: {x: 0, y: -50.973537}
   fallForce: -50
-  currentSlideValue: 10.20565
+  currentSlideValue: 10.212223
   slideValueStartPoint: 1
   slideValueEndPoint: 10
-  dashDuration: 0.3
-  dashForce: 20
+  slideForce: 100
+  dashDuration: 0.4
+  dashForce: 45
   jumpForce: {x: 0, y: 30}
   jumpVelocity: 5
   maxJumpTime: 1
@@ -39,4 +40,4 @@ MonoBehaviour:
   boostAddForceStrenght: 100
   maxBoostDeviationXStrenght: 45
   flyDecceleration: 2
-  flyMaxAcceleration: 8
+  flyMaxAcceleration: 10

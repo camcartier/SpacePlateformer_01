@@ -34,17 +34,30 @@ public class ColliderReceiver : MonoBehaviour
     void Update()
     {
         Debug.Log("is grounded is" + stateMachine.isGrounded);
-        Debug.Log("is sliding is" + isSliding);
+        //Debug.Log("is sliding is" + isSliding);
+
+
 
         Collider2D hit = Physics2D.OverlapBox(GroundCheckPos.position,groundCheckSize,0,groundLayer);
 
-        RaycastHit2D raycasthit = Physics2D.Raycast(GroundCheckPos.position, Vector2.down, 2f, groundLayer);
+        RaycastHit2D raycasthit = Physics2D.Raycast(GroundCheckPos.position, Vector2.down, 3f, groundLayer);
 
         if (hit != null)
         {
             //Debug.Log(hit.name);
         }
+        if (raycasthit)
+        {
+            Debug.Log("Hit : " + raycasthit.collider.name);
+        }
+        else
+        {
+            Debug.Log("No Hit");
+        }
 
+            Debug.DrawRay(GroundCheckPos.position,
+                           Vector2.down * 20f,
+                           Color.white);
 
         if (Physics2D.OverlapBox(GroundCheckPos.position, groundCheckSize, 0, groundLayer))
         {
@@ -59,6 +72,12 @@ public class ColliderReceiver : MonoBehaviour
             float slopeAngle = Vector2.Angle(raycasthit.normal, Vector2.up);
             float slopeNormal = raycasthit.normal.x;
             
+            stateMachine.slopeDirection = new Vector2(raycasthit.normal.y, -raycasthit.normal.x).normalized;
+
+            //Debug.Log(raycasthit.collider.name);
+            Debug.Log(raycasthit.normal);
+            Debug.Log(slopeAngle);
+
 
             if (slopeAngle > 5)
             {
@@ -67,25 +86,23 @@ public class ColliderReceiver : MonoBehaviour
             else { stateMachine.isOnASLope = false; }
 
 
-            if (slopeAngle > 20)
+            if (slopeAngle >50)
             {
-                slopeSlowingFactor = -4f;
-            }
-            if (slopeAngle > 40)
-            {
-                slopeSlowingFactor = -8f;
-            }
-            if (slopeAngle > 60)
-            {
+                stateMachine.isSliding = true ;
+                //old
                 slopeSlowingFactor = -16f;
             }
-
-
-
-            if (slopeAngle > 80)
-            { stateMachine.isSliding = true; }
             else
-            { stateMachine.isSliding = false; }
+            {
+                stateMachine.isSliding = false ;
+            }
+
+
+
+            //if (slopeAngle > 80)
+            //{ stateMachine.isSliding = true; }
+            //else
+            //{ stateMachine.isSliding = false; }
 
         }
 
@@ -175,5 +192,14 @@ public class ColliderReceiver : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawCube(GroundCheckPos.position, groundCheckSize);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (GroundCheckPos == null) return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(GroundCheckPos.position,
+                        GroundCheckPos.position + Vector3.down * 3f);
     }
 }

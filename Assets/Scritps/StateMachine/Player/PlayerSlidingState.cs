@@ -15,7 +15,7 @@ public class PlayerSlidingState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("sliding");
+        //Debug.Log("sliding");
         stateMachine.InputReader.JumpEvent += OnJump;
         stateMachine.InputReader.FlyEvent += OnFly;
         stateMachine.InputReader.DashEvent += OnDash;
