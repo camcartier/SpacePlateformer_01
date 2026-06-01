@@ -50,6 +50,8 @@ public class PlayerMainState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (stateMachine.isDialog) { stateMachine.SwitchState(new PlayerDialogState(stateMachine)); return; }
+
         //Debug.Log("main");
 
         //Debug.Log(stateMachine.ColliderReceiver.isGrounded);
@@ -146,7 +148,7 @@ public class PlayerMainState : PlayerBaseState
         }
 
 
-        if (stateMachine.InputReader.Fly.ReadValue<float>() > 0 && stateMachine.canFly)
+        if (stateMachine.InputReader.Fly.ReadValue<float>() > 0 && stateMachine.canFly && !stateMachine.isInHub)
         {
             stateMachine.SwitchState(new PlayerFlyingState(stateMachine));
             return;
@@ -174,7 +176,7 @@ public class PlayerMainState : PlayerBaseState
         //Debug.Log(stateMachine.ColliderReceiver.isGrounded);
         Debug.Log("jump");
 
-        if(stateMachine.isGrounded == true)
+        if(stateMachine.isGrounded == true && !stateMachine.isInHub)
         {
             //Debug.Log("jump grounded");
             stateMachine.isJumping = true;
@@ -188,7 +190,7 @@ public class PlayerMainState : PlayerBaseState
 
     private void OnFly()
     {
-        if (stateMachine.PlayerRessources.fuelCurrentAmount > 0)
+        if (stateMachine.PlayerRessources.fuelCurrentAmount > 0 && !stateMachine.isInHub)
         {
             stateMachine.SwitchState(new PlayerFlyingState(stateMachine));
          
@@ -199,7 +201,7 @@ public class PlayerMainState : PlayerBaseState
 
     private void OnDash()
     {
-        if (stateMachine.PlayerRessources.fuelCurrentAmount > 0)
+        if (stateMachine.PlayerRessources.fuelCurrentAmount > 0 && !stateMachine.isInHub)
         {
             stateMachine.SwitchState(new PlayerDashingState(stateMachine));
 

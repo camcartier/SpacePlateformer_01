@@ -72,7 +72,9 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public bool isInvulnerable { get; set; }
 
 
+    [field: SerializeField] public bool isDialog { get; set; }
 
+    [field: SerializeField] public bool isInHub { get; set; }
     //Use
     //[field: SerializeField] public bool isUsing { get; set; }
 

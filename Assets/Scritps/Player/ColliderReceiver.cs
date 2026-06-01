@@ -75,8 +75,8 @@ public class ColliderReceiver : MonoBehaviour
             stateMachine.slopeDirection = new Vector2(raycasthit.normal.y, -raycasthit.normal.x).normalized;
 
             //Debug.Log(raycasthit.collider.name);
-            Debug.Log(raycasthit.normal);
-            Debug.Log(slopeAngle);
+            //Debug.Log(raycasthit.normal);
+            //Debug.Log(slopeAngle);
 
 
             if (slopeAngle > 5)
