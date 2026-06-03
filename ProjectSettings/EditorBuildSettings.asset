@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroDialogScene.unity
     guid: 44156f826ef832842bb4531c4943a692
   - enabled: 1
+    path: Assets/Scenes/FalseLoadingScene.unity
+    guid: 15df6aa7b93b4ce42aaea4bb0671bdc4
+  - enabled: 1
     path: Assets/Scenes/LVL1.unity
     guid: fca9616d006f9414f8bc7a99afafd0d7
   m_configObjects: {}
