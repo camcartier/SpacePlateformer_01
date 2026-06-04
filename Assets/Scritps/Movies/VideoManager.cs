@@ -7,6 +7,7 @@ public class VideoManager : MonoBehaviour
 {
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] GameObject titlePanel;
+    [SerializeField] TitleControls titleControls;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class VideoManager : MonoBehaviour
     private void OnVideoFinished(VideoPlayer vp)
     {
         titlePanel.SetActive(true);
+        titleControls.StartCoroutine(titleControls.DisplayTitle(titleControls.titleTXT.text));
     }
 
     private void OnDestroy()
