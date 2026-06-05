@@ -14,6 +14,10 @@ public class NarrationTXTManager : MonoBehaviour
     public GameObject[] arrayOfBGImages = new GameObject[6];
     //[SerializeField] AudioSource paperAudio;
 
+    public string[] arrayOfNames = new string[6];
+    [SerializeField] TextMeshProUGUI namesTXT;
+    //private int currentNamesTXTIndex;
+
     [SerializeField] GameObject narrationPanel;
     [SerializeField] GameObject iconeImage;
 
@@ -36,6 +40,7 @@ public class NarrationTXTManager : MonoBehaviour
     void Update()
     {
         displayTXT.text = arrayOfText[currentTXTIndex];
+        namesTXT.text = arrayOfNames[currentTXTIndex];
 
         if (currentTXTIndex > 0)
         {
@@ -44,6 +49,8 @@ public class NarrationTXTManager : MonoBehaviour
                 arrayOfBGImages[currentTXTIndex].SetActive(true);
                 arrayOfBGImages[currentTXTIndex -1 ].SetActive(false);
             }
+
+
         }
 
     }

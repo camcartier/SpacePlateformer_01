@@ -8,6 +8,11 @@ public class GameManagerTitleScene : MonoBehaviour
     [SerializeField] GameObject settingsPanel;
     [SerializeField] GameObject loadPanel;
 
+    [SerializeField] GameObject blackScreen;
+    public float timeBeforeLoadScene;
+
+    [SerializeField] AudioSource audioSource;
+
     void Start()
     {
         
@@ -23,6 +28,34 @@ public class GameManagerTitleScene : MonoBehaviour
     public void LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void StartCoroutineBlackScreen()
+    {
+        StartCoroutine(ActionBeforeNextScene());
+        StartCoroutine(FadeOut(audioSource, timeBeforeLoadScene-1));
+    }
+
+    public IEnumerator ActionBeforeNextScene()
+    {
+        blackScreen.SetActive(true);
+        yield return new WaitForSeconds(timeBeforeLoadScene);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    IEnumerator FadeOut(AudioSource audioSource, float duration)
+    {
+        float startVolume = audioSource.volume;
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, 0f, timer / duration);
+            yield return null;
+        }
+
+        audioSource.volume = 0f;
     }
 
     public void ExitGame()

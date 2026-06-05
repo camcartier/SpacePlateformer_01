@@ -34,21 +34,5 @@ public class TitleControls : MonoBehaviour
         }
     }
 
-    private IEnumerator DisplayTitle2(string title)
-    {
-        titleTXT.text = "";
 
-        foreach (char letter in title)
-        {
-            Debug.Log("Ajout : " + letter);
-
-            titleTXT.text += letter;
-
-            Debug.Log("Texte actuel : " + titleTXT.text);
-
-            yield return new WaitForSeconds(typingSpeed);
-        }
-
-        Debug.Log("Coroutine terminée");
-    }
 }
