@@ -12,7 +12,7 @@ public class NarrationTXTManager : MonoBehaviour
     
     [SerializeField] GameObject startImage;
     public GameObject[] arrayOfBGImages = new GameObject[6];
-    //[SerializeField] AudioSource paperAudio;
+
 
     public string[] arrayOfNames = new string[6];
     [SerializeField] TextMeshProUGUI namesTXT;
@@ -24,10 +24,16 @@ public class NarrationTXTManager : MonoBehaviour
     [SerializeField] PlayerStateMachine playerStateMachine;
 
     public bool narrationIsOver;
+
+    public float typingSpeed;
+
+    [SerializeField] AudioSource clickSound;
    
     void Start()
     {
         currentTXTIndex = 0;
+
+        //tartCoroutine(DisplayLetters(displayTXT.text));
 
         /*
         if (startImage.activeInHierarchy == false)
@@ -57,6 +63,9 @@ public class NarrationTXTManager : MonoBehaviour
 
     public void IncrementIndex()
     {
+        clickSound.Play();
+        
+
         if (currentTXTIndex < arrayOfBGImages.Length - 1)
         {
             currentTXTIndex += 1;
@@ -69,11 +78,10 @@ public class NarrationTXTManager : MonoBehaviour
             iconeImage.SetActive(false);
             playerStateMachine.isDialog = false;
             narrationIsOver = true;
-            //LoadGameScene();
-            //dans une fonction comme ça on pourra personnaliser plus tard
+            
         }
 
-        //paperAudio.Play();
+        
     }
 
 
@@ -82,5 +90,18 @@ public class NarrationTXTManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-   
+
+
+    public IEnumerator DisplayLetters(string text)
+    {
+
+        displayTXT.text = "";
+
+        foreach (char letter in text.ToCharArray())
+        {
+            displayTXT.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+    }
+
 }

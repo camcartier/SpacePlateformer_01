@@ -22,7 +22,7 @@ MonoBehaviour:
   gravityUpStrength: 1
   gravityUpDrag: 5
   maxGravityScale: 0
-  fallVector: {x: 0, y: -40.11204}
+  fallVector: {x: 0, y: -42.193024}
   fallForce: -50
   currentSlideValue: 10.155568
   slideValueStartPoint: 1
@@ -36,8 +36,8 @@ MonoBehaviour:
   coyoteTime: 5
   boosterWait: 0.4
   boosterDuration: 0.5
-  boostStrength: 20
-  boostAddForceStrenght: 100
+  boostStrength: 30
+  boostAddForceStrenght: 150
   maxBoostDeviationXStrenght: 45
   flyDecceleration: 2
   flyMaxAcceleration: 10

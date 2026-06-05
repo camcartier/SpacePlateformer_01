@@ -43,6 +43,10 @@ public class PlayerJumpingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        stateMachine.dashDirection2 = new Vector2(stateMachine.InputReader.AerialMovementValue.x,
+                                                  stateMachine.InputReader.AerialMovementValue.y).normalized;
+
+
         //Debug.Log(stateMachine.isGrounded);
         hasLeftGroundCounter += Time.deltaTime;
 

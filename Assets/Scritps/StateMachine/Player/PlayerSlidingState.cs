@@ -40,6 +40,10 @@ public class PlayerSlidingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        stateMachine.dashDirection2 = new Vector2(stateMachine.InputReader.AerialMovementValue.x,
+                                                  stateMachine.InputReader.AerialMovementValue.y).normalized;
+
+
         acceleration += Time.deltaTime;
 
         if (stateMachine.PlayerData.currentSlideValue < stateMachine.PlayerData.slideValueEndPoint)

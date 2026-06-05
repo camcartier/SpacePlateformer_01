@@ -8,6 +8,7 @@ public class TitleControls : MonoBehaviour
     public TextMeshProUGUI titleTXT;
     public float typingSpeed = 0.04f;
 
+    [SerializeField] AudioSource typingSound;
     
     void Start()
     {
@@ -25,6 +26,7 @@ public class TitleControls : MonoBehaviour
 
     public IEnumerator DisplayTitle(string title)
     {
+        typingSound.Play(); 
         titleTXT.text = "";
 
         foreach (char letter in title.ToCharArray())

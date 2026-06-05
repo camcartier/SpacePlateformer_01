@@ -32,6 +32,8 @@ public class PlayerMainState : PlayerBaseState
 
         stateMachine.Animator.Play(IdleHash);
 
+        stateMachine.rb2D.gravityScale = 1f;
+
         //stateMachine.rb2D.velocity = new Vector2 (0,0);
 
         //Debug.Log("main");
@@ -52,9 +54,10 @@ public class PlayerMainState : PlayerBaseState
     {
         if (stateMachine.isDialog) { stateMachine.SwitchState(new PlayerDialogState(stateMachine)); return; }
 
-        //Debug.Log("main");
 
-        //Debug.Log(stateMachine.ColliderReceiver.isGrounded);
+        stateMachine.dashDirection2 = new Vector2(stateMachine.InputReader.AerialMovementValue.x, 
+                                                  stateMachine.InputReader.AerialMovementValue.y).normalized;
+
 
         RaycastHit2D raycasthit = Physics2D.Raycast(stateMachine.transform.position, Vector2.down, 4f);
 

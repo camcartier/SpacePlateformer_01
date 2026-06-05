@@ -12,6 +12,7 @@ public class GameManagerTitleScene : MonoBehaviour
     public float timeBeforeLoadScene;
 
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource clickSound;
 
     void Start()
     {
@@ -38,6 +39,7 @@ public class GameManagerTitleScene : MonoBehaviour
 
     public IEnumerator ActionBeforeNextScene()
     {
+        clickSound.Play();
         blackScreen.SetActive(true);
         yield return new WaitForSeconds(timeBeforeLoadScene);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -60,11 +62,13 @@ public class GameManagerTitleScene : MonoBehaviour
 
     public void ExitGame()
     {
+        clickSound.Play();
         Application.Quit();
     }
 
     public void OnOffSettings()
     {
+        clickSound.Play();
         if (settingsPanel.activeInHierarchy)
         {
             settingsPanel.SetActive(false);
@@ -74,6 +78,7 @@ public class GameManagerTitleScene : MonoBehaviour
 
     public void OnOffLoading()
     {
+        clickSound.Play();
         if (loadPanel.activeInHierarchy)
         {
             loadPanel.SetActive(false);
