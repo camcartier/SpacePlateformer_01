@@ -249,7 +249,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1761043501}
         m_TargetAssemblyTypeName: NarrationTXTManager, Assembly-CSharp
-        m_MethodName: IncrementIndex
+        m_MethodName: NextLine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1241,7 +1241,6 @@ GameObject:
   - component: {fileID: 940874692}
   - component: {fileID: 940874694}
   - component: {fileID: 940874693}
-  - component: {fileID: 940874695}
   m_Layer: 5
   m_Name: DialogTXT
   m_TagString: Untagged
@@ -1366,20 +1365,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940874691}
   m_CullTransparentMesh: 1
---- !u!114 &940874695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940874691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76dce1c21f6c63c408ac5376238f4abd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typingSpeed: 0.1
-  TXT: {fileID: 940874693}
 --- !u!1 &1126367268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,7 +1940,7 @@ MonoBehaviour:
   iconeImage: {fileID: 3217632}
   playerStateMachine: {fileID: 1375692720}
   narrationIsOver: 0
-  typingSpeed: 0
+  typingSpeed: 0.05
   clickSound: {fileID: 230836748}
 --- !u!4 &1761043502
 Transform:

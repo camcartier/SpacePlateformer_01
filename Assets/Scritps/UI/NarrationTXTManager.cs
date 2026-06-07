@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class NarrationTXTManager : MonoBehaviour
 {
-    public string[] arrayOfText = new string[6];
+    public string[] arrayOfText;
     [SerializeField] TextMeshProUGUI displayTXT;
     private int currentTXTIndex;
     
@@ -27,25 +27,23 @@ public class NarrationTXTManager : MonoBehaviour
 
     public float typingSpeed;
 
+    private Coroutine displayTXTCoroutine;
+
     [SerializeField] AudioSource clickSound;
    
     void Start()
     {
-        currentTXTIndex = 0;
+        //currentTXTIndex = 0;
 
-        //tartCoroutine(DisplayLetters(displayTXT.text));
+        displayTXT.text = string.Empty;
 
-        /*
-        if (startImage.activeInHierarchy == false)
-        {
-            startImage.SetActive(true);
-        }*/
+        StartDialog();
     }
 
    
     void Update()
     {
-        displayTXT.text = arrayOfText[currentTXTIndex];
+        //displayTXT.text = arrayOfText[currentTXTIndex];
         namesTXT.text = arrayOfNames[currentTXTIndex];
 
         if (currentTXTIndex > 0)
@@ -90,18 +88,40 @@ public class NarrationTXTManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    void StartDialog()
+    {
+        currentTXTIndex = 0;
+        displayTXTCoroutine = StartCoroutine(DisplayLetters());
+    }
 
-
-    public IEnumerator DisplayLetters(string text)
+    public IEnumerator DisplayLetters()
     {
 
-        displayTXT.text = "";
+        
 
-        foreach (char letter in text.ToCharArray())
+        foreach (char letter in arrayOfText[currentTXTIndex].ToCharArray())
         {
             displayTXT.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+    }
+
+    public void NextLine()
+    {
+        if (displayTXTCoroutine != null)
+        {
+            StopCoroutine(displayTXTCoroutine);
+        }
+
+        if (currentTXTIndex < arrayOfText.Length - 1)
+        {
+            currentTXTIndex++;
+            displayTXT.text = string.Empty;
+
+
+            displayTXTCoroutine = StartCoroutine(DisplayLetters());
+        }
+
     }
 
 }
