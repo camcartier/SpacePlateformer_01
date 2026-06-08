@@ -29,9 +29,11 @@ public class PlayerStateMachine : StateMachine
 
     public bool previousStateWasJump;
 
-    [field: SerializeField] public GameObject dashDirection { get; set; }
 
+    [field: SerializeField] public bool canDash { get; set; }
+    [field: SerializeField] public GameObject dashDirection { get; set; }
     [field: SerializeField] public Vector2 dashDirection2 { get; set; }
+
 
     [field: SerializeField] public bool isGrounded { get; set; }
     [field: SerializeField] public bool jumpIsOver { get; set; }

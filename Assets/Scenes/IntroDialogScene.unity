@@ -766,6 +766,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &405035621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 405035623}
+  - component: {fileID: 405035622}
+  m_Layer: 0
+  m_Name: InfoHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &405035622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405035621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c9c9a7e926f0747b60cb4d37296821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogHasHappened: 0
+  LVL1sceneLoadCount: 0
+--- !u!4 &405035623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405035621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &426282093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,6 +1600,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbab3deb69050f44584df6ef6bbe0da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1375692725 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6581656630269188753, guid: ad83e4deec7bf8044bafd6ba629dc2d9, type: 3}
+  m_PrefabInstance: {fileID: 1270826123}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375692717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a70f6bcdae59544b9a6a6d8654c8de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1422965258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1667,6 +1724,7 @@ MonoBehaviour:
   playerStateMachine: {fileID: 1375692720}
   playerData: {fileID: 11400000, guid: 77d29a551d66eb443bd13f2cbed8145c, type: 2}
   playerRessources: {fileID: 11400000, guid: ddfbbeb952056c94284ad97defdc24fc, type: 2}
+  fuelControls: {fileID: 1375692725}
   narrationTXTManager: {fileID: 1761043501}
   isPaused: 0
   pausePanel: {fileID: 0}
@@ -1940,6 +1998,7 @@ MonoBehaviour:
   iconeImage: {fileID: 3217632}
   playerStateMachine: {fileID: 1375692720}
   narrationIsOver: 0
+  dialogIsAtStart: 0
   typingSpeed: 0.05
   clickSound: {fileID: 230836748}
 --- !u!4 &1761043502
@@ -2379,7 +2438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2035648285
 MonoBehaviour:
   m_ObjectHideFlags: 0

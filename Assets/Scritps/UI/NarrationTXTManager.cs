@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using TMPro.Examples;
 
 public class NarrationTXTManager : MonoBehaviour
 {
@@ -24,26 +25,61 @@ public class NarrationTXTManager : MonoBehaviour
     [SerializeField] PlayerStateMachine playerStateMachine;
 
     public bool narrationIsOver;
+    public bool dialogIsAtStart;
 
     public float typingSpeed;
 
     private Coroutine displayTXTCoroutine;
 
     [SerializeField] AudioSource clickSound;
-   
+
+    private InfoHolder infoHolder;
+
+    private void Awake()
+    {
+        infoHolder = InfoHolder.Instance;
+    }
+
     void Start()
     {
         //currentTXTIndex = 0;
+        if (!infoHolder.dialogHasHappened)
+        {
+            if (SceneManager.GetActiveScene().name == ("TestLevel1"))
+            {
+                dialogIsAtStart = true;
+            }
 
-        displayTXT.text = string.Empty;
+            narrationPanel.SetActive(true);
+            iconeImage.SetActive(true);
 
-        StartDialog();
+            displayTXT.text = string.Empty;
+
+            StartDialog();
+        }
+        else
+        {
+            narrationPanel.SetActive(false);
+            iconeImage.SetActive(false);
+        }
+
+        /*
+        if (infoHolder.dialogHasHappened) { Debug.Log("je vois que le dialoque est passé"); }
+        else { Debug.Log("le dialoque n'est pas passé"); }
+
+        Debug.Log("Référence sérialisée : " + infoHolder.GetInstanceID());
+        Debug.Log("Singleton : " + InfoHolder.Instance.GetInstanceID());
+
+        Debug.Log("Valeur sérialisée : " + infoHolder.dialogHasHappened);
+        Debug.Log("Valeur singleton : " + InfoHolder.Instance.dialogHasHappened);
+        */
     }
 
    
     void Update()
     {
         //displayTXT.text = arrayOfText[currentTXTIndex];
+        
         namesTXT.text = arrayOfNames[currentTXTIndex];
 
         if (currentTXTIndex > 0)
@@ -56,10 +92,11 @@ public class NarrationTXTManager : MonoBehaviour
 
 
         }
+        
 
     }
 
-    public void IncrementIndex()
+   /* public void IncrementIndex()
     {
         clickSound.Play();
         
@@ -80,7 +117,7 @@ public class NarrationTXTManager : MonoBehaviour
         }
 
         
-    }
+    }*/
 
 
     private void LoadGameScene()
@@ -120,6 +157,13 @@ public class NarrationTXTManager : MonoBehaviour
 
 
             displayTXTCoroutine = StartCoroutine(DisplayLetters());
+        }
+        else
+        {
+            narrationPanel.SetActive(false);
+            iconeImage.SetActive(false);
+            playerStateMachine.isDialog = false;
+            narrationIsOver = true;
         }
 
     }

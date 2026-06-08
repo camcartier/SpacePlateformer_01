@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class FuelControls : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class FuelControls : MonoBehaviour
     public float refuelTimerMax;
     
     public bool wasUsed;
+    
+    public bool canRefuel;
 
     public float usedTimer;
     public float usedTimerCounter;
@@ -19,9 +22,13 @@ public class FuelControls : MonoBehaviour
     void Start()
     {
         //initialisation des ressources
-        playerRessources.fuelCurrentAmount = playerRessources.fuelMaxAmount;
-        refuelTimer = stateMachine.PlayerRessources.refuelTimerDuration;
-        stateMachine.PlayerRessources.currentRefuelSpeed = stateMachine.PlayerRessources.refuelSpeed;
+        if (canRefuel)
+        {
+            playerRessources.fuelCurrentAmount = playerRessources.fuelMaxAmount;
+            refuelTimer = stateMachine.PlayerRessources.refuelTimerDuration;
+            stateMachine.PlayerRessources.currentRefuelSpeed = stateMachine.PlayerRessources.refuelSpeed;
+        }
+
 
         stateMachine.canFly = true;
     }
@@ -29,7 +36,12 @@ public class FuelControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerRessources.fuelCurrentAmount = Mathf.Clamp(playerRessources.fuelCurrentAmount,0, playerRessources.fuelMaxAmount);
+
+        if (canRefuel)
+        {
+            playerRessources.fuelCurrentAmount = Mathf.Clamp(playerRessources.fuelCurrentAmount, 0, playerRessources.fuelMaxAmount);
+        }
+        
 
         
 
@@ -58,13 +70,18 @@ public class FuelControls : MonoBehaviour
             refuelTimer -= Time.deltaTime;
         }
 
-        //si le timer est a 0 et le joueur n'est pas en train de voler, le fuel remonte
-        if (refuelTimer <= 0 && !stateMachine.isFlying && usedTimerCounter >= usedTimer && playerRessources.fuelCurrentAmount< playerRessources.fuelMaxAmount)
+        
+        if (canRefuel)
         {
-            stateMachine.PlayerRessources.currentRefuelSpeed += Time.deltaTime * stateMachine.PlayerRessources.refuelAcceleration;
-            playerRessources.fuelCurrentAmount += stateMachine.PlayerRessources.currentRefuelSpeed * Time.deltaTime ;
-            //refuelTimer = stateMachine.PlayerRessources.refuelTimerDuration;
+            //si le timer est a 0 et le joueur n'est pas en train de voler, le fuel remonte
+            if (refuelTimer <= 0 && !stateMachine.isFlying && usedTimerCounter >= usedTimer && playerRessources.fuelCurrentAmount < playerRessources.fuelMaxAmount)
+            {
+                stateMachine.PlayerRessources.currentRefuelSpeed += Time.deltaTime * stateMachine.PlayerRessources.refuelAcceleration;
+                playerRessources.fuelCurrentAmount += stateMachine.PlayerRessources.currentRefuelSpeed * Time.deltaTime;
+                //refuelTimer = stateMachine.PlayerRessources.refuelTimerDuration;
+            }
         }
+
 
 
         
