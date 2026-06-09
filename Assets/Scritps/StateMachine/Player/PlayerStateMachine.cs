@@ -31,6 +31,9 @@ public class PlayerStateMachine : StateMachine
 
 
     [field: SerializeField] public bool canDash { get; set; }
+    [field: SerializeField] public float dashResetTimer { get; set; }
+    [field: SerializeField] public DashResetTImer dashResetTimerScript { get; set; }
+
     [field: SerializeField] public GameObject dashDirection { get; set; }
     [field: SerializeField] public Vector2 dashDirection2 { get; set; }
 

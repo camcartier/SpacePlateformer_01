@@ -20,6 +20,8 @@ public class PlayerDashingState : PlayerBaseState
         //Debug.Log("is dashing");
         //stateMachine.InputReader.DashEvent += OnDash;
 
+        stateMachine.dashResetTimer = 0f;
+
         timerCounter = 0;
         stateMachine.rb2D.velocity = Vector2.zero;
         //stateMachine.rb2D.gravityScale = 0f;

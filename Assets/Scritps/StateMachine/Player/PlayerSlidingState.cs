@@ -123,7 +123,7 @@ public class PlayerSlidingState : PlayerBaseState
 
     private void OnDash()
     {
-        if (stateMachine.PlayerRessources.fuelCurrentAmount > 0)
+        if (stateMachine.dashResetTimer >= stateMachine.PlayerData.dashReset)
         {
             stateMachine.SwitchState(new PlayerDashingState(stateMachine));
 

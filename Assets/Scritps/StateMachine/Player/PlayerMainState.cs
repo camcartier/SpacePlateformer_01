@@ -204,7 +204,7 @@ public class PlayerMainState : PlayerBaseState
 
     private void OnDash()
     {
-        if (stateMachine.PlayerRessources.fuelCurrentAmount > 0 && !stateMachine.isInHub)
+        if (stateMachine.dashResetTimer >= stateMachine.PlayerData.dashReset && !stateMachine.isInHub)
         {
             stateMachine.SwitchState(new PlayerDashingState(stateMachine));
 

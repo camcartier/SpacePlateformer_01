@@ -660,6 +660,10 @@ PrefabInstance:
       propertyPath: usedTimer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7214434640286493478, guid: ad83e4deec7bf8044bafd6ba629dc2d9, type: 3}
+      propertyPath: <dashResetTimerScript>k__BackingField
+      value: 
+      objectReference: {fileID: 455850158}
     - target: {fileID: 8879955002045760974, guid: ad83e4deec7bf8044bafd6ba629dc2d9, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -1478,6 +1482,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a70f6bcdae59544b9a6a6d8654c8de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &455850158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455850148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf8e2e16f47ef741a0d3987b420e361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStateMachine: {fileID: 455850149}
+  playerData: {fileID: 11400000, guid: 77d29a551d66eb443bd13f2cbed8145c, type: 2}
 --- !u!1001 &507419424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4313,7 +4331,6 @@ MonoBehaviour:
   playerRessources: {fileID: 11400000, guid: ddfbbeb952056c94284ad97defdc24fc, type: 2}
   fuelControls: {fileID: 455850154}
   narrationTXTManager: {fileID: 1771756256}
-  infoHolder: {fileID: 372117120}
   isPaused: 0
   pausePanel: {fileID: 1601538890}
 --- !u!4 &1747579567
@@ -4531,7 +4548,6 @@ MonoBehaviour:
   dialogIsAtStart: 0
   typingSpeed: 0.05
   clickSound: {fileID: 0}
-  infoHolder: {fileID: 372117120}
 --- !u!1001 &1780354324
 PrefabInstance:
   m_ObjectHideFlags: 0

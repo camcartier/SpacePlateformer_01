@@ -32,6 +32,7 @@ public class PlayerData : ScriptableObject
     [Header("Dashing")]
     public float dashDuration;
     public float dashForce;
+    public float dashReset;
 
     [Header("Jump Stats")]
     public Vector2 jumpForce;
