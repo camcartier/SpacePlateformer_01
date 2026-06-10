@@ -467,7 +467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Made it to the first check point
+  m_text: ergo edo sum
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 547730cba1614484ea7eff0d72ae14ef, type: 2}
   m_sharedMaterial: {fileID: 2039853690318481499, guid: 547730cba1614484ea7eff0d72ae14ef, type: 2}
@@ -1423,13 +1423,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372117118}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 341.1164, y: 248.29344, z: 5.6820736}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1591613924}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &372117120
 MonoBehaviour:
@@ -1716,7 +1716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You made it!
+  m_text: ipsum lorem
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 547730cba1614484ea7eff0d72ae14ef, type: 2}
   m_sharedMaterial: {fileID: 2039853690318481499, guid: 547730cba1614484ea7eff0d72ae14ef, type: 2}
@@ -4607,7 +4607,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1591613924}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1553760103
 MonoBehaviour:
@@ -4622,7 +4622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   achievementPanel: {fileID: 539327441}
-  achievementSound: {fileID: 0}
   achievementIsActive: 0
   achievementTitle: {fileID: 423491037}
   achievementDescription: {fileID: 108089010}
@@ -4794,7 +4793,6 @@ Transform:
   - {fileID: 1747579567}
   - {fileID: 1771756255}
   - {fileID: 1455481110}
-  - {fileID: 372117119}
   - {fileID: 1553760102}
   m_Father: {fileID: 0}
   m_RootOrder: 7
