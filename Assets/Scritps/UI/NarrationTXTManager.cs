@@ -82,6 +82,7 @@ public class NarrationTXTManager : MonoBehaviour
         
         namesTXT.text = arrayOfNames[currentTXTIndex];
 
+        
         if (currentTXTIndex > 0)
         {
             if (arrayOfBGImages[currentTXTIndex].activeInHierarchy == false)

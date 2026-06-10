@@ -114,4 +114,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         UnpauseGame();
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
