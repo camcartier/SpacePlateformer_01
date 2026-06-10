@@ -48,11 +48,11 @@ public class ColliderReceiver : MonoBehaviour
         }
         if (raycasthit)
         {
-            Debug.Log("Hit : " + raycasthit.collider.name);
+            //Debug.Log("Hit : " + raycasthit.collider.name);
         }
         else
         {
-            Debug.Log("No Hit");
+            //Debug.Log("No Hit");
         }
 
             Debug.DrawRay(GroundCheckPos.position,
