@@ -2795,10 +2795,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  arrayOfNames:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  namesTXT: {fileID: 0}
   narrationPanel: {fileID: 0}
   iconeImage: {fileID: 0}
   playerStateMachine: {fileID: 2135417678}
   narrationIsOver: 0
+  dialogIsAtStart: 0
+  typingSpeed: 0
+  clickSound: {fileID: 0}
 --- !u!4 &1126900340
 Transform:
   m_ObjectHideFlags: 0
@@ -3217,6 +3228,7 @@ MonoBehaviour:
   playerStateMachine: {fileID: 2135417678}
   playerData: {fileID: 11400000, guid: 77d29a551d66eb443bd13f2cbed8145c, type: 2}
   playerRessources: {fileID: 11400000, guid: ddfbbeb952056c94284ad97defdc24fc, type: 2}
+  fuelControls: {fileID: 0}
   narrationTXTManager: {fileID: 1126900339}
   isPaused: 0
   pausePanel: {fileID: 0}
@@ -4035,10 +4047,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1236050605}
-  playerStateMachine: {fileID: 0}
+  playerStateMachine: {fileID: 2135417678}
   playerData: {fileID: 11400000, guid: 77d29a551d66eb443bd13f2cbed8145c, type: 2}
   playerRessources: {fileID: 11400000, guid: ddfbbeb952056c94284ad97defdc24fc, type: 2}
-  narrationTXTManager: {fileID: 0}
+  fuelControls: {fileID: 2135417681}
+  narrationTXTManager: {fileID: 1126900339}
   isPaused: 0
   pausePanel: {fileID: 0}
 --- !u!4 &1946254431
@@ -4387,5 +4400,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbab3deb69050f44584df6ef6bbe0da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2135417681 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6581656630269188753, guid: ad83e4deec7bf8044bafd6ba629dc2d9, type: 3}
+  m_PrefabInstance: {fileID: 1168245279}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236050605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a70f6bcdae59544b9a6a6d8654c8de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

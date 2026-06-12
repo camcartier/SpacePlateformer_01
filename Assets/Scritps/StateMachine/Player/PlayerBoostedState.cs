@@ -100,7 +100,7 @@ public class PlayerBoostedState : PlayerBaseState
             velocity.x = Mathf.Lerp(velocity.x, targetHorizontalSpeed, deviationStrenght * Time.deltaTime);
         }*/
 
-        velocity.x += stateMachine.InputReader.AerialMovementValue.x * deviationStrenght * Time.deltaTime; 
+        velocity.x += stateMachine.InputReader.AerialMovementValue.x * stateMachine.PlayerData.maxBoostDeviationXStrenght * Time.deltaTime; 
         
         //ouais mais alors ça nique les diagonales?
         //velocity.x = Mathf.Clamp(velocity.x, -stateMachine.PlayerData.maxBoostDeviationXStrenght, stateMachine.PlayerData.maxBoostDeviationXStrenght);

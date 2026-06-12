@@ -30,7 +30,8 @@ public class PlayerDashingState : PlayerBaseState
 
         //dashDir2 = new Vector2(stateMachine.InputReader.GroundedMovementValue, stateMachine.InputReader.GroundedMovementValue) ;
 
-        stateMachine.PlayerRessources.fuelCurrentAmount -= 2f;
+        //ancienne version
+        //stateMachine.PlayerRessources.fuelCurrentAmount -= 2f;
 
         stateMachine.isSliding = false;
 

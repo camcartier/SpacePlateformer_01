@@ -26,11 +26,11 @@ public class CheckPointControls : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("player seen");
+            //Debug.Log("player seen");
 
             if (chekPointNumber.number == 1)
             {
-                Debug.Log("number is correct");
+                //Debug.Log("number is correct");
                 achievementManager.hasReachedCP01 = true;
             }
         }

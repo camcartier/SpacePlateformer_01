@@ -36,6 +36,12 @@ public class FuelControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerRessources.fuelCurrentAmount > playerRessources.fuelMaxAmount)
+        {
+            playerRessources.fuelCurrentAmount = playerRessources.fuelMaxAmount;
+        }
+
+
 
         if (canRefuel)
         {
