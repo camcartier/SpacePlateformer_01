@@ -45,6 +45,8 @@ public class PlayerDashingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (stateMachine.isDead) { stateMachine.SwitchState(new PlayerDeathState(stateMachine)); }
+
         stateMachine.dashDirection2 = new Vector2(stateMachine.InputReader.AerialMovementValue.x,
                                                   stateMachine.InputReader.AerialMovementValue.y).normalized;
 

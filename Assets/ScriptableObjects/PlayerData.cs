@@ -52,5 +52,8 @@ public class PlayerData : ScriptableObject
     public float flyDecceleration;
     public float flyMaxAcceleration;
 
+    [Header("Death State")]
+    public float timeBeforeRespawn;
+
 }
 

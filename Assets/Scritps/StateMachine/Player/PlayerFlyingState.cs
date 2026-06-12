@@ -43,6 +43,9 @@ public class PlayerFlyingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (stateMachine.isDead) { stateMachine.SwitchState(new PlayerDeathState(stateMachine)); }
+
+
 
         stateMachine.PlayerRessources.fuelCurrentAmount -= Time.deltaTime;
 

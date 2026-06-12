@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerData playerData;
     [SerializeField] PlayerRessources playerRessources;
     [SerializeField] FuelControls fuelControls;
+    [SerializeField] CheckPointTracker checkPointTracker;
+
 
     [SerializeField] NarrationTXTManager narrationTXTManager;
     private InfoHolder infoHolder;
@@ -18,12 +20,18 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
     [SerializeField] GameObject pausePanel;
 
+    public bool playerIsDead;
+
+
+
     private void Awake()
     {
         infoHolder = InfoHolder.Instance;
     }
     void Start()
     {
+        playerIsDead = false;
+
         playerRessources.fuelCurrentAmount = playerRessources.fuelMaxAmount ;
         //Player.GetComponentInChildren<ParticleSystem>().Stop();
 
@@ -44,11 +52,20 @@ public class GameManager : MonoBehaviour
             fuelControls.canRefuel = true;
         }
 
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (playerIsDead)
+        {
+            if (checkPointTracker.currentCheckpoint == null) { RestartLVL(); }
+            else { RestartAtCheckpoint();  }
+            
+        }
+
         if (narrationTXTManager != null)
         {
             if (!infoHolder.dialogHasHappened)
@@ -71,6 +88,7 @@ public class GameManager : MonoBehaviour
 
 
         }
+
 
 
         if (Input.GetKeyDown(KeyCode.Escape)) 
@@ -113,6 +131,15 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         UnpauseGame();
+    }
+
+    public void RestartAtCheckpoint()
+    {
+        Debug.Log("Respawn");
+        Player.transform.position = checkPointTracker.currentCheckpoint.transform.position;
+        playerIsDead = false;
+        Player.GetComponent<PlayerStateMachine>().isDead = false;
+
     }
 
     public void QuitGame()

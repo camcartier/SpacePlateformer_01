@@ -52,6 +52,8 @@ public class PlayerMainState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (stateMachine.isDead) { stateMachine.SwitchState(new PlayerDeathState(stateMachine)); }
+
         if (stateMachine.isDialog) { stateMachine.SwitchState(new PlayerDialogState(stateMachine)); return; }
 
 

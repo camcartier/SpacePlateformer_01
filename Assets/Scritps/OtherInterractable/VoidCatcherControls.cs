@@ -21,7 +21,7 @@ public class VoidCatcherControls : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            gameManager.RestartLVL();
+            gameManager.playerIsDead = true;
         }
     }
 }

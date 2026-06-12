@@ -21,6 +21,8 @@ public class AsteroidControls : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
+
+            collision.gameObject.GetComponent<PlayerStateMachine>().isDead = true;
         }
     }
 }

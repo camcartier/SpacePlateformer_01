@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 7214434640286493478}
   - component: {fileID: 6819327105693324438}
   - component: {fileID: 6581656630269188753}
+  - component: {fileID: 1908456803311437802}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -228,6 +229,7 @@ MonoBehaviour:
   <isInvulnerable>k__BackingField: 0
   <isDialog>k__BackingField: 0
   <isInHub>k__BackingField: 0
+  <gameManager>k__BackingField: {fileID: 0}
 --- !u!114 &6819327105693324438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +271,19 @@ MonoBehaviour:
   canRefuel: 0
   usedTimer: 0
   usedTimerCounter: 0
+--- !u!114 &1908456803311437802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2671044713623501785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9942ccaf4c728f0439d9c6dcefa7e5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCheckpoint: {fileID: 0}
 --- !u!1 &2672446409080497552
 GameObject:
   m_ObjectHideFlags: 0

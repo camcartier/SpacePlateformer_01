@@ -130,11 +130,14 @@ public class ColliderReceiver : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Asteroid") && !stateMachine.isBoosted)
         {
-            Debug.Log("aie");
+            //Debug.Log("aie");
 
             stateMachine.aieCollider = collision;
 
-            stateMachine.SwitchState(new PlayerHurtState(stateMachine));
+            //a voir si on ne suprime pas cette etape
+            //stateMachine.SwitchState(new PlayerHurtState(stateMachine));
+
+            stateMachine.isDead = true ;
         }
 
     }

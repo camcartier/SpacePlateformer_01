@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Star
   - Asteroid
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

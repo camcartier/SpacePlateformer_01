@@ -7,7 +7,6 @@ public class CheckPointControls : MonoBehaviour
     private CheckPointNumber chekPointNumber;
     private AchievementManager achievementManager;
 
-    // Start is called before the first frame update
     void Start()
     {
         achievementManager = GameObject.Find("AchievementManager").GetComponent<AchievementManager>();
@@ -16,11 +15,12 @@ public class CheckPointControls : MonoBehaviour
     
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

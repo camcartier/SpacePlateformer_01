@@ -85,7 +85,7 @@ public class PlayerStateMachine : StateMachine
     //[field: SerializeField] public bool isUsing { get; set; }
 
 
-
+    [field: SerializeField] public GameManager gameManager { get; set; }
 
     void Start()
     {
