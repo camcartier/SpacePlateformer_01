@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckPointControls : MonoBehaviour
 {
-    private CheckPointNumber chekPointNumber;
+    public CheckPointNumber chekPointNumber;
     private AchievementManager achievementManager;
 
     void Start()

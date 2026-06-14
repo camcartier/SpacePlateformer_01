@@ -29,7 +29,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Jump"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""0bab4414-9d7a-4f32-a46f-4284f543392a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",

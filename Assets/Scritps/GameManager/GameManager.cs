@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerRessources playerRessources;
     [SerializeField] FuelControls fuelControls;
     [SerializeField] CheckPointTracker checkPointTracker;
-
+    //[SerializeField] CheckPointControls checkPointControls;
+    public int checkPointNumber;
 
     [SerializeField] NarrationTXTManager narrationTXTManager;
     private InfoHolder infoHolder;
@@ -22,7 +23,8 @@ public class GameManager : MonoBehaviour
 
     public bool playerIsDead;
 
-
+    [SerializeField] GameObject fuelPickup;
+    [SerializeField] GameObject fuelPosition;
 
     private void Awake()
     {
@@ -139,7 +141,13 @@ public class GameManager : MonoBehaviour
         Player.transform.position = checkPointTracker.currentCheckpoint.transform.position;
         playerIsDead = false;
         Player.GetComponent<PlayerStateMachine>().isDead = false;
-
+        
+        if (checkPointTracker.checkpointNumber == 2)
+        {
+            playerRessources.fuelCurrentAmount = 0;
+            Instantiate(fuelPickup, fuelPosition.transform.position, Quaternion.identity);
+        }
+        
     }
 
     public void QuitGame()

@@ -18,17 +18,17 @@ public class PlayerJumpingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.isGrounded = false;
-        stateMachine.isJumping = true;
-
-        stateMachine.rb2D.AddForce(stateMachine.PlayerData.jumpForce, ForceMode2D.Impulse);
-
         stateMachine.InputReader.DashEvent += OnDash;
 
+
+        stateMachine.isGrounded = false;
+        stateMachine.isJumping = true;
         stateMachine.canCoyoteJump = false;
         stateMachine.isSliding = false;
-
         stateMachine.previousStateWasJump = true;
+
+
+        stateMachine.rb2D.AddForce(stateMachine.PlayerData.jumpForce, ForceMode2D.Impulse);
 
         stateMachine.Animator.Play(JumpingHash);
     }
@@ -39,11 +39,19 @@ public class PlayerJumpingState : PlayerBaseState
         stateMachine.isJumping = false;
 
         hasLeftGroundCounter = 0f;
+
+        
     }
 
     public override void Tick(float deltaTime)
     {
         if (stateMachine.isDead) { stateMachine.SwitchState(new PlayerDeathState(stateMachine)); }
+
+
+        if (stateMachine.InputReader.jumpIsOver && stateMachine.rb2D.velocity.y > 0) {
+
+            stateMachine.rb2D.velocity = new Vector2(stateMachine.rb2D.velocity.x, stateMachine.rb2D.velocity.y/1.05f);
+        }
 
 
         stateMachine.dashDirection2 = new Vector2(stateMachine.InputReader.AerialMovementValue.x,

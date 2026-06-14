@@ -1725,9 +1725,14 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: 77d29a551d66eb443bd13f2cbed8145c, type: 2}
   playerRessources: {fileID: 11400000, guid: ddfbbeb952056c94284ad97defdc24fc, type: 2}
   fuelControls: {fileID: 1375692725}
+  checkPointTracker: {fileID: 0}
+  checkPointNumber: 0
   narrationTXTManager: {fileID: 1761043501}
   isPaused: 0
   pausePanel: {fileID: 0}
+  playerIsDead: 0
+  fuelPickup: {fileID: 0}
+  fuelPosition: {fileID: 0}
 --- !u!1 &1551403011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,7 +2004,7 @@ MonoBehaviour:
   playerStateMachine: {fileID: 1375692720}
   narrationIsOver: 0
   dialogIsAtStart: 0
-  typingSpeed: 0.05
+  typingSpeed: 0.03
   clickSound: {fileID: 230836748}
 --- !u!4 &1761043502
 Transform:

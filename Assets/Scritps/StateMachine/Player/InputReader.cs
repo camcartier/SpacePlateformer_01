@@ -59,14 +59,26 @@ public class InputReader : MonoBehaviour, Controls.IMainGamePCActions
     public void OnJump(InputAction.CallbackContext context)
     {
         //Debug.Log("jump input");
+        if (!context.performed) { JumpEvent?.Invoke(); jumpIsOver = false; }
+        //Debug.Log("jump input after");
+        
+
+        if (context.canceled)
+        {
+           jumpIsOver = true;
+        }
+        
+
+        /*
+        //Debug.Log("jump input");
         if (!context.performed) { return; }
         //Debug.Log("jump input after");
         JumpEvent?.Invoke();
 
         if (context.canceled)
         {
-           jumpIsOver = true;
-        }
+            jumpIsOver = true;
+        }*/
     }
 
 
