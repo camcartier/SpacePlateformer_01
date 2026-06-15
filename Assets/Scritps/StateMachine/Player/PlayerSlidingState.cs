@@ -40,8 +40,9 @@ public class PlayerSlidingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.isDead) { stateMachine.SwitchState(new PlayerDeathState(stateMachine)); }
+        if (stateMachine.isDead) { stateMachine.SwitchState(new PlayerDeathState(stateMachine)); return; }
 
+        if (stateMachine.isDialog) { stateMachine.SwitchState(new PlayerDialogState(stateMachine)); return; }
 
         stateMachine.dashDirection2 = new Vector2(stateMachine.InputReader.AerialMovementValue.x,
                                                   stateMachine.InputReader.AerialMovementValue.y).normalized;

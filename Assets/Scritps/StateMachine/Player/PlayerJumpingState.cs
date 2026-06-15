@@ -45,8 +45,9 @@ public class PlayerJumpingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.isDead) { stateMachine.SwitchState(new PlayerDeathState(stateMachine)); }
+        if (stateMachine.isDead) { stateMachine.SwitchState(new PlayerDeathState(stateMachine)); return; }
 
+        if (stateMachine.isDialog) { stateMachine.SwitchState(new PlayerDialogState(stateMachine)); return; }
 
         if (stateMachine.InputReader.jumpIsOver && stateMachine.rb2D.velocity.y > 0) {
 

@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("game Manager says isDialog is " + playerStateMachine.isDialog);
+
 
         if (playerIsDead)
         {
@@ -82,10 +84,10 @@ public class GameManager : MonoBehaviour
                 {
                     playerStateMachine.isDialog = true;
                 }
-                else
+                /*else
                 {
                     playerStateMachine.isDialog = false;
-                }
+                }*/
             }
 
 

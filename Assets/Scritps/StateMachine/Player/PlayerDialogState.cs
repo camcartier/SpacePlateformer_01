@@ -11,6 +11,8 @@ public class PlayerDialogState : PlayerBaseState
     public override void Enter()
     {
         Debug.Log("dialog");
+
+        stateMachine.rb2D.velocity = Vector2.zero;
     }
 
     public override void Exit()

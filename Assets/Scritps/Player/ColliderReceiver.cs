@@ -33,7 +33,7 @@ public class ColliderReceiver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("is grounded is" + stateMachine.isGrounded);
+        //Debug.Log("is grounded is" + stateMachine.isGrounded);
         //Debug.Log("is sliding is" + isSliding);
 
 

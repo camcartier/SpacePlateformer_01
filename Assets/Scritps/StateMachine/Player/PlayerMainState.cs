@@ -52,7 +52,7 @@ public class PlayerMainState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.isDead) { stateMachine.SwitchState(new PlayerDeathState(stateMachine)); }
+        if (stateMachine.isDead) { stateMachine.SwitchState(new PlayerDeathState(stateMachine)); return; }
 
         if (stateMachine.isDialog) { stateMachine.SwitchState(new PlayerDialogState(stateMachine)); return; }
 
@@ -79,7 +79,7 @@ public class PlayerMainState : PlayerBaseState
         //Debug.Log("is on a slope is " +stateMachine.isOnASLope);
         //Debug.Log("sliding is " +stateMachine.isSliding);
 
-        Debug.Log("slope direction" +stateMachine.slopeDirection);
+        //Debug.Log("slope direction" +stateMachine.slopeDirection);
 
         if (!stateMachine.isOnASLope)
         {

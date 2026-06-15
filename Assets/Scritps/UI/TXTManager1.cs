@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using TMPro.Examples;
 
-public class NarrationTXTManager : MonoBehaviour
+public class TXTManager1 : MonoBehaviour
 {
     public string[] arrayOfText;
     [SerializeField] TextMeshProUGUI displayTXT;
@@ -17,7 +17,6 @@ public class NarrationTXTManager : MonoBehaviour
 
     public string[] arrayOfNames = new string[6];
     [SerializeField] TextMeshProUGUI namesTXT;
-    //private int currentNamesTXTIndex;
 
     [SerializeField] GameObject narrationPanel;
     [SerializeField] GameObject iconeImage;
@@ -33,49 +32,33 @@ public class NarrationTXTManager : MonoBehaviour
 
     [SerializeField] AudioSource clickSound;
 
-    private InfoHolder infoHolder;
+    //private InfoHolder infoHolder;
 
     private void Awake()
     {
-        infoHolder = InfoHolder.Instance;
+        //infoHolder = InfoHolder.Instance;
     }
 
-    void Start()
+
+
+    private void OnEnable()
     {
-        //currentTXTIndex = 0;
-        if (!infoHolder.dialogHasHappened)
+
+        if (narrationPanel.activeInHierarchy == false)
         {
-            if (SceneManager.GetActiveScene().name == ("TestLevel1"))
-            {
-                dialogIsAtStart = true;
-            }
 
             narrationPanel.SetActive(true);
             iconeImage.SetActive(true);
-
-            displayTXT.text = string.Empty;
-
-            StartDialog();
-        }
-        else
-        {
-            narrationPanel.SetActive(false);
-            iconeImage.SetActive(false);
+            playerStateMachine.isDialog = true;
+            Debug.Log("on enable isDialog is"+playerStateMachine.isDialog);  
         }
 
-        /*
-        if (infoHolder.dialogHasHappened) { Debug.Log("je vois que le dialoque est passé"); }
-        else { Debug.Log("le dialoque n'est pas passé"); }
+        displayTXT.text = string.Empty;
 
-        Debug.Log("Référence sérialisée : " + infoHolder.GetInstanceID());
-        Debug.Log("Singleton : " + InfoHolder.Instance.GetInstanceID());
-
-        Debug.Log("Valeur sérialisée : " + infoHolder.dialogHasHappened);
-        Debug.Log("Valeur singleton : " + InfoHolder.Instance.dialogHasHappened);
-        */
+        StartDialog();
     }
 
-   
+
     void Update()
     {
         //displayTXT.text = arrayOfText[currentTXTIndex];
@@ -98,11 +81,6 @@ public class NarrationTXTManager : MonoBehaviour
     }
 
 
-
-    private void LoadGameScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
 
     void StartDialog()
     {
@@ -133,7 +111,7 @@ public class NarrationTXTManager : MonoBehaviour
         {
             currentTXTIndex++;
             displayTXT.text = string.Empty;
-
+            playerStateMachine.isDialog = true;
 
             displayTXTCoroutine = StartCoroutine(DisplayLetters());
         }
