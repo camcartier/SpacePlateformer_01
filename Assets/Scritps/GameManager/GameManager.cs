@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     //[SerializeField] CheckPointControls checkPointControls;
     public int checkPointNumber;
 
-    [SerializeField] NarrationTXTManager narrationTXTManager;
+    [SerializeField] TXTManagerStart TXTManagerStart;
     private InfoHolder infoHolder;
 
     public bool isPaused;
@@ -70,17 +70,21 @@ public class GameManager : MonoBehaviour
             
         }
 
-        if (narrationTXTManager != null)
+        
+
+
+
+        if (TXTManagerStart != null && infoHolder != null)
         {
             if (!infoHolder.dialogHasHappened)
             {
-                if (SceneManager.GetActiveScene().name == "IntroDialogScene" && playerStateMachine != null && !narrationTXTManager.narrationIsOver)
+                if (SceneManager.GetActiveScene().name == "IntroDialogScene" && playerStateMachine != null && !TXTManagerStart.narrationIsOver)
                 {
                     playerStateMachine.isInHub = true;
                     playerStateMachine.isDialog = true;
                 }
 
-                if (narrationTXTManager.dialogIsAtStart && !narrationTXTManager.narrationIsOver)
+                if (TXTManagerStart.dialogIsAtStart && !TXTManagerStart.narrationIsOver)
                 {
                     playerStateMachine.isDialog = true;
                 }

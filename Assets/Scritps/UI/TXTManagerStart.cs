@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using TMPro.Examples;
 
-public class NarrationTXTManager : MonoBehaviour
+public class TXTManagerStart : MonoBehaviour
 {
     public string[] arrayOfText;
     [SerializeField] TextMeshProUGUI displayTXT;
@@ -42,26 +42,28 @@ public class NarrationTXTManager : MonoBehaviour
 
     void Start()
     {
-        //currentTXTIndex = 0;
-        if (!infoHolder.dialogHasHappened)
-        {
-            if (SceneManager.GetActiveScene().name == ("TestLevel1"))
+
+
+        if (infoHolder != null) {
+
+            if (!infoHolder.dialogHasHappened)
             {
                 dialogIsAtStart = true;
+                narrationPanel.SetActive(true);
+                iconeImage.SetActive(true);
+
+                displayTXT.text = string.Empty;
+
+                StartDialog();
             }
-
-            narrationPanel.SetActive(true);
-            iconeImage.SetActive(true);
-
-            displayTXT.text = string.Empty;
-
-            StartDialog();
+            else
+            {
+                narrationPanel.SetActive(false);
+                iconeImage.SetActive(false);
+            }
         }
-        else
-        {
-            narrationPanel.SetActive(false);
-            iconeImage.SetActive(false);
-        }
+
+
 
         /*
         if (infoHolder.dialogHasHappened) { Debug.Log("je vois que le dialoque est passé"); }
