@@ -31,6 +31,8 @@ public class PlayerJumpingState : PlayerBaseState
         stateMachine.rb2D.AddForce(stateMachine.PlayerData.jumpForce, ForceMode2D.Impulse);
 
         stateMachine.Animator.Play(JumpingHash);
+        //mon son est trop moche
+        //stateMachine.jumpSound.Play();
     }
 
     public override void Exit()

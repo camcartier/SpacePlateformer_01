@@ -25,11 +25,8 @@ public class PlayerDashingState : PlayerBaseState
 
         timerCounter = 0;
         stateMachine.rb2D.velocity = Vector2.zero;
-        //stateMachine.rb2D.gravityScale = 0f;
 
         dashDir = stateMachine.dashDirection.transform.position;
-
-        //dashDir2 = new Vector2(stateMachine.InputReader.GroundedMovementValue, stateMachine.InputReader.GroundedMovementValue) ;
 
         //ancienne version
         //stateMachine.PlayerRessources.fuelCurrentAmount -= 2f;
@@ -37,6 +34,8 @@ public class PlayerDashingState : PlayerBaseState
         stateMachine.isSliding = false;
 
         stateMachine.rb2D.AddForce(stateMachine.dashDirection2 * stateMachine.PlayerData.dashForce, ForceMode2D.Impulse);
+
+        //stateMachine.dashSound.Play();
     }
 
     public override void Exit()

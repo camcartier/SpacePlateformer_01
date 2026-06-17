@@ -1020,7 +1020,7 @@ GameObject:
   m_Component:
   - component: {fileID: 562722804}
   m_Layer: 0
-  m_Name: '                  ----CHARACTERS----'
+  m_Name: ---------------CHARACTERS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1053,7 +1053,7 @@ GameObject:
   m_Component:
   - component: {fileID: 573030986}
   m_Layer: 0
-  m_Name: '                    --INTERRACTABLES--'
+  m_Name: ---------------INTERRACTABLES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1548,7 +1548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4436104456777483513, guid: ad83e4deec7bf8044bafd6ba629dc2d9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.15
+      value: 5.09
       objectReference: {fileID: 0}
     - target: {fileID: 4436104456777483513, guid: ad83e4deec7bf8044bafd6ba629dc2d9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1727,7 +1727,7 @@ MonoBehaviour:
   fuelControls: {fileID: 1375692725}
   checkPointTracker: {fileID: 0}
   checkPointNumber: 0
-  narrationTXTManager: {fileID: 1761043501}
+  TXTManagerStart: {fileID: 1761043501}
   isPaused: 0
   pausePanel: {fileID: 0}
   playerIsDead: 0
@@ -1789,7 +1789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1603893186}
   m_Layer: 0
-  m_Name: '                    ----PLATEFORMS----'
+  m_Name: ---------------PLATEFORMS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1956,7 +1956,7 @@ GameObject:
   - component: {fileID: 1761043501}
   - component: {fileID: 1761043503}
   m_Layer: 0
-  m_Name: NarrationTXTManager
+  m_Name: TXTManager_Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2188,7 +2188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1834091071}
   m_Layer: 0
-  m_Name: '                    -----MANAGERS-----'
+  m_Name: ---------------MANAGERS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

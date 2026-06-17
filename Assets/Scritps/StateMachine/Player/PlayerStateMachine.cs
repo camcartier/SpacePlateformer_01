@@ -87,6 +87,10 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public GameManager gameManager { get; set; }
 
+    [field: SerializeField] public AudioSource stepSound { get; set; }
+    [field: SerializeField] public AudioSource jumpSound { get; set; }
+    [field: SerializeField] public AudioSource dashSound { get; set; }
+
     void Start()
     {
         //GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();

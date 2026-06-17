@@ -57,6 +57,7 @@ public class PlayerMainState : PlayerBaseState
         if (stateMachine.isDialog) { stateMachine.SwitchState(new PlayerDialogState(stateMachine)); return; }
 
 
+
         stateMachine.dashDirection2 = new Vector2(stateMachine.InputReader.AerialMovementValue.x, 
                                                   stateMachine.InputReader.AerialMovementValue.y).normalized;
 
