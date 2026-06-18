@@ -71,6 +71,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3d6207a-fcb2-4f45-a26d-bb140b061b4b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -205,6 +214,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a976547f-fe05-4913-9f7c-c5f4258baacd"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -218,6 +238,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_MainGamePC_MoveAerial = m_MainGamePC.FindAction("MoveAerial", throwIfNotFound: true);
         m_MainGamePC_Fly = m_MainGamePC.FindAction("Fly", throwIfNotFound: true);
         m_MainGamePC_Dash = m_MainGamePC.FindAction("Dash", throwIfNotFound: true);
+        m_MainGamePC_Shoot = m_MainGamePC.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -282,6 +303,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_MainGamePC_MoveAerial;
     private readonly InputAction m_MainGamePC_Fly;
     private readonly InputAction m_MainGamePC_Dash;
+    private readonly InputAction m_MainGamePC_Shoot;
     public struct MainGamePCActions
     {
         private @Controls m_Wrapper;
@@ -291,6 +313,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @MoveAerial => m_Wrapper.m_MainGamePC_MoveAerial;
         public InputAction @Fly => m_Wrapper.m_MainGamePC_Fly;
         public InputAction @Dash => m_Wrapper.m_MainGamePC_Dash;
+        public InputAction @Shoot => m_Wrapper.m_MainGamePC_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_MainGamePC; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -315,6 +338,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Dash.started -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnDash;
+                @Shoot.started -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_MainGamePCActionsCallbackInterface = instance;
             if (instance != null)
@@ -334,6 +360,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -345,5 +374,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnMoveAerial(InputAction.CallbackContext context);
         void OnFly(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }

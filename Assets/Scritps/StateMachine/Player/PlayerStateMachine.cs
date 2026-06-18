@@ -17,10 +17,9 @@ public class PlayerStateMachine : StateMachine
 
     
 
-
     [field: SerializeField] public ColliderReceiver ColliderReceiver { get; private set; }
-
     [field: SerializeField] public Collision2D aieCollider { get; set; }
+    
 
     [field: SerializeField] public bool canJump { get; set; }
     [field: SerializeField] public bool isJumping { get; set; }
@@ -29,17 +28,21 @@ public class PlayerStateMachine : StateMachine
 
     public bool previousStateWasJump;
 
+    [field: SerializeField] public bool isGrounded { get; set; }
+    [field: SerializeField] public bool jumpIsOver { get; set; }
+
+
 
     [field: SerializeField] public bool canDash { get; set; }
     [field: SerializeField] public float dashResetTimer { get; set; }
     [field: SerializeField] public DashResetTImer dashResetTimerScript { get; set; }
-
     [field: SerializeField] public GameObject dashDirection { get; set; }
     [field: SerializeField] public Vector2 dashDirection2 { get; set; }
 
 
-    [field: SerializeField] public bool isGrounded { get; set; }
-    [field: SerializeField] public bool jumpIsOver { get; set; }
+    [field: SerializeField] public GameObject bulletStartPoint { get; set; }
+    [field: SerializeField] public GameObject bullet { get; set; }
+    [field: SerializeField] public Instantiator instantiator { get; set; }
 
 
     [field: SerializeField] public bool isOnASLope { get; set; }

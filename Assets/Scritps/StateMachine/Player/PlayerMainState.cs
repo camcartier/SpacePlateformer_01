@@ -26,6 +26,7 @@ public class PlayerMainState : PlayerBaseState
         stateMachine.InputReader.JumpEvent += OnJump;
         stateMachine.InputReader.FlyEvent += OnFly;
         stateMachine.InputReader.DashEvent += OnDash;
+        stateMachine.InputReader.ShootEvent += OnShoot;
 
         stateMachine.previousStateWasJump = false;
         stateMachine.isSliding = false;
@@ -44,6 +45,7 @@ public class PlayerMainState : PlayerBaseState
         stateMachine.InputReader.JumpEvent -= OnJump;
         stateMachine.InputReader.FlyEvent -= OnFly;
         stateMachine.InputReader.DashEvent -= OnDash;
+        stateMachine.InputReader.ShootEvent -= OnShoot;
         
         
         stateMachine.Animator.Play(IdleHash);
@@ -214,4 +216,9 @@ public class PlayerMainState : PlayerBaseState
         }
     }
 
+
+    private void OnShoot()
+    {
+        stateMachine.SwitchState(new PlayerShootingState(stateMachine));
+    }
 }

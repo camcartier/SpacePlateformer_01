@@ -62,6 +62,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("game Manager says isDialog is " + playerStateMachine.isDialog);
 
+        if (playerStateMachine.rb2D.velocity.y > 0)
+        {
+            Debug.Log(playerStateMachine.rb2D.velocity);
+        }
+        
+
 
         if (playerIsDead)
         {
