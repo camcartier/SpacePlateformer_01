@@ -883,7 +883,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PascaJump_4: 752977815
+      PascaJump_1: -2144768074
       PascaJump_6: 1707676637
       PascaJump_23: -2077637344
       PascaJump_17: 659602291
@@ -916,8 +916,8 @@ TextureImporter:
       PascaJump_27: -76061676
       PascaJump_8: 1570748505
       PascaJump_30: 317080365
+      PascaJump_4: 752977815
       PascaJump_21: -988985346
-      PascaJump_1: -2144768074
       PascaJump_9: -550711862
   spritePackingTag: 
   pSDRemoveMatte: 0

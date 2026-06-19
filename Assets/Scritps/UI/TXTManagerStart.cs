@@ -33,6 +33,7 @@ public class TXTManagerStart : MonoBehaviour
     private Coroutine displayTXTCoroutine;
 
     [SerializeField] AudioSource clickSound;
+    [SerializeField] AudioSource talkingSound1;
 
     private InfoHolder infoHolder;
 
@@ -52,8 +53,9 @@ public class TXTManagerStart : MonoBehaviour
                 dialogIsAtStart = true;
                 narrationPanel.SetActive(true);
                 iconeImage.SetActive(true);
+
+                if (UIPanel != null) { UIPanel.SetActive(false); }
                 
-                UIPanel.SetActive(false);
 
                 displayTXT.text = string.Empty;
 
@@ -112,6 +114,9 @@ public class TXTManagerStart : MonoBehaviour
     void StartDialog()
     {
         currentTXTIndex = 0;
+
+        talkingSound1.Play();
+
         displayTXTCoroutine = StartCoroutine(DisplayLetters());
     }
 
@@ -125,6 +130,7 @@ public class TXTManagerStart : MonoBehaviour
             displayTXT.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+        talkingSound1.Stop();
     }
 
     public void NextLine()
@@ -132,6 +138,7 @@ public class TXTManagerStart : MonoBehaviour
         if (displayTXTCoroutine != null)
         {
             StopCoroutine(displayTXTCoroutine);
+            
         }
 
         if (currentTXTIndex < arrayOfText.Length - 1)
@@ -139,6 +146,7 @@ public class TXTManagerStart : MonoBehaviour
             currentTXTIndex++;
             displayTXT.text = string.Empty;
 
+            talkingSound1.Play();
 
             displayTXTCoroutine = StartCoroutine(DisplayLetters());
         }
@@ -149,7 +157,9 @@ public class TXTManagerStart : MonoBehaviour
             playerStateMachine.isDialog = false;
             narrationIsOver = true;
 
-            UIPanel.SetActive(true);
+            if (UIPanel != null) { UIPanel.SetActive(true); }
+
+            
         }
 
     }
