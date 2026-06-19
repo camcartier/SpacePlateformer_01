@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
         if (playerStateMachine.rb2D.velocity.y > 0)
         {
-            Debug.Log(playerStateMachine.rb2D.velocity);
+            //Debug.Log(playerStateMachine.rb2D.velocity);
         }
         
 

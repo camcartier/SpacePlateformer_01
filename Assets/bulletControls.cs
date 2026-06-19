@@ -10,11 +10,22 @@ public class bulletControls : MonoBehaviour
     [SerializeField] GameObject impactPS;
     private GameObject instatiatedPS;
 
+    private GameObject Player;
+
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        Player = GameObject.Find("Player");
 
-        rb2D.AddForce(force, ForceMode2D.Impulse); 
+        if (Player.transform.position.x - gameObject.transform.position.x > 0)
+        {
+            rb2D.AddForce(-force, ForceMode2D.Impulse);
+        }
+        else
+        {
+            rb2D.AddForce(force, ForceMode2D.Impulse);
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

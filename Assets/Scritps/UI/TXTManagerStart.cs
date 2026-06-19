@@ -21,6 +21,7 @@ public class TXTManagerStart : MonoBehaviour
 
     [SerializeField] GameObject narrationPanel;
     [SerializeField] GameObject iconeImage;
+    [SerializeField] GameObject UIPanel;
 
     [SerializeField] PlayerStateMachine playerStateMachine;
 
@@ -51,6 +52,8 @@ public class TXTManagerStart : MonoBehaviour
                 dialogIsAtStart = true;
                 narrationPanel.SetActive(true);
                 iconeImage.SetActive(true);
+                
+                UIPanel.SetActive(false);
 
                 displayTXT.text = string.Empty;
 
@@ -145,6 +148,8 @@ public class TXTManagerStart : MonoBehaviour
             iconeImage.SetActive(false);
             playerStateMachine.isDialog = false;
             narrationIsOver = true;
+
+            UIPanel.SetActive(true);
         }
 
     }
