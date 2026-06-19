@@ -16,6 +16,8 @@ public class PlayerAttractedState : PlayerBaseState
         //Debug.Log("attracted");
         stateMachine.rb2D.velocity = Vector2.zero;
         stateMachine.rb2D.gravityScale = 0f;
+
+        stateMachine.boostSound.Play();
     }
 
     public override void Exit()

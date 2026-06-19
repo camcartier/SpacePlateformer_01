@@ -29,14 +29,11 @@ public class PlayerBoostedState : PlayerBaseState
 
         stateMachine.boostedParticles.Play();
 
+
         pointA = stateMachine.currentBooster.GetComponentInChildren<PointA>();
         pointB = stateMachine.currentBooster.GetComponentInChildren<PointB>();
 
         stateMachine.rb2D.gravityScale = 5f;
-        //stateMachine.rb2D.velocity = Vector2.zero;
-        //stateMachine.rb2D.velocity = stateMachine.currentBooster.transform.up * stateMachine.PlayerData.boostStrength;
-
-        //stateMachine.rb2D.AddForce(new Vector2(0, 200), ForceMode2D.Impulse);
 
         hasBeenBoosted = true;
         stateMachine.isBoosted = true;  
