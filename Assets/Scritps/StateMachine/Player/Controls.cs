@@ -80,6 +80,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Actions"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f38e94c-551a-48ed-99eb-cb9bead8c2f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -225,6 +234,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7bd50ab6-94e1-4b58-9e4e-93d02420b6bd"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Actions"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -239,6 +259,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_MainGamePC_Fly = m_MainGamePC.FindAction("Fly", throwIfNotFound: true);
         m_MainGamePC_Dash = m_MainGamePC.FindAction("Dash", throwIfNotFound: true);
         m_MainGamePC_Shoot = m_MainGamePC.FindAction("Shoot", throwIfNotFound: true);
+        m_MainGamePC_Actions = m_MainGamePC.FindAction("Actions", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,6 +325,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_MainGamePC_Fly;
     private readonly InputAction m_MainGamePC_Dash;
     private readonly InputAction m_MainGamePC_Shoot;
+    private readonly InputAction m_MainGamePC_Actions;
     public struct MainGamePCActions
     {
         private @Controls m_Wrapper;
@@ -314,6 +336,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Fly => m_Wrapper.m_MainGamePC_Fly;
         public InputAction @Dash => m_Wrapper.m_MainGamePC_Dash;
         public InputAction @Shoot => m_Wrapper.m_MainGamePC_Shoot;
+        public InputAction @Actions => m_Wrapper.m_MainGamePC_Actions;
         public InputActionMap Get() { return m_Wrapper.m_MainGamePC; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -341,6 +364,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnShoot;
+                @Actions.started -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnActions;
+                @Actions.performed -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnActions;
+                @Actions.canceled -= m_Wrapper.m_MainGamePCActionsCallbackInterface.OnActions;
             }
             m_Wrapper.m_MainGamePCActionsCallbackInterface = instance;
             if (instance != null)
@@ -363,6 +389,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Actions.started += instance.OnActions;
+                @Actions.performed += instance.OnActions;
+                @Actions.canceled += instance.OnActions;
             }
         }
     }
@@ -375,5 +404,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnFly(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnActions(InputAction.CallbackContext context);
     }
 }

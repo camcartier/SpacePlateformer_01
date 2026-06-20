@@ -159,7 +159,7 @@ public class TXTManagerStart : MonoBehaviour
 
             if (UIPanel != null) { UIPanel.SetActive(true); }
 
-            
+            talkingSound1.Stop();
         }
 
     }

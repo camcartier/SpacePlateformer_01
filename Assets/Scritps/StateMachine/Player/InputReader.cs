@@ -8,7 +8,7 @@ public class InputReader : MonoBehaviour, Controls.IMainGamePCActions
 {
     private Controls controls;
 
-    public event Action JumpEvent, FlyEvent, DashEvent, ShootEvent;
+    public event Action JumpEvent, FlyEvent, DashEvent, ShootEvent, ActionsEvent;
     
     public bool jumpIsOver;
     public bool flyIsOver;
@@ -103,5 +103,12 @@ public class InputReader : MonoBehaviour, Controls.IMainGamePCActions
         if (!context.performed) { return; }
 
         ShootEvent?.Invoke();
+    }
+
+    public void OnActions(InputAction.CallbackContext context)
+    {
+        if (!context.performed) { return; }
+
+        ActionsEvent?.Invoke();
     }
 }

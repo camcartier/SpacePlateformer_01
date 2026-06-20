@@ -219,6 +219,10 @@ public class PlayerMainState : PlayerBaseState
 
     private void OnShoot()
     {
-        stateMachine.SwitchState(new PlayerShootingState(stateMachine));
+        if (!stateMachine.isInHub)
+        {
+            stateMachine.SwitchState(new PlayerShootingState(stateMachine));
+        }
+        
     }
 }
