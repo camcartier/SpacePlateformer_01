@@ -31,8 +31,8 @@ public class FuelPickupControls : MonoBehaviour
             }
             else { Debug.Log("pas trouvé"); }
 
-            Destroy(gameObject);
-
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         if (SceneManager.GetActiveScene().name == "TestLevel1" && fuelDialogPanel != null)

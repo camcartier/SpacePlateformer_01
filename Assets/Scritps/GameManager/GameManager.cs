@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject fuelPickup;
     [SerializeField] GameObject fuelPosition;
 
+    public GameObject[] fuelPickups = new GameObject[0];
     public PushPF_Controls[] pushPFs = new PushPF_Controls[0];
 
     private void Awake()
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour
 
 
         pushPFs = GameObject.FindObjectsOfType<PushPF_Controls>();
-
+        fuelPickups = GameObject.FindGameObjectsWithTag("Fuel");
     }
 
     // Update is called once per frame
@@ -158,11 +159,18 @@ public class GameManager : MonoBehaviour
         playerIsDead = false;
         Player.GetComponent<PlayerStateMachine>().isDead = false;
         
-        if (checkPointTracker.checkpointNumber == 2)
+        if (checkPointTracker.checkpointNumber >= 2)
         {
             playerRessources.fuelCurrentAmount = 0;
-            Instantiate(fuelPickup, fuelPosition.transform.position, Quaternion.identity);
+            
+            foreach (GameObject fuel in fuelPickups)
+            {
+                Instantiate(fuelPickup, fuel.transform.position, Quaternion.identity);
+            }
+            
         }
+
+
 
         foreach (PushPF_Controls pushPF in pushPFs) 
         {

@@ -9,6 +9,7 @@ TagManager:
   - Asteroid
   - CheckPoint
   - Bullet
+  - Fuel
   layers:
   - Default
   - TransparentFX
