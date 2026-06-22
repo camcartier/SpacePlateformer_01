@@ -17,6 +17,8 @@ public class PlayerFallingState : PlayerBaseState
     private const float CrossFadeDuration = 0.1f;
     private readonly int FallingHash = Animator.StringToHash("Fall");
 
+    private int numberOfShotsFired;
+
     public PlayerFallingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -30,26 +32,28 @@ public class PlayerFallingState : PlayerBaseState
 
         stateMachine.InputReader.JumpEvent += OnJump;
         stateMachine.InputReader.DashEvent += OnDash;
-        //if (stateMachine.rb2D.gravityScale > 1f)
-        //{
+        stateMachine.InputReader.ShootEvent += OnShoot;
 
-        //}
-        //stateMachine.rb2D.gravityScale = 1f;
 
         stateMachine.Animator.Play(FallingHash);
+
+
+        stateMachine.canShoot = true;
     }
 
     public override void Exit()
     {
         stateMachine.InputReader.JumpEvent -= OnJump;
         stateMachine.InputReader.DashEvent -= OnDash;
+        stateMachine.InputReader.ShootEvent -= OnShoot;
 
         stateMachine.rb2D.gravityScale = 1f;
 
         stateMachine.canCoyoteJump = false;
-        
-        timerCounter = 0f;
+        stateMachine.canShoot = true;
 
+        timerCounter = 0f;
+        numberOfShotsFired = 0;
     }
 
     public override void Tick(float deltaTime)
@@ -60,6 +64,9 @@ public class PlayerFallingState : PlayerBaseState
 
         stateMachine.dashDirection2 = new Vector2(stateMachine.InputReader.AerialMovementValue.x,
                                                   stateMachine.InputReader.AerialMovementValue.y).normalized;
+
+
+        if (numberOfShotsFired > 0) { stateMachine.canShoot = false; }             
 
 
         //Debug.Log("falling");
@@ -181,4 +188,14 @@ public class PlayerFallingState : PlayerBaseState
         }
     }
 
+    private void OnShoot()
+    {
+        if (stateMachine.canShoot)
+        {
+            stateMachine.instantiator.InstantiateBullet(stateMachine.bullet, stateMachine.bulletStartPoint.transform.position, Quaternion.identity);
+            numberOfShotsFired++;
+        }
+
+    
+    }
 }

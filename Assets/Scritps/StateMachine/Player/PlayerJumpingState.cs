@@ -18,15 +18,16 @@ public class PlayerJumpingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.InputReader.DashEvent += OnDash;
 
+        stateMachine.InputReader.DashEvent += OnDash;
+        stateMachine.InputReader.ShootEvent += OnShoot;
 
         stateMachine.isGrounded = false;
         stateMachine.isJumping = true;
         stateMachine.canCoyoteJump = false;
         stateMachine.isSliding = false;
         stateMachine.previousStateWasJump = true;
-
+        stateMachine.canShoot = true;
 
         stateMachine.rb2D.AddForce(stateMachine.PlayerData.jumpForce, ForceMode2D.Impulse);
 
@@ -38,7 +39,9 @@ public class PlayerJumpingState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.DashEvent -= OnDash;
+        stateMachine.InputReader.ShootEvent -= OnShoot;
         stateMachine.isJumping = false;
+        stateMachine.canShoot = true;
 
         hasLeftGroundCounter = 0f;
 
@@ -111,4 +114,16 @@ public class PlayerJumpingState : PlayerBaseState
 
         }
     }
+    private void OnShoot()
+    {
+        if (stateMachine.canShoot)
+        {
+            stateMachine.instantiator.InstantiateBullet(stateMachine.bullet, stateMachine.bulletStartPoint.transform.position, Quaternion.identity);
+            stateMachine.canShoot = false;
+            //not working bcause velocity is being rewritten each frame
+            //stateMachine.rb2D.AddForce(new Vector2(-50, 0), ForceMode2D.Impulse);
+        }
+
+    }
+
 }
