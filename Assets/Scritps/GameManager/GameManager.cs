@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject fuelPickup;
     [SerializeField] GameObject fuelPosition;
 
+    public PushPF_Controls[] pushPFs = new PushPF_Controls[0];
+
     private void Awake()
     {
         infoHolder = InfoHolder.Instance;
@@ -54,6 +56,8 @@ public class GameManager : MonoBehaviour
             fuelControls.canRefuel = true;
         }
 
+
+        pushPFs = GameObject.FindObjectsOfType<PushPF_Controls>();
 
     }
 
@@ -159,6 +163,13 @@ public class GameManager : MonoBehaviour
             playerRessources.fuelCurrentAmount = 0;
             Instantiate(fuelPickup, fuelPosition.transform.position, Quaternion.identity);
         }
+
+        foreach (PushPF_Controls pushPF in pushPFs) 
+        {
+            pushPF.transform.position = pushPF.GetComponent<PushPF_Controls>().initPosition;
+
+        }
+
         
     }
 

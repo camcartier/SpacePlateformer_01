@@ -7,6 +7,7 @@ public class PushPF_Controls : MonoBehaviour
 {
     public Vector2 pushForce;
     private Rigidbody2D rb2d;
+    public Vector2 initPosition;
 
     private bool hasMoved;
 
@@ -22,6 +23,8 @@ public class PushPF_Controls : MonoBehaviour
         rb2d.constraints = RigidbodyConstraints2D.FreezePositionX |
                            RigidbodyConstraints2D.FreezePositionY |
                            RigidbodyConstraints2D.FreezeRotation;
+
+        initPosition = gameObject.transform.position;
     }
 
     // Update is called once per frame
