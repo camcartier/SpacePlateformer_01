@@ -10,6 +10,7 @@ TagManager:
   - CheckPoint
   - Bullet
   - Fuel
+  - CanDamage
   layers:
   - Default
   - TransparentFX

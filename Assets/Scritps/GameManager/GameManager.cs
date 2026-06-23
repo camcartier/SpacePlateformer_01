@@ -65,17 +65,18 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("game Manager says isDialog is " + playerStateMachine.isDialog);
+        //Debug.Log("game Manager says isDialog is " + playerStateMachine.isDialog);
 
         if (playerStateMachine.rb2D.velocity.y > 0)
         {
             //Debug.Log(playerStateMachine.rb2D.velocity);
         }
-        
 
+        Debug.Log(playerIsDead);
 
         if (playerIsDead)
         {
+            
             if (checkPointTracker.currentCheckpoint == null) { RestartLVL(); }
             else { RestartAtCheckpoint();  }
             

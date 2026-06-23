@@ -127,17 +127,24 @@ public class ColliderReceiver : MonoBehaviour
         }
 
 
-
         if (collision.gameObject.CompareTag("Asteroid") && !stateMachine.isBoosted)
         {
-            //Debug.Log("aie");
+            Debug.Log("dead");
 
             stateMachine.aieCollider = collision;
 
-            //a voir si on ne suprime pas cette etape
-            //stateMachine.SwitchState(new PlayerHurtState(stateMachine));
-
             stateMachine.isDead = true ;
+        }
+
+
+        if (collision.gameObject.CompareTag("CanDamage") && !stateMachine.isBoosted)
+        {
+            Debug.Log("aie");
+
+            stateMachine.aieCollider = collision;
+
+            //deja dans l'autre script pour l'instant
+            //stateMachine.isHurt = true ;
         }
 
     }
@@ -161,7 +168,13 @@ public class ColliderReceiver : MonoBehaviour
             stateMachine.isBoosted = true;
             stateMachine.currentBooster = collision.gameObject;
         } 
+
+        
     }
+
+
+
+
 
     private void OnCollisionStay2D(Collision2D collision)
     {

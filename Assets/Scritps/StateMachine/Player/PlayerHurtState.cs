@@ -16,6 +16,8 @@ public class PlayerHurtState : PlayerBaseState
     public override void Enter()
     {
         aieCollision = new Vector2(stateMachine.aieCollider.transform.position.x, stateMachine.aieCollider.transform.position.y);
+        
+        
         direction = new Vector2(stateMachine.transform.position.x - aieCollision.x,
                                                   stateMachine.transform.position.y - aieCollision.y).normalized;
 
@@ -28,13 +30,16 @@ public class PlayerHurtState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.rb2D.drag = 1f;
+
+        timerCounter = 0f;
+        stateMachine.isHurt = false;
     }
 
     public override void Tick(float deltaTime)
     {
         timerCounter -= Time.deltaTime;
 
-        if (timerCounter <= 0f) { stateMachine.SwitchState(new PlayerFallingState(stateMachine)); }
+        if (timerCounter <= 0f) { stateMachine.SwitchState(new PlayerMainState(stateMachine)); }
     }
 
 
