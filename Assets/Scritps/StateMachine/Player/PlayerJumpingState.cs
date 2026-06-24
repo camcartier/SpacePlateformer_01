@@ -57,7 +57,7 @@ public class PlayerJumpingState : PlayerBaseState
 
         if (stateMachine.InputReader.jumpIsOver && stateMachine.rb2D.velocity.y > 0) {
 
-            stateMachine.rb2D.velocity = new Vector2(stateMachine.rb2D.velocity.x, stateMachine.rb2D.velocity.y/1.05f);
+            stateMachine.rb2D.velocity = new Vector2(stateMachine.rb2D.velocity.x * stateMachine.SpeedModifier.speedValue, stateMachine.rb2D.velocity.y/1.05f);
         }
 
 
@@ -69,7 +69,7 @@ public class PlayerJumpingState : PlayerBaseState
         hasLeftGroundCounter += Time.deltaTime;
 
 
-        movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0).normalized;
+        movement = new Vector2(stateMachine.InputReader.GroundedMovementValue * stateMachine.SpeedModifier.speedValue, 0).normalized;
         if (movement.x < 0)
         { stateMachine.Visuals.transform.rotation = new Quaternion(0, 0, 0, 0); }
         if (movement.x > 0)
@@ -102,7 +102,8 @@ public class PlayerJumpingState : PlayerBaseState
             stateMachine.SwitchState(new PlayerMainState(stateMachine)); return;
         }
         
-        stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed, stateMachine.rb2D.velocity.y);
+        stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.groundedSpeed, 
+                                                 stateMachine.rb2D.velocity.y);
 
 
     }

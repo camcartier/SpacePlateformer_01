@@ -61,14 +61,14 @@ public class PlayerMainState : PlayerBaseState
 
 
 
-        stateMachine.dashDirection2 = new Vector2(stateMachine.InputReader.AerialMovementValue.x, 
+        stateMachine.dashDirection2 = new Vector2(stateMachine.InputReader.AerialMovementValue.x , 
                                                   stateMachine.InputReader.AerialMovementValue.y).normalized;
 
 
         RaycastHit2D raycasthit = Physics2D.Raycast(stateMachine.transform.position, Vector2.down, 4f);
 
 
-        movement = new Vector2(stateMachine.InputReader.GroundedMovementValue, 0);
+        movement = new Vector2(stateMachine.InputReader.GroundedMovementValue * stateMachine.SpeedModifier.speedValue, 0);
 
 
         

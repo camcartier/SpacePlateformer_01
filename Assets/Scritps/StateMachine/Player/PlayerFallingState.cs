@@ -90,11 +90,13 @@ public class PlayerFallingState : PlayerBaseState
 
         if (movement.x != 0)
         {
-            stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.fallingSpeed, stateMachine.PlayerData.fallVector.y);
+            stateMachine.rb2D.velocity = new Vector2(movement.x * stateMachine.PlayerData.fallingSpeed, 
+                                                        stateMachine.PlayerData.fallVector.y);
         }
         else
-        {
-            stateMachine.rb2D.velocity = new Vector2(stateMachine.rb2D.velocity.x, stateMachine.PlayerData.fallVector.y);
+        {  
+            stateMachine.rb2D.velocity = new Vector2(stateMachine.rb2D.velocity.x, 
+                                                        stateMachine.PlayerData.fallVector.y);
         }
 
         //rotation
@@ -113,27 +115,6 @@ public class PlayerFallingState : PlayerBaseState
 
 
 
-
-        
-        //if (stateMachine.ColliderReceiver.isGrounded == true)
-        //{
-
-        //     stateMachine.SwitchState(new PlayerMainState(stateMachine)); return;
-        //}
-
-
-        
-        //if (stateMachine.isGrounded == true)
-        //{
-        //    if (stateMachine.InputReader.Jump.ReadValue<float>() > 0 || stateMachine.isJumping)
-        //    {
-        //        //stateMachine.isJumping = false;
-        //        stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
-
-        //    }
-        //    else
-        //    { stateMachine.SwitchState(new PlayerMainState(stateMachine)); return; }
-        //}
 
         if (stateMachine.isGrounded == true)
         {

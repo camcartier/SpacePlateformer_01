@@ -60,6 +60,7 @@ public class PlayerStateMachine : StateMachine
 
 
     [field: SerializeField] public PlayerData PlayerData { get; private set; }
+    [field: SerializeField] public SpeedModifiers SpeedModifier { get; private set; }
     [field: SerializeField] public PlayerRessources PlayerRessources { get; private set; }
 
 

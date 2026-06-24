@@ -51,3 +51,9 @@ TagManager:
   - name: Player
     uniqueID: 2212969943
     locked: 0
+  - name: Plateforms
+    uniqueID: 992509219
+    locked: 0
+  - name: BigPF
+    uniqueID: 1955676327
+    locked: 0

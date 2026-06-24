@@ -354,6 +354,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   <PlayerData>k__BackingField: {fileID: 11400000, guid: 77d29a551d66eb443bd13f2cbed8145c, type: 2}
+  <SpeedModifier>k__BackingField: {fileID: 11400000, guid: 8c66f6db3027df34a8b1e895e0d325d6, type: 2}
   <PlayerRessources>k__BackingField: {fileID: 11400000, guid: ddfbbeb952056c94284ad97defdc24fc, type: 2}
   <flyingParticles>k__BackingField: {fileID: 8082631770755888768}
   <boostedParticles>k__BackingField: {fileID: 796526992092500461}

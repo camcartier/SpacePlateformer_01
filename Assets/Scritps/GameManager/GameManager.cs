@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
             //Debug.Log(playerStateMachine.rb2D.velocity);
         }
 
-        Debug.Log(playerIsDead);
+        //Debug.Log(playerIsDead);
 
         if (playerIsDead)
         {
