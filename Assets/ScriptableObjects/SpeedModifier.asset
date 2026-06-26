@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f717935aa223588438d5457c8ebff6fe, type: 3}
   m_Name: SpeedModifier
   m_EditorClassIdentifier: 
-  speedValue: 0
+  speedValue: 1
+  verticalSpeedValue: 1

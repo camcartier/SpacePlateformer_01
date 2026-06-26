@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e42f3c8cc60c94449d228c8a27f4cfa, type: 3}
-  m_Name: TestPlayerData
+  m_Name: PlayerData
   m_EditorClassIdentifier: 
   groundedSpeed: 20
   aerialSpeed: 18
@@ -22,15 +22,15 @@ MonoBehaviour:
   gravityUpStrength: 1
   gravityUpDrag: 5
   maxGravityScale: 0
-  fallVector: {x: 0, y: -27.36959}
+  fallVector: {x: 0, y: -12.173255}
   fallForce: -50
-  currentSlideValue: 10.2063675
+  currentSlideValue: 2.99039
   slideValueStartPoint: 1
   slideValueEndPoint: 10
   slideForce: 100
   dashDuration: 0.5
-  dashForce: 45
-  dashReset: 1.5
+  dashForce: 47
+  dashReset: 1
   jumpForce: {x: 0, y: 35}
   jumpVelocity: 5
   maxJumpTime: 1
