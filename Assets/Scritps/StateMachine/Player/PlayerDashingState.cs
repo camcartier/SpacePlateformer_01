@@ -11,6 +11,9 @@ public class PlayerDashingState : PlayerBaseState
 
     private float timerCounter;
 
+    //public AnimationCurve dashCurve;
+    //public float dashSpeed;
+
     public PlayerDashingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -27,12 +30,11 @@ public class PlayerDashingState : PlayerBaseState
 
         dashDir = stateMachine.dashDirection.transform.position;
 
-        //ancienne version
-        //stateMachine.PlayerRessources.fuelCurrentAmount -= 2f;
 
         stateMachine.isSliding = false;
 
-        stateMachine.rb2D.AddForce(stateMachine.dashDirection2 * stateMachine.PlayerData.dashForce, ForceMode2D.Impulse);
+        //addforce version
+        //stateMachine.rb2D.AddForce(stateMachine.dashDirection2 * stateMachine.PlayerData.dashForce, ForceMode2D.Impulse);
 
         //stateMachine.dashSound.Play();
     }
@@ -62,6 +64,11 @@ public class PlayerDashingState : PlayerBaseState
 
         timerCounter += Time.deltaTime;
 
+        float t = timerCounter / stateMachine.PlayerData.dashDuration;
+        float multiplier = stateMachine.dashCurve.Evaluate(t);
+
+        stateMachine.rb2D.velocity = stateMachine.dashDirection2 * multiplier * stateMachine.PlayerData.dashForce;
+
         if (timerCounter > stateMachine.PlayerData.dashDuration )
         {
             if (stateMachine.isGrounded && stateMachine.InputReader.Jump.ReadValue<float>() > 0)
@@ -80,16 +87,6 @@ public class PlayerDashingState : PlayerBaseState
                
         }
 
-        /*
-        stateMachine.rb2D.transform.position = Vector2.MoveTowards(stateMachine.rb2D.transform.position,
-                                                                   dashDir,
-                                                                   stateMachine.PlayerData.dashForce * Time.deltaTime);
-        */
-
-        //old old
-        //stateMachine.rb2D.transform.position = Vector2.Lerp(stateMachine.rb2D.transform.position,
-        //                                            stateMachine.dashDirection.transform.position,
-        //                                           .1f * Time.deltaTime);
     }
 
     private void OnDash()

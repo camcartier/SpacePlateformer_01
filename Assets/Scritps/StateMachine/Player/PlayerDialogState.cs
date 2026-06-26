@@ -17,7 +17,7 @@ public class PlayerDialogState : PlayerBaseState
 
     public override void Exit()
     {
-        
+        Debug.Log("exit dialog");
     }
 
     public override void Tick(float deltaTime)

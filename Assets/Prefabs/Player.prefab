@@ -318,6 +318,30 @@ MonoBehaviour:
   <dashResetTimerScript>k__BackingField: {fileID: 0}
   <dashDirection>k__BackingField: {fileID: 5708573681859024838}
   <dashDirection2>k__BackingField: {x: 0, y: 0}
+  <dashCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.10663079
+      outSlope: -0.10663079
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.11074383
+    - serializedVersion: 3
+      time: 1.0018921
+      value: 0.014289856
+      inSlope: -2.7119832
+      outSlope: -2.7119832
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.041322067
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   <bulletStartPoint>k__BackingField: {fileID: 4936826635739679255}
   <bullet>k__BackingField: {fileID: 4408720879039637593, guid: 47b9127d75ad1024286f2bc4d76ccbb6, type: 3}
   <instantiator>k__BackingField: {fileID: 5873574111109833882}

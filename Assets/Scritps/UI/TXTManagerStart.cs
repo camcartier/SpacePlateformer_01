@@ -115,7 +115,11 @@ public class TXTManagerStart : MonoBehaviour
     {
         currentTXTIndex = 0;
 
-        talkingSound1.Play();
+        if (talkingSound1 != null)
+        {
+            talkingSound1.Play();
+        }
+        
 
         displayTXTCoroutine = StartCoroutine(DisplayLetters());
     }
@@ -130,7 +134,11 @@ public class TXTManagerStart : MonoBehaviour
             displayTXT.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
-        talkingSound1.Stop();
+        if (talkingSound1 != null)
+        {
+            talkingSound1.Stop();
+        }
+        
     }
 
     public void NextLine()
@@ -146,7 +154,11 @@ public class TXTManagerStart : MonoBehaviour
             currentTXTIndex++;
             displayTXT.text = string.Empty;
 
-            talkingSound1.Play();
+            if (talkingSound1 == null) 
+            {
+                talkingSound1.Play();
+            }
+            
 
             displayTXTCoroutine = StartCoroutine(DisplayLetters());
         }
@@ -159,7 +171,12 @@ public class TXTManagerStart : MonoBehaviour
 
             if (UIPanel != null) { UIPanel.SetActive(true); }
 
-            talkingSound1.Stop();
+            if (talkingSound1 != null) 
+            {
+                talkingSound1.Stop();
+            }
+
+            
         }
 
     }

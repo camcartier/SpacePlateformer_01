@@ -38,6 +38,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public DashResetTImer dashResetTimerScript { get; set; }
     [field: SerializeField] public GameObject dashDirection { get; set; }
     [field: SerializeField] public Vector2 dashDirection2 { get; set; }
+    [field: SerializeField] public AnimationCurve dashCurve { get; set; }
 
 
     [field: SerializeField] public GameObject bulletStartPoint { get; set; }
