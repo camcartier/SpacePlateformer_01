@@ -38,10 +38,11 @@ public class PlayerJumpingState : PlayerBaseState
         //stateMachine.jumpSound.Play();
 
         //stateMachine.trailRenderer.emitting = true;
-        instantiatedPS =  stateMachine.instantiator.InstantiatePS(stateMachine.jumpParticles, 
+        //deactivated parce que pas assez joli
+        /*instantiatedPS =  stateMachine.instantiator.InstantiatePS(stateMachine.jumpParticles, 
             stateMachine.rb2D.transform.position, 
             Quaternion.identity);
-        instantiatedPS.Play();
+        instantiatedPS.Play();*/
     }
 
     public override void Exit()

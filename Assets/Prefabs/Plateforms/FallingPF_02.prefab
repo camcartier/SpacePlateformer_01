@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 8181932858894268126}
   m_Layer: 3
   m_Name: FallingPF_02
-  m_TagString: Ground
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

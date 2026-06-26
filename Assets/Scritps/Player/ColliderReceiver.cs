@@ -20,9 +20,14 @@ public class ColliderReceiver : MonoBehaviour
     public Vector2 groundCheckSize = new Vector2(0.5f ,0.5f);
     public LayerMask groundLayer;
 
+    //pour la state machine
     public Collision2D aieCollider;
 
     public float slopeSlowingFactor;
+    
+    [SerializeField] ParticleSystem landingPS;
+    [SerializeField] GameObject instantiatePos;
+    private ParticleSystem instantiatedPS;
 
     // Start is called before the first frame update
     void Start()
@@ -115,6 +120,23 @@ public class ColliderReceiver : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            instantiatedPS = Instantiate(landingPS, instantiatePos.transform.position, Quaternion.identity) ;
+            instantiatedPS.Play();
+
+            groundCollision = collision;
+
+            Vector3 normal = collision.GetContact(0).normal;
+            if (normal == Vector3.up)
+            {
+                collisionColliders.Add(collision);
+
+                aieCollider = collision;
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Metal"))
+        {
+
             groundCollision = collision;
 
             Vector3 normal = collision.GetContact(0).normal;

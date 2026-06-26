@@ -11,6 +11,7 @@ TagManager:
   - Bullet
   - Fuel
   - CanDamage
+  - Metal
   layers:
   - Default
   - TransparentFX
