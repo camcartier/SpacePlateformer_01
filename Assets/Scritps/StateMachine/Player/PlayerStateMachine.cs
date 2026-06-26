@@ -67,6 +67,8 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public ParticleSystem flyingParticles { get; set; }
     [field: SerializeField] public ParticleSystem boostedParticles { get; set; }
+    [field: SerializeField] public ParticleSystem jumpParticles { get; set; }
+    [field: SerializeField] public TrailRenderer trailRenderer { get; set; }
     [field: SerializeField] public GameObject Visuals{ get; private set; }
 
 

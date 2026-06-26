@@ -12,6 +12,8 @@ public class PlayerJumpingState : PlayerBaseState
     private const float CrossFadeDuration = 0.1f;
     private readonly int JumpingHash = Animator.StringToHash("Jump2");
 
+    private ParticleSystem instantiatedPS;
+
     public PlayerJumpingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -34,6 +36,12 @@ public class PlayerJumpingState : PlayerBaseState
         stateMachine.Animator.Play(JumpingHash);
         //mon son est trop moche
         //stateMachine.jumpSound.Play();
+
+        //stateMachine.trailRenderer.emitting = true;
+        instantiatedPS =  stateMachine.instantiator.InstantiatePS(stateMachine.jumpParticles, 
+            stateMachine.rb2D.transform.position, 
+            Quaternion.identity);
+        instantiatedPS.Play();
     }
 
     public override void Exit()

@@ -37,11 +37,13 @@ public class PlayerDashingState : PlayerBaseState
         //stateMachine.rb2D.AddForce(stateMachine.dashDirection2 * stateMachine.PlayerData.dashForce, ForceMode2D.Impulse);
 
         //stateMachine.dashSound.Play();
+        stateMachine.trailRenderer.emitting = true;
     }
 
     public override void Exit()
     {
         //stateMachine.InputReader.DashEvent -= OnDash;
+        
     }
 
     public override void Tick(float deltaTime)

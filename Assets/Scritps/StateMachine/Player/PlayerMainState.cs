@@ -38,6 +38,8 @@ public class PlayerMainState : PlayerBaseState
         //stateMachine.rb2D.velocity = new Vector2 (0,0);
 
         //Debug.Log("main");
+
+        stateMachine.trailRenderer.emitting = false;
     }
 
     public override void Exit()

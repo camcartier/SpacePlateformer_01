@@ -39,6 +39,9 @@ public class PlayerFallingState : PlayerBaseState
 
 
         stateMachine.canShoot = true;
+        
+        
+        stateMachine.trailRenderer.emitting = false;
     }
 
     public override void Exit()

@@ -8,4 +8,9 @@ public class Instantiator : MonoBehaviour
     {
         Instantiate(bullet, initPosition, quaternion);
     }
+
+    public ParticleSystem InstantiatePS(ParticleSystem toInstantiate, Vector3 initPosition, Quaternion quaternion)
+    {
+        return Instantiate(toInstantiate, initPosition, quaternion);
+    }
 }

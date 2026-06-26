@@ -44,6 +44,8 @@ public class PlayerBoostedState : PlayerBaseState
         Vector2  direction = ((Vector2)pointB.gameObject.transform.position - (Vector2)pointA.gameObject.transform.position).normalized;
 
         stateMachine.rb2D.AddForce(direction * stateMachine.PlayerData.boostAddForceStrenght, ForceMode2D.Impulse);
+
+        stateMachine.trailRenderer.emitting = true;
     }
 
     public override void Exit()
