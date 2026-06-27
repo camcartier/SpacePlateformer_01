@@ -31,6 +31,7 @@ public class TXTManager1 : MonoBehaviour
     private Coroutine displayTXTCoroutine;
 
     [SerializeField] AudioSource clickSound;
+    [SerializeField] AudioSource talkingSound1;
 
     //private InfoHolder infoHolder;
 
@@ -85,6 +86,12 @@ public class TXTManager1 : MonoBehaviour
     void StartDialog()
     {
         currentTXTIndex = 0;
+
+        if (talkingSound1 != null)
+        {
+            talkingSound1.Play();
+        }
+
         displayTXTCoroutine = StartCoroutine(DisplayLetters());
     }
 
@@ -97,6 +104,11 @@ public class TXTManager1 : MonoBehaviour
         {
             displayTXT.text += letter;
             yield return new WaitForSeconds(typingSpeed);
+        }
+
+        if (talkingSound1 != null)
+        {
+            talkingSound1.Stop();
         }
     }
 
@@ -113,6 +125,11 @@ public class TXTManager1 : MonoBehaviour
             displayTXT.text = string.Empty;
             playerStateMachine.isDialog = true;
 
+            if (talkingSound1 != null)
+            {
+                talkingSound1.Play();
+            }
+
             displayTXTCoroutine = StartCoroutine(DisplayLetters());
         }
         else
@@ -121,6 +138,11 @@ public class TXTManager1 : MonoBehaviour
             iconeImage.SetActive(false);
             playerStateMachine.isDialog = false;
             narrationIsOver = true;
+
+            if (talkingSound1 != null)
+            {
+                talkingSound1.Stop();
+            }
         }
 
     }

@@ -16,6 +16,7 @@ public class PlayerFlyingState : PlayerBaseState
     {
         //Debug.Log("fly");
         stateMachine.flyingParticles.Play();
+        stateMachine.jetpackSound.Play();
 
         stateMachine.InputReader.DashEvent += OnDash;
 
@@ -26,11 +27,13 @@ public class PlayerFlyingState : PlayerBaseState
         stateMachine.isFlying = true;
 
         currentDecceleration = stateMachine.PlayerData.flyMaxAcceleration;
+
     }
 
     public override void Exit()
     {
         stateMachine.flyingParticles.Stop();
+        stateMachine.jetpackSound.Stop();
 
         stateMachine.InputReader.DashEvent -= OnDash;
 

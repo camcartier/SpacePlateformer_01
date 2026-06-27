@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerStateMachine : StateMachine
 {
@@ -13,7 +14,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Animator Animator { get; set; }
     [field: SerializeField] public Rigidbody2D rb2D { get; private set; }
 
-    //[field: SerializeField] public SpriteRenderer MainSpriteRenderer { get; private set; }
+    [field: SerializeField] public SpriteRenderer MainSpriteRenderer { get; private set; }
 
     
 
@@ -44,6 +45,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public GameObject bulletStartPoint { get; set; }
     [field: SerializeField] public GameObject bullet { get; set; }
     [field: SerializeField] public Instantiator instantiator { get; set; }
+    //[field: SerializeField] public Light2D light2D { get; set; }
 
 
     [field: SerializeField] public bool isOnASLope { get; set; }
@@ -100,6 +102,8 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public AudioSource jumpSound { get; private set; }
     [field: SerializeField] public AudioSource dashSound { get; private set; }
     [field: SerializeField] public AudioSource boostSound { get; private set; }
+    [field: SerializeField] public AudioSource landingSound { get; private set; }
+    [field: SerializeField] public AudioSource jetpackSound { get; private set; }
 
     void Start()
     {

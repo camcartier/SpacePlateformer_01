@@ -17,11 +17,13 @@ public class PlayerShootingState : PlayerBaseState
 
         stateMachine.instantiator.InstantiateBullet(stateMachine.bullet, stateMachine.bulletStartPoint.transform.position, Quaternion.identity);
         Debug.Log("shooting");
+
+        //stateMachine.light2D.enabled = true;
     }
 
     public override void Exit()
     {
-        
+        //stateMachine.light2D.enabled = false;
     }
 
     public override void Tick(float deltaTime)

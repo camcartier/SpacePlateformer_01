@@ -38,12 +38,14 @@ public class PlayerDashingState : PlayerBaseState
 
         //stateMachine.dashSound.Play();
         stateMachine.trailRenderer.emitting = true;
+        //stateMachine.MainSpriteRenderer.color = new Color32(218,160,255,255);    
+        stateMachine.MainSpriteRenderer.color = new Color32(236, 216, 255, 255);
     }
 
     public override void Exit()
     {
         //stateMachine.InputReader.DashEvent -= OnDash;
-        
+        stateMachine.MainSpriteRenderer.color = Color.white;
     }
 
     public override void Tick(float deltaTime)

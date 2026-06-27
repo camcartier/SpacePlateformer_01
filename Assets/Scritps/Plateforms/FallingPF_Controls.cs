@@ -35,7 +35,8 @@ public class FallingPF_Controls : MonoBehaviour
     public IEnumerator PlateformFalls()
     {
         spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1f);
+
 
         rigidbody2.constraints = RigidbodyConstraints2D.None;
         rigidbody2.gravityScale = 8f;

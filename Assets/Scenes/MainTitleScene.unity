@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 250824953}
   - component: {fileID: 250824952}
   - component: {fileID: 250824951}
+  - component: {fileID: 250824954}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -425,6 +426,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250824949}
   m_CullTransparentMesh: 1
+--- !u!114 &250824954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250824949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0a36d68a2d8524a89872b1d7896b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  speed: 10
 --- !u!1 &275293089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,6 +1572,7 @@ GameObject:
   - component: {fileID: 1162021328}
   - component: {fileID: 1162021327}
   - component: {fileID: 1162021326}
+  - component: {fileID: 1162021329}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -1679,6 +1695,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162021324}
   m_CullTransparentMesh: 1
+--- !u!114 &1162021329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162021324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0a36d68a2d8524a89872b1d7896b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  speed: 10
 --- !u!1 &1317303866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,6 +2490,7 @@ GameObject:
   - component: {fileID: 1578587506}
   - component: {fileID: 1578587505}
   - component: {fileID: 1578587504}
+  - component: {fileID: 1578587507}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -2582,6 +2613,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578587502}
   m_CullTransparentMesh: 1
+--- !u!114 &1578587507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578587502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0a36d68a2d8524a89872b1d7896b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  speed: 10
 --- !u!1 &1588214315
 GameObject:
   m_ObjectHideFlags: 0

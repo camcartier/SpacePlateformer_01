@@ -28,6 +28,7 @@ public class ColliderReceiver : MonoBehaviour
     [SerializeField] ParticleSystem landingPS;
     [SerializeField] GameObject instantiatePos;
     private ParticleSystem instantiatedPS;
+    [SerializeField] AudioSource landingSound;
 
     // Start is called before the first frame update
     void Start()
@@ -68,9 +69,10 @@ public class ColliderReceiver : MonoBehaviour
         {
             //Debug.Log(hit.name);
             stateMachine.isGrounded = true ;
+
             stateMachine.canCoyoteJump = true;
         }
-        else { stateMachine.isGrounded = false; }
+        else { stateMachine.isGrounded = false; landingSound.Play(); }
 
         if (raycasthit)
         {
@@ -120,6 +122,7 @@ public class ColliderReceiver : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+           
             instantiatedPS = Instantiate(landingPS, instantiatePos.transform.position, Quaternion.identity) ;
             instantiatedPS.Play();
 
@@ -132,6 +135,8 @@ public class ColliderReceiver : MonoBehaviour
 
                 aieCollider = collision;
             }
+
+            //landingSound.Play();
         }
 
         if (collision.gameObject.CompareTag("Metal"))
@@ -146,6 +151,9 @@ public class ColliderReceiver : MonoBehaviour
 
                 aieCollider = collision;
             }
+
+            //landingSound.Play();
+
         }
 
 

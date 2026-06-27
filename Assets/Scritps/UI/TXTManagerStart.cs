@@ -154,7 +154,7 @@ public class TXTManagerStart : MonoBehaviour
             currentTXTIndex++;
             displayTXT.text = string.Empty;
 
-            if (talkingSound1 == null) 
+            if (talkingSound1 != null) 
             {
                 talkingSound1.Play();
             }
