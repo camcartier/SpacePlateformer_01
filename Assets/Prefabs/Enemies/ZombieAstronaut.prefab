@@ -296,3 +296,4 @@ MonoBehaviour:
   pointB: {fileID: 2256179094504960006}
   waitDuration: 1
   walkSpeed: 5
+  lootToSpawn: {fileID: 870200914808132174, guid: fb06db8285bc6d44a99902f64277fc2e, type: 3}

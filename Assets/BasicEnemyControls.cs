@@ -23,6 +23,8 @@ public class BasicEnemyControls : MonoBehaviour
 
     private bool coroutineIsRunning;
 
+    [SerializeField] GameObject lootToSpawn;
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -48,6 +50,7 @@ public class BasicEnemyControls : MonoBehaviour
 
         if (numberOfHits > 1) 
         {
+            Instantiate(lootToSpawn, rb2D.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 

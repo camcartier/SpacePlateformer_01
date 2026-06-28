@@ -22,9 +22,9 @@ MonoBehaviour:
   gravityUpStrength: 1
   gravityUpDrag: 5
   maxGravityScale: 0
-  fallVector: {x: 0, y: -43.175762}
+  fallVector: {x: 0, y: -32.911003}
   fallForce: -50
-  currentSlideValue: 10.310206
+  currentSlideValue: 10.007614
   slideValueStartPoint: 1
   slideValueEndPoint: 10
   slideForce: 100
@@ -41,5 +41,5 @@ MonoBehaviour:
   boostAddForceStrenght: 150
   maxBoostDeviationXStrenght: 200
   flyDecceleration: 2
-  flyMaxAcceleration: 10
+  flyMaxAcceleration: 25
   timeBeforeRespawn: 0.02
