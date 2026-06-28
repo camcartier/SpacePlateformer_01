@@ -104,6 +104,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public AudioSource boostSound { get; private set; }
     [field: SerializeField] public AudioSource landingSound { get; private set; }
     [field: SerializeField] public AudioSource jetpackSound { get; private set; }
+    [field: SerializeField] public AudioSource blasterSound { get; private set; }
 
     void Start()
     {

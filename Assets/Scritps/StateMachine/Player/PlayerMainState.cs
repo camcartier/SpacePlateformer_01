@@ -17,6 +17,9 @@ public class PlayerMainState : PlayerBaseState
     private readonly int IdleHash = Animator.StringToHash("Idle3");
     private readonly int WalkHash = Animator.StringToHash("Walk7");
 
+    private float stepCounterTimer;
+    private float stepTimer = 0.05f;
+
     public PlayerMainState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -58,13 +61,14 @@ public class PlayerMainState : PlayerBaseState
     {
         if (stateMachine.isDead) { stateMachine.SwitchState(new PlayerDeathState(stateMachine)); return; }
         if (stateMachine.isHurt) { stateMachine.SwitchState(new PlayerHurtState(stateMachine)); return; }
-
         if (stateMachine.isDialog) { stateMachine.SwitchState(new PlayerDialogState(stateMachine)); return; }
 
+        /*if (stepCounterTimer > stepTimer) { stateMachine.stepSound.Play(); stepCounterTimer = 0f; }
+        else { stepCounterTimer += Time.deltaTime; }*/
 
 
-        stateMachine.dashDirection2 = new Vector2(stateMachine.InputReader.AerialMovementValue.x , 
-                                                  stateMachine.InputReader.AerialMovementValue.y).normalized;
+            stateMachine.dashDirection2 = new Vector2(stateMachine.InputReader.AerialMovementValue.x,
+                                                      stateMachine.InputReader.AerialMovementValue.y).normalized;
 
 
         RaycastHit2D raycasthit = Physics2D.Raycast(stateMachine.transform.position, Vector2.down, 4f);

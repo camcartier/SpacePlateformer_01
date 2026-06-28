@@ -36,7 +36,7 @@ public class PlayerDashingState : PlayerBaseState
         //addforce version
         //stateMachine.rb2D.AddForce(stateMachine.dashDirection2 * stateMachine.PlayerData.dashForce, ForceMode2D.Impulse);
 
-        //stateMachine.dashSound.Play();
+        stateMachine.dashSound.Play();
         stateMachine.trailRenderer.emitting = true;
         //stateMachine.MainSpriteRenderer.color = new Color32(218,160,255,255);    
         stateMachine.MainSpriteRenderer.color = new Color32(236, 216, 255, 255);

@@ -19,6 +19,7 @@ public class PlayerShootingState : PlayerBaseState
         Debug.Log("shooting");
 
         //stateMachine.light2D.enabled = true;
+        stateMachine.blasterSound.Play();
     }
 
     public override void Exit()
