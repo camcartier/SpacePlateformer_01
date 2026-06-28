@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundedSpeed: 20
   aerialSpeed: 18
-  XaerialSpeed: 22
+  XaerialSpeed: 25
   YaerialSpeed: 18
   fallingSpeed: 15
   gravityDownStrength: 5
@@ -22,7 +22,7 @@ MonoBehaviour:
   gravityUpStrength: 1
   gravityUpDrag: 5
   maxGravityScale: 0
-  fallVector: {x: 0, y: -32.911003}
+  fallVector: {x: 0, y: -33.908764}
   fallForce: -50
   currentSlideValue: 10.007614
   slideValueStartPoint: 1
