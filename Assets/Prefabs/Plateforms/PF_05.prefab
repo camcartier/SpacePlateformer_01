@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3459488400122909216}
   - component: {fileID: 4148972024123659294}
   - component: {fileID: 7336694847185376215}
-  - component: {fileID: 5482365419076476031}
+  - component: {fileID: 8306335339743679526}
   m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.26755333, y: 1.9963613}
+  m_Offset: {x: 0.7736416, y: 2.6918428}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,9 +110,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 33.229916, y: 4.9927225}
+  m_Size: {x: 32.21774, y: 6.3836856}
   m_EdgeRadius: 0
---- !u!68 &5482365419076476031
+--- !u!68 &8306335339743679526
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,11 +128,9 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -16.32644, y: 4.4945703}
-  - {x: -15.872744, y: 6.0156994}
-  - {x: 10.131949, y: 5.4978156}
-  - {x: 15.864546, y: 5.529972}
-  - {x: 16.880745, y: 4.4924884}
+  - {x: -16.322231, y: -0.5858437}
+  - {x: -16.31665, y: 4.957032}
+  - {x: -15.34532, y: 5.8769484}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

@@ -12,6 +12,10 @@ public class BasicEnemyControls : MonoBehaviour
     public float stunDuration;
     private float stunTimerCounter;
 
+    public float touchedPlayerStopTimer;
+    private float touchedPlayerTimerCounter;
+    private bool hasTouchedPlayer;
+
     [SerializeField] GameObject pointA;
     private Vector3 pointAWorld;
     [SerializeField] GameObject pointB;
@@ -46,9 +50,14 @@ public class BasicEnemyControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (targetPosition.x - rb2D.transform.position.x > 0)
+        {
+            rb2D.transform.localScale = new Vector3(1,1,1);
+        }
+        else { rb2D.transform.localScale = new Vector3(-1, 1, 1); }
 
 
-        if (numberOfHits > 1) 
+        if (numberOfHits > 1)
         {
             Instantiate(lootToSpawn, rb2D.transform.position, Quaternion.identity);
             Destroy(gameObject);
@@ -70,6 +79,19 @@ public class BasicEnemyControls : MonoBehaviour
             }
         }
        
+
+        if (hasTouchedPlayer)
+        {
+            rb2D.velocity = Vector3.zero;
+            StopAllCoroutines();
+            touchedPlayerTimerCounter += Time.deltaTime;
+        }
+        if (touchedPlayerTimerCounter > touchedPlayerStopTimer)
+        {
+            touchedPlayerTimerCounter = 0f;
+            StartCoroutine(Patrol());
+            hasTouchedPlayer = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -82,6 +104,11 @@ public class BasicEnemyControls : MonoBehaviour
             spriteRenderer.color = Color.red;
             numberOfHits++;
             
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            hasTouchedPlayer  = true;   
         }
     }
 
