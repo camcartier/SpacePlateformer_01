@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3459488400122909216}
   - component: {fileID: 4148972024123659294}
   - component: {fileID: 7336694847185376215}
-  - component: {fileID: 8306335339743679526}
+  - component: {fileID: 7804844148716766626}
   m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 992509219
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 475eeb259391fd446a52900311c0075d, type: 3}
-  m_Color: {r: 0.9747936, g: 0.9575472, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e414137a081265d4680c6f37ce79389c, type: 3}
+  m_Color: {r: 1, g: 0.9575472, b: 0.99090296, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,20 +99,20 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.7736416, y: 2.6918428}
+  m_Offset: {x: -0.16149902, y: 1.7644391}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 42.666668, y: 32}
+    oldSize: {x: 42.666668, y: 21.333334}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 32.21774, y: 6.3836856}
+  m_Size: {x: 40.398865, y: 4.528878}
   m_EdgeRadius: 0
---- !u!68 &8306335339743679526
+--- !u!68 &7804844148716766626
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,9 +128,10 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -16.322231, y: -0.5858437}
-  - {x: -16.31665, y: 4.957032}
-  - {x: -15.34532, y: 5.8769484}
+  - {x: -20.351727, y: 4.0380807}
+  - {x: -19.37631, y: 5.0225205}
+  - {x: 19.391907, y: 6.3082438}
+  - {x: 20.028028, y: 4.0601044}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -146,7 +147,7 @@ GameObject:
   - component: {fileID: 4288389480382927314}
   - component: {fileID: 1192033033868967653}
   m_Layer: 3
-  m_Name: PF_05
+  m_Name: PF_10
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +166,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3459488400122909216}
-  - {fileID: 4789908667530691581}
+  - {fileID: 8947474528563981842}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -190,7 +191,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!1 &8504365152198524108
+--- !u!1 &8699495250622767052
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,8 +199,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4789908667530691581}
-  - component: {fileID: 4646639858261711882}
+  - component: {fileID: 8947474528563981842}
+  - component: {fileID: 2412560890566309765}
   m_Layer: 3
   m_Name: Light 2D
   m_TagString: Untagged
@@ -207,28 +208,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4789908667530691581
+--- !u!4 &8947474528563981842
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8504365152198524108}
+  m_GameObject: {fileID: 8699495250622767052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11.6, z: 0}
+  m_LocalPosition: {x: -1, y: 12.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4288389480382927314}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4646639858261711882
+--- !u!114 &2412560890566309765
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8504365152198524108}
+  m_GameObject: {fileID: 8699495250622767052}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
@@ -237,9 +238,9 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
+  m_FalloffIntensity: 0.25
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 237d283b
@@ -289,8 +290,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 15.7
-  m_PointLightOuterRadius: 28.53
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 26.53
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1

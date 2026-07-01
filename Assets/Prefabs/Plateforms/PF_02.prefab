@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3459488400122909216}
   - component: {fileID: 4148972024123659294}
   - component: {fileID: 7336694847185376215}
-  - component: {fileID: 317931075684258435}
+  - component: {fileID: 3520679776197891688}
   m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 992509219
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 954ef3c8392f55d459c607c4f03e4e50, type: 3}
-  m_Color: {r: 0.9579894, g: 0.9292453, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 82c823e47e4409a40802cb77e68ae6c8, type: 3}
+  m_Color: {r: 0.985587, g: 0.9764151, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.1747847, y: 3.1981282}
+  m_Offset: {x: 4.5123806, y: 4.624017}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,9 +110,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 30.413439, y: 5.622113}
+  m_Size: {x: 23.117458, y: 8.47389}
   m_EdgeRadius: 0
---- !u!68 &317931075684258435
+--- !u!68 &3520679776197891688
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,9 +128,12 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -12.091066, y: 6.0687175}
-  - {x: 14.887218, y: 8.899253}
-  - {x: 18.380209, y: 6.0103803}
+  - {x: -11.240556, y: 5.532789}
+  - {x: -9.274593, y: 7.709036}
+  - {x: -7.0474253, y: 8.860035}
+  - {x: 4.529716, y: 4.328615}
+  - {x: 16.073544, y: 8.859953}
+  - {x: 17.933998, y: 6.293365}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

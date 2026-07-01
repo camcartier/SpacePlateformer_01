@@ -1481,7 +1481,9 @@ MonoBehaviour:
 
     Maj button/
 
-    Left click'
+    Left click
+
+    + ZQSD'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 547730cba1614484ea7eff0d72ae14ef, type: 2}
   m_sharedMaterial: {fileID: 2039853690318481499, guid: 547730cba1614484ea7eff0d72ae14ef, type: 2}
@@ -1620,7 +1622,9 @@ MonoBehaviour:
 
     Alt button/
 
-    Right click'
+    Right click
+
+    + ZQSD'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 547730cba1614484ea7eff0d72ae14ef, type: 2}
   m_sharedMaterial: {fileID: 2039853690318481499, guid: 547730cba1614484ea7eff0d72ae14ef, type: 2}

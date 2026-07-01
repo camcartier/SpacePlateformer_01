@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 992509219
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7538ae020ef7f93448f6cffbc99d54c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 42a45e11ae921f44ba4cb56a70ad358c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -130,7 +130,7 @@ EdgeCollider2D:
   m_Points:
   - {x: -15.468051, y: 8.394323}
   - {x: -13.616151, y: 8.984218}
-  - {x: -0.6331024, y: 9.534856}
+  - {x: -9.383901, y: 10.019591}
   - {x: 11.79606, y: 9.055925}
   - {x: 18.41095, y: 8.394349}
   m_AdjacentStartPoint: {x: 0, y: 0}
@@ -217,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7975905921603984295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 19.74, z: 0}
+  m_LocalPosition: {x: 0, y: 15.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -239,9 +239,9 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.352
+  m_FalloffIntensity: 0.41
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1.2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000237d283b

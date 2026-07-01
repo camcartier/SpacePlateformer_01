@@ -6,12 +6,16 @@ using UnityEngine;
 
 public class ChronoControls : MonoBehaviour
 {
-    private float timer;
+    public float timer;
     [SerializeField] TextMeshProUGUI chronoTXT;
 
     //public bool canUpdate;
     //[SerializeField] GameManager gameManager;
+
+
     [SerializeField] PlayerStateMachine playerStateMachine;
+
+    //public List<float> highscores = new List<float>(); 
 
     // Update is called once per frame
     void Update()
@@ -33,4 +37,32 @@ public class ChronoControls : MonoBehaviour
     {
 
     }
+
+
+
+    /*
+    void SaveScores()
+    {
+        for (int i = 0; i < highscores.Count; i++)
+        {
+            PlayerPrefs.SetFloat("HighScore" + i, highscores[i]);
+        }
+
+        PlayerPrefs.SetInt("ScoreCount", highscores.Count);
+        PlayerPrefs.Save();
+    }
+
+    public void LoadScores()
+    {
+        highscores.Clear();
+
+        int count = PlayerPrefs.GetInt("ScoreCount", 0);
+
+        for (int i = 0; i < count; i++)
+        {
+            highscores.Add(PlayerPrefs.GetFloat("HighScore" + i));
+        }
+    }*/
 }
+
+
